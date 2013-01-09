@@ -28,7 +28,8 @@ $tpl->compile_dir = BASEPATH.ADMIN_DIRECTORY."/templates_c/";
 $tpl->config_dir = BASEPATH.ADMIN_DIRECTORY."/configs/";
 $tpl->cache_dir = BASEPATH.ADMIN_DIRECTORY."/cache/";
 //$tpl->cache_lifetime = 60 * 60 * 24;      //设置缓存时间
-$tpl->left_delimiter = '<!@{';$tpl->caching        = false;             //这里是调试时设为false,发布时请使用true
+$tpl->left_delimiter = '<!@{';
+$tpl->caching        = false;             //这里是调试时设为false,发布时请使用true
 
 $tpl->right_delimiter = '}@>';
 $tpl->compile_check = true;
