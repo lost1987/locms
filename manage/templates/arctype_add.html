@@ -1,0 +1,45 @@
+
+<div class="pageContent">
+	<form method="post" action="<!@{Smarty_site_url action_method='arctype/save'}@>" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+		<input type="hidden" name="id" value="<!@{$arctype.id}@>" />
+        <div class="pageFormContent" layoutH="56">
+			<p>
+				<label>栏目名称：</label>
+				<input name="typename" class="textInput required" type="text" size="30" value="<!@{$arctype.typename}@>" />
+			</p>
+            <p>
+                <label>栏目文件夹(<font color="#696969" style="vertical-align: middle">相对于项目的根目录</font>)：</label>
+                <input name="typedir" class="textInput" type="text" size="30" value="<!@{$arctype.typedir}@>" />
+            </p>
+            <p>
+                <label>父栏目</label>
+                <select name="reid" class="combox">
+                    <!@{foreach from = $typelist item = element}@>
+                      <!@{if $arctype.reid eq $element.id}@>
+                      <option value="<!@{$element.id}@>" selected> <!@{$element.typename}@> </option>
+                      <!@{elseif $arctype.reid neq $element.id && $dest eq 'add'}@>
+                      <option value="<!@{$element.id}@>"> <!@{$element.typename}@> </option>
+                      <!@{/if}@>
+                    <!@{/foreach}@>
+                </select>
+            </p>
+            <p style="height: 100px">
+                <label>关键字：</label>
+                <textarea class="textArea" name="keywords" rows="5" cols="70"> <!@{$arctype.keywords}@></textarea>
+            </p>
+            <p style="height: 100px">
+                <label>描述：</label>
+                <textarea class="textArea" name="description" rows="5" cols="70"> <!@{$arctype.description}@></textarea>
+            </p>
+		</div>
+		<div class="formBar">
+			<ul>
+				<!--<li><a class="buttonActive" href="javascript:;"><span>保存</span></a></li>-->
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

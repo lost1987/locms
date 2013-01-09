@@ -1,0 +1,68 @@
+<form id="pagerForm" method="post" action="<!@{Smarty_site_url action_method='arctype'}@>">
+	<input type="hidden" name="pageNum" value="<!@{$currentPage}@>" />
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" rel="pagerForm" action="<!@{Smarty_site_url action_method='arctype'}@>" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+
+				</td>
+			</tr>
+		</table>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">搜索</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="edit" href="<!@{Smarty_site_url action_method='arctype/edit'}@>?id={gid}" target="navTab"><span>编辑查看详情</span></a></li>
+			<li><a class="delete" href="<!@{Smarty_site_url action_method='arctype/del'}@>?id={gid}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+			<li class="line">line</li>
+		</ul>
+	</div>
+		<table class="table" width="100%" layoutH="138">
+		<thead>
+			<tr>
+				<th width="50">ID</th>
+                <th width="50">根栏目</th>
+				<th width="50">栏目名</th>
+				<th width="100">栏目文件夹</th>
+			</tr>
+		</thead>
+		<tbody>
+            <!@{foreach from = $list item = element}@>
+			<tr target="gid" rel="<!@{$element.id}@>" >
+                <td><!@{$element.id}@></td>
+                <td><!@{$element.typename}@></td>
+				<td>/</td>
+				<td><!@{$element.typedir}@></td>
+			</tr>
+                <!@{foreach from = $element.children item = child}@>
+                    <tr target="gid" rel="<!@{$child.id}@>" >
+                        <td><!@{$child.id}@></td>
+                        <td><!@{$element.typename}@></td>
+                        <td><!@{$child.typename}@></td>
+                        <td><!@{$child.typedir}@></td>
+                    </tr>
+                <!@{/foreach}@>
+            <!@{/foreach}@>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>共: <font color="red"><!@{$totalCount}@></font> 条记录</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<!@{$totalCount}@>" numPerPage="<!@{$numPerPage}@>" pageNumShown="10" currentPage="<!@{$currentPage}@>"></div>
+	</div>
+</div>
+<style type="text/css" media="screen">
+	.imgs{text-align:center;}
+	.imgs div{height:100px!important;}
+</style>
