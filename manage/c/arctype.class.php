@@ -11,6 +11,7 @@ class Arctype extends Core implements Action
 
     function arctype(){
         check_login();
+        $this -> permission -> checkPermssion($this->cookie->userdata('permission'),$this->permission->getPermissions('CONTENT'));
         $this -> arcModel = new Arctype_m();
     }
 
@@ -30,6 +31,8 @@ class Arctype extends Core implements Action
         $numPerPage = $pagecount;
         $currentPage = $pageNum;
 
+        global $settings;
+        $this -> tpl -> assign('static_on',$settings['static']);
         $this -> tpl -> assign('list',$list);
         $this -> tpl -> assign('totalCount',$totalCount);
         $this -> tpl -> assign('numPerPage',$numPerPage);
@@ -48,14 +51,14 @@ class Arctype extends Core implements Action
 
         if(empty($id)){
             if($this -> arcModel -> insert($post)){
-                die( json_encode(array('statusCode'=>'200', 'message'=>'操作成功', 'callbackType'=>'forward')) );
+                dwz_success();
             }
-            die( json_encode(array('statusCode'=>'300', 'message'=>'操作失败')) );
+            dwz_failed();
         }else{
             if($this -> arcModel -> update($post,"id=$id")){
-                die( json_encode(array('statusCode'=>'200', 'message'=>'操作成功', 'callbackType'=>'forward','forwardUrl' => site_url('arctype'))) );
+                dwz_success();
             }
-            die( json_encode(array('statusCode'=>'300', 'message'=>'操作失败')) );
+            dwz_failed();
         }
     }
 
@@ -110,9 +113,9 @@ class Arctype extends Core implements Action
         // TODO: Implement del() method.
         $id = $this -> input -> get('id');
         if($this -> arcModel -> del($id)){
-            die( json_encode(array('statusCode'=>'200', 'message'=>'操作成功', 'callbackType'=>'forward','forwardUrl' => site_url('arctype'))) );
+            dwz_success('操作成功',site_url('arctype'));
         }
-        die( json_encode(array('statusCode'=>'300', 'message'=>'操作失败')) );
+        dwz_failed();
     }
 
 }

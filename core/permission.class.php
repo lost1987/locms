@@ -1,18 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-	Class Permission{
-
-        const GZMY = 128;
-		const MANAGER = 64;
-		const PLATFORM =32;
-		const SERVICES = 16;
-		const USER = 8;
-		const PAY = 4;
-		const ADMANAGER =2 ;
-		const ADCACULATE = 1;
-		
-		
+	Class Permission extends Permission_values{
+	
 		/**
 		 * 赋予权限
 		 * @param array popes 权限
@@ -57,7 +47,7 @@
 		 */
 		public function checkPermssion($user_permission,$module_permission){
 			  	if(!($user_permission & $module_permission) || $user_permission == 0 || $module_permission == 0){
-			  		die( json_encode(array('statusCode'=>'300', 'message'=>'没有权限', 'callbackType'=>'forward')) );
+			  		dwz_failed('没有权限');
 			  	}
 		}
 		
@@ -66,10 +56,9 @@
 		 * @return INT / ARRAY
 		 */
 		public function getPermissions($key=''){
-			$r = new ReflectionClass($this);
-			$p = $r -> getConstants();
+			$p = $this -> getPv();
 			if($key == '')return $p;
-			return $p[$key];				
+			return $p[$key]['value'];
 		}
 		
  		

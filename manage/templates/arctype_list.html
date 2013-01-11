@@ -34,6 +34,7 @@
                 <th width="50">根栏目</th>
 				<th width="50">栏目名</th>
 				<th width="100">栏目文件夹</th>
+                <th width="50">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,6 +44,7 @@
                 <td><!@{$element.typename}@></td>
 				<td>/</td>
 				<td><!@{$element.typedir}@></td>
+                <td>/</td>
 			</tr>
                 <!@{foreach from = $element.children item = child}@>
                     <tr target="gid" rel="<!@{$child.id}@>" >
@@ -50,6 +52,12 @@
                         <td><!@{$element.typename}@></td>
                         <td><!@{$child.typename}@></td>
                         <td><!@{$child.typedir}@></td>
+                        <td>
+                            <!@{if $static_on eq 1}@>
+                            <a href="javascript:;">生成列表</a>&nbsp;&nbsp;
+                            <a href="javascript:;">生成文章</a>
+                            <!@{/if}@>
+                        </td>
                     </tr>
                 <!@{/foreach}@>
             <!@{/foreach}@>
@@ -65,4 +73,8 @@
 <style type="text/css" media="screen">
 	.imgs{text-align:center;}
 	.imgs div{height:100px!important;}
+    td a{
+        color:#006400;
+        font-weight: bold;
+    }
 </style>

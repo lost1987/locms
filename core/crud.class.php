@@ -8,10 +8,10 @@
  */
 interface CRUD
 {
-  function lists($start,$pagecount);
-  function read($id);
-  function insert($array);
-  function update($array,$condition);
-  function del($id);
-  function num_rows();
+    function lists($start,$pagecount);
+    function read($id);
+    function insert($array);
+    function update($array,$condition);
+    function del($id);
+    function num_rows();
 }

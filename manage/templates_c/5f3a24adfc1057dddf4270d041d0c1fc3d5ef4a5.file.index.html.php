@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-09 16:55:45
+<?php /* Smarty version Smarty-3.1.12, created on 2013-01-11 17:11:29
          compiled from "/Users/lost/www/locms/manage/templates/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:212725438550ed3091e2a263-09701469%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f3a24adfc1057dddf4270d041d0c1fc3d5ef4a5' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/index.html',
-      1 => 1357718227,
+      1 => 1357895429,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
   'unifunc' => 'content_50ed309206ffa1_09155649',
+  'variables' => 
+  array (
+    'admin_display' => 0,
+    'site_display' => 0,
+    'content_display' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_50ed309206ffa1_09155649')) {function content_50ed309206ffa1_09155649($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -161,23 +167,12 @@ themes"}); // themeBase 相对于index页面的主题base路径
 			<div class="headerNav">
 				<a class="logo" href="http://j-ui.com">标志</a>
 				<ul class="nav">
-					<li id="switchEnvBox"><a href="javascript:">（<span>北京</span>）切换城市</a>
-						<ul>
-							<li><a href="sidebar_1.html">北京</a></li>
-							<li><a href="sidebar_2.html">上海</a></li>
-							<li><a href="sidebar_2.html">南京</a></li>
-							<li><a href="sidebar_2.html">深圳</a></li>
-							<li><a href="sidebar_2.html">广州</a></li>
-							<li><a href="sidebar_2.html">天津</a></li>
-							<li><a href="sidebar_2.html">杭州</a></li>
-						</ul>
-					</li>
-					<li><a href="https://me.alipay.com/dwzteam" target="_blank">捐赠</a></li>
-					<li><a href="changepwd.html" target="dialog" width="600">设置</a></li>
-					<li><a href="http://www.cnblogs.com/dwzjs" target="_blank">博客</a></li>
+					<li><a href="javascript:;" ><?php echo smarty_cookie_decode(array('key'=>'admin'),$_smarty_tpl);?>
+</a></li>
 					<li><a href="http://weibo.com/dwzui" target="_blank">微博</a></li>
 					<li><a href="http://bbs.dwzjs.com" target="_blank">论坛</a></li>
-					<li><a href="login.html">退出</a></li>
+					<li><a href="<?php echo smarty_site_url(array('action_method'=>'login/logout'),$_smarty_tpl);?>
+">退出</a></li>
 				</ul>
 				<ul class="themeList" id="themeList">
 					<li theme="default"><div class="selected">蓝色</div></li>
@@ -203,12 +198,40 @@ themes"}); // themeBase 相对于index页面的主题base路径
 				<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
 
 				<div class="accordion" fillSpace="sidebar">
-					<div class="accordionHeader">
+					
+					<div class="accordionHeader" <?php echo $_smarty_tpl->tpl_vars['admin_display']->value;?>
+ >
+						<h2><span>Folder</span>管理员管理</h2>
+					</div>
+					<div class="accordionContent" <?php echo $_smarty_tpl->tpl_vars['admin_display']->value;?>
+ >
+						<ul class="tree treeFolder">
+                            <li><a href="javascript:;">管理员</a>
+                                <ul>
+                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'admin'),$_smarty_tpl);?>
+" target="navTab" rel="admin_list">列表</a></li>
+                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'admin/edit'),$_smarty_tpl);?>
+" target="navTab" rel="admin_edit">添加</a></li>
+                                </ul>
+                            </li>
+							<li><a href="javascript:;">权限分配</a>
+                                <ul>
+                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'admin/module_permission'),$_smarty_tpl);?>
+" target="navTab" rel="adminp_list">模块权限</a></li>
+                                </ul>
+                            </li>
+						</ul>
+					</div>
+					
+					
+					<div class="accordionHeader" <?php echo $_smarty_tpl->tpl_vars['site_display']->value;?>
+ >
 						<h2><span>Folder</span>全局设置</h2>
 					</div>
-					<div class="accordionContent">
+					<div class="accordionContent" <?php echo $_smarty_tpl->tpl_vars['site_display']->value;?>
+>
 						<ul class="tree treeFolder">
-							<li><a href="javascript:;" target="navTab">运行环境</a>
+							<li><a href="javascript:;">运行环境</a>
 								<ul>
 									<li><a href="<?php echo smarty_site_url(array('action_method'=>'info'),$_smarty_tpl);?>
 " target="navTab" rel="main">phpinfo</a></li>
@@ -217,17 +240,23 @@ dwz.frag.xml" target="navTab" external="true">dwz.frag.xml</a></li>
 								</ul>
 							</li>
 							
-							<li><a>SEO设置</a>
+							<li><a>站点设置</a>
 								<ul>
-									<li><a href="javascript:;" target="navTab" rel="w_panel">首页</a></li>
+									<li><a href="<?php echo smarty_site_url(array('action_method'=>'site'),$_smarty_tpl);?>
+" target="navTab" rel="site">设置</a></li>
 								</ul>
 							</li>
 						</ul>
 					</div>
-					<div class="accordionHeader">
+					
+					
+					
+					<div class="accordionHeader" <?php echo $_smarty_tpl->tpl_vars['content_display']->value;?>
+ >
 						<h2><span>Folder</span>内容管理</h2>
 					</div>
-					<div class="accordionContent">
+					<div class="accordionContent" <?php echo $_smarty_tpl->tpl_vars['content_display']->value;?>
+ >
 						<ul class="tree treeFolder">
                             <li><a href="javascript:;">栏目</a>
                                 <ul>
@@ -245,27 +274,11 @@ dwz.frag.xml" target="navTab" external="true">dwz.frag.xml</a></li>
 " target="navTab" rel="news_edit">添加</a></li>
                                 </ul>
                             </li>
-							<li><a href="demo_page1.html" target="navTab" rel="demo_page2">表单查询页面</a></li>
-							<li><a href="news_add.html" target="navTab" rel="demo_page4">表单录入页面</a></li>
-							<li><a href="demo_page5.html" target="navTab" rel="demo_page5">有文本输入的表单</a></li>
-							<li><a href="javascript:;">有提示的表单输入页面</a>
-								<ul>
-									<li><a href="javascript:;">页面一</a></li>
-									<li><a href="javascript:;">页面二</a></li>
-								</ul>
-							</li>
-							<li><a href="javascript:;">选项卡和图形的页面</a>
-								<ul>
-									<li><a href="javascript:;">页面一</a></li>
-									<li><a href="javascript:;">页面二</a></li>
-								</ul>
-							</li>
-							<li><a href="javascript:;">选项卡和图形切换的页面</a></li>
-							<li><a href="javascript:;">左右两个互动的页面</a></li>
-							<li><a href="javascript:;">列表输入的页面</a></li>
-							<li><a href="javascript:;">双层栏目列表的页面</a></li>
 						</ul>
 					</div>
+					
+					
+					
 					<div class="accordionHeader">
 						<h2><span>Folder</span>其他</h2>
 					</div>

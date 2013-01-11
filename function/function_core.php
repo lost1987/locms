@@ -162,7 +162,7 @@ function mappingforward($action_method)
 {
     global $entrance;
     $url = WEBROOT . $entrance . '/' . $action_method;
-    echo '<meta http-equiv="refresh" content="0; url=' . $url . '" />';
+    header("location:".$url);
 }
 
 function site_url($action_method)
@@ -808,5 +808,19 @@ function makeztlist(){
 function getZtUrl($time,$dir){
     return '/'.$dir.'/'.$time.'_1.html';
 }
+
+function getip() {
+    if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
+        $cip = $_SERVER["HTTP_CLIENT_IP"];
+    } elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+        $cip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+    } elseif (!empty($_SERVER["REMOTE_ADDR"])) {
+        $cip = $_SERVER["REMOTE_ADDR"];
+    } else {
+        $cip = "无法获取！";
+    }
+    return $cip;
+}
+
 
 ?>

@@ -245,6 +245,18 @@ function clickHandler(event) {
 };
 
 function findActive(headers, selector) {
+	
+	var n = 0;
+    
+    headers.each(function(i){
+          if($(this).css('display') == 'block'){
+               n = i;
+               return false;//return false 为jquery中的跳出循环 相当于for循环的break
+          }
+    });
+    
+    selector = n;
+
 	return selector != undefined
 		? typeof selector == "number"
 			? headers.filter(":eq(" + selector + ")")

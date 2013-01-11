@@ -6,6 +6,7 @@
  * Time: 上午10:57
  * To change this template use File | Settings | File Templates.
  */
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 function dwz_success($msg='操作成功',$callbackUrl=''){
     if(empty($callbackUrl))

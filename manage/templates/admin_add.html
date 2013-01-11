@@ -1,0 +1,33 @@
+<div class="pageFormContent">
+	<form method="post" action="<!@{Smarty_site_url method_action='admin/save'}@>" onsubmit="return validateCallback(this, navTabAjaxDone)">
+		<input type="hidden" name ="id" value="<!@{$admin.id|default:''}@>">
+		<fieldset>
+			<legend><!@{$title}@></legend>
+			<dl class="nowrap">
+				<dt>用户名:</dt>
+				<dd><input type="text" minlength = "4" class="textInput required lettersonly" name="admin" value="<!@{$admin.admin|default:''}@>" /></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>姓名:</dt>
+				<dd>
+					<input type="text" class="textInput required" name="truename" value="<!@{$admin.truename|default:''}@>" />
+				</dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>密码:</dt>
+				<dd><input type="password" id="password" class="textInput" minlength="6" name="passwd" value="" /></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>重复密码:</dt>
+				<dd><input type="password" class="textInput"  minlength="6" name="passwd_again" value="" /></dd>
+			</dl>
+		</fieldset>
+		
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>

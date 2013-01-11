@@ -36,6 +36,13 @@ $tpl->debugging = false;
 
 spl_autoload_register(array('core','autoload'));
 
+global $settings;
+if(get_magic_quotes_runtime()){
+    $settings = unserialize(stripslashes(file_get_contents(BASEPATH.'site.inc.php')));
+}else{
+    $settings = unserialize(file_get_contents(BASEPATH.'site.inc.php'));
+}
+
 $pathinfo = new Pathinfo('op'); //初始化url path类
 
 $entrance = $pathinfo -> entrance;//通过pathinfo类得到程序的入口文件名

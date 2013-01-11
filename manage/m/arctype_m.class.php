@@ -73,6 +73,11 @@ class Arctype_m extends Core implements CRUD
         return $this -> db -> query("select id,typename from $this->tableName where reid = 0") -> result_array();
     }
 
+    //读取所有非根栏目
+    function no_root(){
+        return $this -> db -> query("select id,typename from $this->tableName where reid <> 0") -> result_array();
+    }
+
     //读取所有根栏目和子栏目 并且按顺序排列
     function  rootdetail(){
         $roots  = $this -> db -> query("select * from $this->tableName where reid = 0") -> result_array();

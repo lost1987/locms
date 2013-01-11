@@ -1,14 +1,27 @@
 
 <div class="pageContent">
 	<form method="post" action="<!@{Smarty_site_url action_method='news/save'}@>" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
-		<div class="pageFormContent" layoutH="56">
+		<input type="hidden" name="id" value="<!@{$article.id|default:''}@>" />
+        <div class="pageFormContent" layoutH="56">
 			<p>
 				<label>标题：</label>
-				<input name="title" class="textInput required" type="text" size="30" value="<!@{$title}@>" />
+				<input name="title" class="textInput required" type="text" size="30" value="<!@{$article.title|default:''}@>" />
 			</p>
             <p>
+                <label>栏目：</label>
+                <select class="combox" name='typeid'>
+                    <!@{foreach from = $arctypes item = element}@>
+                        <!@{if $element.id == $article.typeid}@>
+                            <option value="<!@{$element.id}@>" selected><!@{$element.typename}@></option>
+                        <!@{else}@>
+                            <option value="<!@{$element.id}@>"><!@{$element.typename}@></option>
+                        <!@{/if}@>
+                    <!@{/foreach}@>
+                </select>
+            </p>
+            <p>
                 <label>短标题：</label>
-                <input name="shorttitle" class="textInput" type="text" size="30" value="<!@{$shorttitle}@>" />
+                <input name="shorttitle" class="textInput" type="text" size="30" value="<!@{$article.shorttitle|default:''}@>" />
             </p>
             <p>
                 <label>标记：</label>
@@ -21,57 +34,55 @@
                 <input type="checkbox" name="fg" value="v" onclick="changef();"/>视频&nbsp;
                 <input type="checkbox" name="fg" value="b" onclick="changef();"/>栏目头条&nbsp;
                 <input type="checkbox" name="fg" value="f" onclick="changef();"/>幻灯&nbsp;
-                <input type="hidden" name="flag" id="flag" value="<!@{$flag}@>" />
+                <input type="hidden" name="flag" id="<!@{$flag}@>" value="<!@{$article.flag|default:''}@>" />
+                <script>
 
-                <script type="text/javascript">
-                    var fgarr=$('#flag').val().split(',');
-                    for(var i=0;i<fgarr.length;i++)
-                    {
-                        for(var j=0;j<$('input[name=fg]').length;j++)
-                        {
-                            if(fgarr[i]==$('input[name=fg]').eq(j).val())
-                            {
-                                $('input[name=fg]').eq(j).attr('checked',true);
+                    var fgarr=$('#<!@{$flag}@>').val().split(',');
+                    for(var i=0;i<fgarr.length;i++){
+                        var fgs = $("input[name='fg']");
+                        for(var j=0 ; j< fgs.length; j++){
+                            if(fgarr[i] == $(fgs[j]).val()){
+                                $(fgs[j]).attr('checked',true);
+                                break;
                             }
                         }
                     }
-
                     function changef(){
                         var cks = $("input:checked[name='fg']");
                         var flags = '';
                         $(cks).each(function(){
-                              flags += $(this).val() + ',';
+                            flags += $(this).val() + ',';
                         });
                         flags = flags.substr(0,flags.length - 1);
-                        $("#flag").val(flags);
+                        $("#<!@{$flag}@>").val(flags);
                     }
                 </script>
             </p>
             <p>
                 <label>作者：</label>
-                <input name="writer" type="text" size="30" value="<!@{$writer}@>" />
+                <input name="writer" type="text" size="30" value="<!@{$article.writer|default:''}@>" />
             </p>
             <p>
                 <label>来源：</label>
-                <input name="source" type="text" size="30" value="<!@{$source}@>" />
+                <input name="source" type="text" size="30" value="<!@{$article.source|default:''}@>" />
             </p>
             <p>
                 <label>缩略图：</label>
-                <input type="text" name="litpic"  value="<!@{$litpic}@>" style="width: 400px;" id="input_pic">&nbsp;<input
+                <input type="text" name="litpic"  value="<!@{$article.litpic|default:''}@>" style="width: 400px;" id="input_pic">&nbsp;<input
                     type="button" class="submit" value="上传" onclick="showupwindow('input_pic')" />
                 <input type="hidden" id="callback" value="" />
             </p>
             <p style="height: 100px">
                 <label>关键字：</label>
-                <textarea class="textArea" name="keywords" rows="5" cols="70"> <!@{$keywords}@></textarea>
+                <textarea class="textArea" name="keywords" rows="5" cols="70"> <!@{$article.keywords|default:''}@></textarea>
             </p>
             <p style="height: 100px">
                 <label>描述：</label>
-                <textarea class="textArea" name="description" rows="5" cols="70"> <!@{$description}@></textarea>
+                <textarea class="textArea" name="description" rows="5" cols="70"> <!@{$article.description|default:''}@></textarea>
             </p>
             <p>
                 <label>内容：</label>
-                <textarea class="editor"  name="content" rows="20" cols="100"><!@{$content}@></textarea>
+                <textarea class="editor"  name="content" rows="20" cols="100"><!@{$article.body|default:''}@></textarea>
             </p>
 		</div>
 		<div class="formBar">
@@ -98,4 +109,5 @@ function close_up()
 {
 $('#div_up').remove();
 }
+
 </script>

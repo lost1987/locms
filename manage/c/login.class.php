@@ -17,6 +17,7 @@ class Login extends Core{
 
     function index(){
         check_login();
+        $this -> initModulePermission($this->cookie->userdata('permission'));
         $this -> tpl -> display('index.html');
     }
 
@@ -33,16 +34,40 @@ class Login extends Core{
 
         if( ($info = $this->loginModel->loginValidation($username,$password) ) !== FALSE && !empty($username) && !empty($password)){
             //success
-            $this -> cookie -> set_userdata('admin',$username);
-            $this -> cookie -> set_userdata('admin_id',$info['id']);
-            $this -> cookie -> set_userdata('truename',$info['truename']);
 
-            $this -> tpl -> display('index.html');
+            $ip = getip();
+            $this -> loginModel -> updateip($info['id'],$ip);
+
+            $userdata = array(
+            	'admin' => $username,
+            	'admin_id' => $info['id'],
+            	'truename' => $info['truename'],
+            	'permission' => $info['permission']
+            );
+            
+            $this -> cookie -> set_userdata($userdata);
+            mappingforward('login');
             exit;
         }
 
         $this->tpl->assign('error_msg','登录失败！');
         $this->tpl->display('login.html');
+    }
+    
+    private function initModulePermission($user_permission){
+	    foreach($this->permission->getPermissions() as $k => $p){
+		    if($this->permission->hasPermission($user_permission,$p['value'])){
+			    $this -> tpl -> assign($p['displayModuleId'],'style="display:block"');
+			    continue;
+		    }
+		    $this -> tpl -> assign($p['displayModuleId'],'style="display:none"');
+	    }
+    }
+    
+    public function logout(){
+	    $this -> cookie -> sess_destroy();
+	    $this -> tpl->assign('error_msg','');
+	    $this -> tpl -> display('login.html');
     }
 
 }

@@ -1,0 +1,63 @@
+<form id="pagerForm" method="post" action="<!@{Smarty_site_url action_method='admin'}@>">
+	<input type="hidden" name="pageNum" value="<!@{$page.currentPage}@>" />
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" rel="pagerForm" action="<!@{Smarty_site_url action_method='admin'}@>" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+				<!--	用户名：<input type="text" name="username" value="<?= !empty($username) ? $username : '' ?>"/>-->
+				</td>
+			</tr>
+		</table>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">搜索</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="edit" href="<!@{Smarty_site_url action_method='admin/edit'}@>?id={gid}" target="navTab"><span>编辑查看详情</span></a></li>
+			<li><a class="delete" href="<!@{Smarty_site_url action_method='admin/del'}@>?id={gid}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+			<li><a class="delete" href="<!@{Smarty_site_url action_method='admin/del'}@>" target="selectedTodo" rel="id" postType="string" title="确定要删除吗?"><span>批量删除</span></a></li>
+			<li class="line">line</li>
+		</ul>
+	</div>
+		<table class="table" width="100%" layoutH="138">
+		<thead>
+			<tr>
+				<th width="1"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th width="50">ID</th>
+				<th width="50">用户名</th>
+				<th width="100">姓名</th>
+				<th width="250">最后登录IP</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!@{foreach from = $list item = element}@>
+			<tr target="gid" rel="<!@{$element.id}@>">
+				<td><input name="id" value="<!@{$element.id}@>" type="checkbox"></td>
+				<td><!@{$element.id}@></td>
+				<td><!@{$element.admin}@></td>
+				<td><!@{$element.truename}@></td>
+				<td><!@{$element.last_login_ip}@></td>
+			</tr>
+			<!@{/foreach}@>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>共: <font color="red"><!@{$page.totalCount}@></font> 条记录</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="<!@{$page.totalCount}@>" numPerPage="<!@{$page.numPerPage}@>" pageNumShown="10" currentPage="<!@{$page.currentPage}@>"></div>
+	</div>
+</div>
+<style type="text/css" media="screen">
+	.imgs{text-align:center;}
+	.imgs div{height:100px!important;}
+</style>

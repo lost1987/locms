@@ -160,6 +160,19 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
 	public function close(){
 		mysql_close();
 	}
+
+    public function explain($sql){
+        $result = mysql_query('explain '.$sql);
+        if($row = mysql_fetch_assoc($result)){
+            echo '<font color="red">';
+            foreach($row as $k => $v){
+                echo $k.' : '.$v.'<br/>';
+            }
+            echo '</font>';
+        }
+        unset($result);
+        exit;
+    }
  }
 
 ?>

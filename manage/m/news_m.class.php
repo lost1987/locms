@@ -14,6 +14,7 @@ class News_m extends Core implements CRUD
         $prefix = Config::item('DB','PREFIX');
         $this -> table_article = $prefix.'article';
         $this -> table_content = $prefix.'articlebody';
+        $this -> table_arctype = $prefix.'arctype';
      }
 
     function insert($array)
@@ -38,13 +39,24 @@ class News_m extends Core implements CRUD
     function lists($start,$pagecount)
     {
         // TODO: Implement lists() method.
-        $result = $this -> db -> query("select * from $this->table_article order by pubdate desc limit $start,$pagecount") -> result_array();
+        $result = $this -> db -> query("select a.*,b.typename from $this->table_article a,$this->table_arctype b where a.typeid = b.id order by a.pubdate desc limit $start,$pagecount") -> result_array();
         return $result;
     }
 
-    function update($array,$condition)
+    function update($array,$id)
     {
         // TODO: Implement update() method.
+        $content = $array['content'];
+        unset($array['content']);
+        if($this -> db -> update($this->table_article,$array,"id=$id")){
+            $id = $this -> db -> insert_id();
+            if($this -> db -> update($this->table_content,array('body'=>$content),"aid=$id")){
+                return TRUE;
+            }
+            $this -> del($id);
+            return FALSE;
+        }
+        return FALSE;
     }
 
     function del($id)
@@ -62,7 +74,7 @@ class News_m extends Core implements CRUD
     }
 
     function read($id){
-
+        return $this -> db -> query("select a.*,b.body from $this->table_article a,$this->table_content b where a.id = $id and a.id = b.aid") -> row_array();
     }
 
 }

@@ -12,7 +12,9 @@ class News extends Core implements Action
 
     function News(){
          check_login();
+         $this -> permission -> checkPermssion($this->cookie->userdata('permission'),$this->permission->getPermissions('CONTENT'));
          $this -> newsModel = new News_m();
+         $this -> arcModel = new Arctype_m();
     }
 
     function index()
@@ -24,12 +26,15 @@ class News extends Core implements Action
         $start = ($pageNum - 1) * $pagecount;
 
 
-        $data = array();
-        $data['list'] = $this -> newsModel -> lists($start,$pagecount);
-        $data['totalCount'] = $this -> newsModel -> num_rows();
-        $data['numPerPage'] = $pagecount;
-        $data['currentPage'] = $pageNum;
+        $list = $this -> newsModel -> lists($start,$pagecount);
+        $page['totalCount'] = $this -> newsModel -> num_rows();
+        $page['numPerPage'] = $pagecount;
+        $page['currentPage'] = $pageNum;
 
+        global $settings;
+        $this -> tpl -> assign('static_on',$settings['static']);
+        $this -> tpl -> assign('list',$list);
+        $this -> tpl -> assign('page',$page);
         $this -> tpl -> display("news_list.html");
     }
 
@@ -37,18 +42,21 @@ class News extends Core implements Action
     {
         // TODO: Implement save() method.
         $id = $this -> input -> post('id');
+        $post = $this -> input -> post();
+        unset($post['id']);
+        unset($post['fg']);
+        $post['content'] = $_POST['content'];
+
         if(empty($id)){
-            $post = $this -> input -> post();
-            unset($post['id']);
-            unset($post['fg']);
             if($this -> newsModel -> insert($post)){
-                die( json_encode(array('statusCode'=>'200', 'message'=>'操作成功', 'callbackType'=>'forward')) );
+                dwz_success();
             }
-
         }else{
-
+            if($this -> newsModel -> update($post,$id)){
+                dwz_success();
+            }
         }
-        die( json_encode(array('statusCode'=>'300', 'message'=>'操作失败')) );
+        dwz_failed();
     }
 
     function edit()
@@ -56,29 +64,28 @@ class News extends Core implements Action
         // TODO: Implement edit() method.
         $id = $this -> input -> get('id');
 
+        //读取栏目
+        $arctypes = $this -> arcModel -> no_root();
+        $this -> tpl -> assign('flag','flag_a');
 
-        $this -> tpl -> assign('dest','add');
-        $this -> tpl -> assign('title','');
-        $this -> tpl -> assign('shorttitle','');
-        $this -> tpl -> assign('flag','');
-        $this -> tpl -> assign('writer','');
-        $this -> tpl -> assign('source','');
-        $this -> tpl -> assign('litpic','');
-        $this -> tpl -> assign('keywords','');
-        $this -> tpl -> assign('description','');
-        $this -> tpl -> assign('content','');
-
-        if(empty($id)){
-            $this -> tpl -> display('news_add.html');
-        }else{
-
+        if(!empty($id)){
+            $article = $this -> newsModel -> read($id);
+            $this -> tpl -> assign('article',$article);
+            $this -> tpl -> assign('flag','flag_e');
         }
 
+        $this -> tpl -> assign('arctypes',$arctypes);
+        $this -> tpl -> display('news_add.html');
     }
 
     function del()
     {
         // TODO: Implement del() method.
+        $id = $this -> input -> req('id');
+        if($this -> newsModel -> del($id)){
+            dwz_success('操作成功',site_url('news'));
+        }
+        dwz_failed();
     }
 
 }

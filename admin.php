@@ -37,6 +37,13 @@ $tpl->debugging = false;
 
 spl_autoload_register(array('core','autoload'));
 
+global $settings;
+if(get_magic_quotes_runtime()){
+    $settings = unserialize(stripslashes(file_get_contents(BASEPATH.'site.inc.php')));
+}else{
+    $settings = unserialize(file_get_contents(BASEPATH.'site.inc.php'));
+}
+
 $pathinfo = new Pathinfo('ac'); //初始化url path类
 
 $entrance = $pathinfo -> entrance;//通过pathinfo类得到程序的入口文件名
@@ -47,7 +54,9 @@ $cookie = new Cookie();//初始化cookie类
 
 $input = new Input();//初始化输入类
 
-$globals = array($pathinfo,$db,$tpl,$cookie,$input);
+$permission = new Permission();//初始化权限类
+
+$globals = array($pathinfo,$db,$tpl,$cookie,$input,$permission);
 
 //注册供模板调用的smarty 自定义函数
 require BASEPATH.'function/function_smarty.php';

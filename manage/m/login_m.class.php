@@ -15,12 +15,17 @@ class Login_m extends  Core
     }
 
     function loginValidation($username , $passwd){
-        $sql = "select passwd,truename,id from $this->tablename where admin = '$username'";
+        $sql = "select passwd,truename,id,permission from $this->tablename where admin = '$username'";
         $result = $this -> db -> query($sql) -> row_array();
         if(md5($passwd) == $result['passwd']){
             return $result;
         }
         return FALSE;
+    }
+
+    function updateip($id,$ip){
+        $array = array('last_login_ip' => $ip);
+        $this -> db -> update($this->tablename,$array,"id=$id");
     }
 
 }
