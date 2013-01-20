@@ -54,8 +54,8 @@
                         <td><!@{$child.typedir}@></td>
                         <td>
                             <!@{if $static_on eq 1}@>
-                            <a href="javascript:;">生成列表</a>&nbsp;&nbsp;
-                            <a href="javascript:;">生成文章</a>
+                            <a href="javascript:makelist(<!@{$child.id}@>)">生成列表</a>&nbsp;&nbsp;
+                            <a href="javascript:maketype(<!@{$child.id}@>)">生成文章</a>
                             <!@{/if}@>
                         </td>
                     </tr>
@@ -78,3 +78,46 @@
         font-weight: bold;
     }
 </style>
+<script src = "<!@{$smarty.const.WEBROOT}@>jslib/dwz.js" ></script>
+<script>
+
+    var start = 1;
+    var limit = 20;
+
+    function maketype(tid){
+        $.ajax({
+           beforeSend:function(){
+                end = parseInt(start-1) + parseInt(limit);
+                custom_mytip('正在生成 '+start+' - '+end+'条，请不要做其他操作！');
+           } ,
+           url: "<!@{Smarty_site_url action_method='arctype/make_type_articles'}@>",
+           data:'tid='+tid+'&start='+start+'&limit='+limit+'&t='+new Date().getTime(),
+           type:"POST",
+           dataType:"html",
+           success:function(data){
+                custom_mytip_close();
+                start = data;
+           },
+           complete:function(){
+                if(start == 0 || start == ''){
+                    custom_mytip('操作成功!',200);
+                    start = 1;
+                }else{
+                    maketype(tid);
+                }
+           }
+        });
+    }
+
+    function makelist(tid){
+        $.post('<!@{Smarty_site_url action_method="arctype/makelist"}@>','tid='+tid,function(data){
+             if(data == 0){
+                 custom_mytip('操作成功!',200);
+             }else{
+                 custom_mytip('操作失败!',200);
+             }
+        });
+    }
+
+
+</script>

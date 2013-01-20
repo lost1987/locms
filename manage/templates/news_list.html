@@ -1,3 +1,4 @@
+
 <form id="pagerForm" method="post" action="<!@{Smarty_site_url action_method='news'}@>">
 	<input type="hidden" name="pageNum" value="<!@{$page.currentPage}@>" />
 </form>
@@ -53,7 +54,7 @@
                 <td>
                     <a href="<!@{Smarty_site_url action_method='news/edit'}@>?id=<!@{$element.id}@>" target="navTab">编辑</a>&nbsp;&nbsp;
                     <!@{if $static_on eq 1}@>
-                    <a href="javascript:;">生成</a>&nbsp;&nbsp;
+                    <a href="javascript:makeArticle(<!@{$element.id}@>)">生成</a>&nbsp;&nbsp;
                     <!@{/if}@>
                     <a href="<!@{Smarty_site_url action_method='news/del'}@>?id=<!@{$element.id}@>" target="ajaxTodo" title="确定要删除吗?">删除</a>
                 </td>
@@ -76,3 +77,18 @@
         font-weight: bold;
     }
 </style>
+<script>
+
+    function makeArticle(id){
+        $.post('<!@{Smarty_site_url action_method="news/make_article"}@>','id='+id,function(data){
+
+            if(data == 0){
+                custom_mytip('操作成功',200);
+            }else{
+                custom_mytip('操作失败',200);
+            }
+
+        });
+    }
+
+</script>

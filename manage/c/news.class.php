@@ -88,4 +88,11 @@ class News extends Core implements Action
         dwz_failed();
     }
 
+    function make_article(){
+        $id = $this -> input -> post('id');
+        $s = new Cstatics($this->tpl,$this->db);
+        $s -> makeArticle($id);
+        echo 0;
+    }
+
 }

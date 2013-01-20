@@ -118,4 +118,21 @@ class Arctype extends Core implements Action
         dwz_failed();
     }
 
+    //生成栏目下的所有文章
+    function make_type_articles(){
+        $tid = $this -> input -> post('tid');
+        $start = $this -> input -> post('start');
+        $limit = $this -> input -> post('limit');
+        $s = new Cstatics($this -> tpl,$this->db);
+        $next = $s -> makeArticlesByTid($tid,$start,$limit);//如果next为0 则表示生成完成
+        echo $next;
+    }
+
+    function makelist(){
+        $tid = $this -> input -> post('tid');
+        $s = new Cstatics($this -> tpl,$this->db);
+        $result = $s -> makelist($tid);
+        echo $result;
+    }
+
 }

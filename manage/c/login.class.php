@@ -25,7 +25,7 @@ class Login extends Core{
     public function loginpage()
     {
         $this->tpl->assign('error_msg','');
-        $this->tpl->display('login.html');
+        $this->tpl->display('_login.html');
     }
 
     public function  dologin(){
@@ -51,7 +51,7 @@ class Login extends Core{
         }
 
         $this->tpl->assign('error_msg','登录失败！');
-        $this->tpl->display('login.html');
+        $this->tpl->display('_login.html');
     }
     
     private function initModulePermission($user_permission){
@@ -67,7 +67,7 @@ class Login extends Core{
     public function logout(){
 	    $this -> cookie -> sess_destroy();
 	    $this -> tpl->assign('error_msg','');
-	    $this -> tpl -> display('login.html');
+	    $this -> tpl -> display('_login.html');
     }
 
 }

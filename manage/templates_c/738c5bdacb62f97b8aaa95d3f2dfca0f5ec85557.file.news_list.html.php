@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-11 17:48:41
+<?php /* Smarty version Smarty-3.1.12, created on 2013-01-20 16:59:13
          compiled from "/Users/lost/www/locms/manage/templates/news_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:82134217550ee6695ce14b0-89879170%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '738c5bdacb62f97b8aaa95d3f2dfca0f5ec85557' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/news_list.html',
-      1 => 1357897615,
+      1 => 1358672071,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_50ee6695d802d4_83364551')) {function content_50ee6695d802d4_83364551($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Users/lost/www/locms/extend/smarty/plugins/modifier.date_format.php';
-?><form id="pagerForm" method="post" action="<?php echo smarty_site_url(array('action_method'=>'news'),$_smarty_tpl);?>
+?>
+<form id="pagerForm" method="post" action="<?php echo smarty_site_url(array('action_method'=>'news'),$_smarty_tpl);?>
 ">
 	<input type="hidden" name="pageNum" value="<?php echo $_smarty_tpl->tpl_vars['page']->value['currentPage'];?>
 " />
@@ -101,7 +102,8 @@ $_smarty_tpl->tpl_vars['element']->_loop = true;
 ?id=<?php echo $_smarty_tpl->tpl_vars['element']->value['id'];?>
 " target="navTab">编辑</a>&nbsp;&nbsp;
                     <?php if ($_smarty_tpl->tpl_vars['static_on']->value==1){?>
-                    <a href="javascript:;">生成</a>&nbsp;&nbsp;
+                    <a href="javascript:makeArticle(<?php echo $_smarty_tpl->tpl_vars['element']->value['id'];?>
+)">生成</a>&nbsp;&nbsp;
                     <?php }?>
                     <a href="<?php echo smarty_site_url(array('action_method'=>'news/del'),$_smarty_tpl);?>
 ?id=<?php echo $_smarty_tpl->tpl_vars['element']->value['id'];?>
@@ -129,4 +131,20 @@ $_smarty_tpl->tpl_vars['element']->_loop = true;
         color:#006400;
         font-weight: bold;
     }
-</style><?php }} ?>
+</style>
+<script>
+
+    function makeArticle(id){
+        $.post('<?php echo smarty_site_url(array('action_method'=>"news/make_article"),$_smarty_tpl);?>
+','id='+id,function(data){
+
+            if(data == 0){
+                custom_mytip('操作成功',200);
+            }else{
+                custom_mytip('操作失败',200);
+            }
+
+        });
+    }
+
+</script><?php }} ?>

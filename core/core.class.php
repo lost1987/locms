@@ -20,6 +20,7 @@ abstract class Core
 
     public static function autoload($className){
 
+        $className = strtolower($className);
 
         $classpath = BASEPATH.'core/'.$className.self::SUBFIX;
 

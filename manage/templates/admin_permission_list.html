@@ -38,6 +38,7 @@
 
 function manager_permission(){
 	var id = $("#seeManager").val();
+    if(id == '')return;
 	var url = "<!@{Smarty_site_url action_method='admin/check_permission_by_adminid'}@>";
 	$.ajax({
 		url : url,

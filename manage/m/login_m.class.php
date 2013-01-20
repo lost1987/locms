@@ -17,7 +17,7 @@ class Login_m extends  Core
     function loginValidation($username , $passwd){
         $sql = "select passwd,truename,id,permission from $this->tablename where admin = '$username'";
         $result = $this -> db -> query($sql) -> row_array();
-        if(md5($passwd) == $result['passwd']){
+        if(!empty($result['passwd']) && md5($passwd) == $result['passwd']){
             return $result;
         }
         return FALSE;

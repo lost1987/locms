@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-11 14:18:20
+<?php /* Smarty version Smarty-3.1.12, created on 2013-01-15 14:38:43
          compiled from "/Users/lost/www/locms/manage/templates/admin_permission_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:100062962750efa9fb686740-61785810%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '72127e00786615561a473586b766972468a20174' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/admin_permission_list.html',
-      1 => 1357885070,
+      1 => 1358231254,
       2 => 'file',
     ),
   ),
@@ -73,6 +73,7 @@ $_smarty_tpl->tpl_vars['element']->_loop = true;
 
 function manager_permission(){
 	var id = $("#seeManager").val();
+    if(id == '')return;
 	var url = "<?php echo smarty_site_url(array('action_method'=>'admin/check_permission_by_adminid'),$_smarty_tpl);?>
 ";
 	$.ajax({

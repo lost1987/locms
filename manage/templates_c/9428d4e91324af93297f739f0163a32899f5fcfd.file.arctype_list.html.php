@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-11 17:48:28
+<?php /* Smarty version Smarty-3.1.12, created on 2013-01-20 15:39:39
          compiled from "/Users/lost/www/locms/manage/templates/arctype_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:200394235650ee66715cd8f3-02663257%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9428d4e91324af93297f739f0163a32899f5fcfd' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/arctype_list.html',
-      1 => 1357897697,
+      1 => 1358667002,
       2 => 'file',
     ),
   ),
@@ -107,8 +107,10 @@ $_smarty_tpl->tpl_vars['child']->_loop = true;
 </td>
                         <td>
                             <?php if ($_smarty_tpl->tpl_vars['static_on']->value==1){?>
-                            <a href="javascript:;">生成列表</a>&nbsp;&nbsp;
-                            <a href="javascript:;">生成文章</a>
+                            <a href="javascript:makelist(<?php echo $_smarty_tpl->tpl_vars['child']->value['id'];?>
+)">生成列表</a>&nbsp;&nbsp;
+                            <a href="javascript:maketype(<?php echo $_smarty_tpl->tpl_vars['child']->value['id'];?>
+)">生成文章</a>
                             <?php }?>
                         </td>
                     </tr>
@@ -134,4 +136,50 @@ $_smarty_tpl->tpl_vars['child']->_loop = true;
         color:#006400;
         font-weight: bold;
     }
-</style><?php }} ?>
+</style>
+<script src = "<?php echo @WEBROOT;?>
+jslib/dwz.js" ></script>
+<script>
+
+    var start = 1;
+    var limit = 20;
+
+    function maketype(tid){
+        $.ajax({
+           beforeSend:function(){
+                end = parseInt(start-1) + parseInt(limit);
+                custom_mytip('正在生成 '+start+' - '+end+'条，请不要做其他操作！');
+           } ,
+           url: "<?php echo smarty_site_url(array('action_method'=>'arctype/make_type_articles'),$_smarty_tpl);?>
+",
+           data:'tid='+tid+'&start='+start+'&limit='+limit+'&t='+new Date().getTime(),
+           type:"POST",
+           dataType:"html",
+           success:function(data){
+                custom_mytip_close();
+                start = data;
+           },
+           complete:function(){
+                if(start == 0 || start == ''){
+                    custom_mytip('操作成功!',200);
+                    start = 1;
+                }else{
+                    maketype(tid);
+                }
+           }
+        });
+    }
+
+    function makelist(tid){
+        $.post('<?php echo smarty_site_url(array('action_method'=>"arctype/makelist"),$_smarty_tpl);?>
+','tid='+tid,function(data){
+             if(data == 0){
+                 custom_mytip('操作成功!',200);
+             }else{
+                 custom_mytip('操作失败!',200);
+             }
+        });
+    }
+
+
+</script><?php }} ?>
