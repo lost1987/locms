@@ -14,17 +14,14 @@ abstract class Statics
         protected  $limit;
         protected  $listlimit = 20;//生成列表时 一页20条文章
 
-        function makeArticle($id){
+        abstract function makeArticle($id);
             //for override
-        }
 
-        function makelist($tid){
+        abstract  function makelist($tid);
             //for override
-        }
 
-        function makeArticlesByTid($tid,$start,$limit){
+        abstract function makeArticlesByTid($tid,$start,$limit);
             //for override
-        }
 
         static function getTrueArticleUrl($pubdate,$id)
         {

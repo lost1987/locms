@@ -36,22 +36,22 @@
         <option value="$PROJECT_DIR$/manage/m/login_m.class.php" />
         <option value="$PROJECT_DIR$/manage/templates/_login.html" />
         <option value="$PROJECT_DIR$/manage/templates/test.html" />
-        <option value="$PROJECT_DIR$/css/login.css" />
         <option value="$PROJECT_DIR$/manage/templates/static/list.html" />
         <option value="$PROJECT_DIR$/manage/templates/arctype_list.html" />
         <option value="$PROJECT_DIR$/manage/c/arctype.class.php" />
-        <option value="$PROJECT_DIR$/core/statics.class.php" />
         <option value="$PROJECT_DIR$/function/function_core.php" />
         <option value="$PROJECT_DIR$/extend/cstatics.class.php" />
         <option value="$PROJECT_DIR$/manage/templates/news_list.html" />
         <option value="$PROJECT_DIR$/manage/c/news.class.php" />
+        <option value="$PROJECT_DIR$/css/login.css" />
+        <option value="$PROJECT_DIR$/core/statics.class.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="211" />
-    <option name="y" value="134" />
+    <option name="x" value="63" />
+    <option name="y" value="22" />
     <option name="width" value="1377" />
     <option name="height" value="820" />
   </component>
@@ -97,20 +97,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="locms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="locms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="locms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -188,14 +174,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="211" y="134" width="1377" height="820" extended-state="0" />
+    <frame x="63" y="22" width="1377" height="820" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11495116" sideWeight="0.6709585" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22915101" sideWeight="0.6709585" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23666416" sideWeight="0.6709585" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -272,113 +258,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/templates/static/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="7" selection-start="327" selection-end="327" vertical-scroll-proportion="0.22712934">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/loginbg.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="12" selection-start="752" selection-end="752" vertical-scroll-proportion="0.51692307">
-          <folding />
-        </state>
+        <state line="9" column="7" selection-start="327" selection-end="327" vertical-scroll-proportion="0.22712934" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/templates/static/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="26" selection-start="144" selection-end="144" vertical-scroll-proportion="0.22256568">
-          <folding />
-        </state>
+        <state line="9" column="26" selection-start="144" selection-end="144" vertical-scroll-proportion="0.22256568" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/templates/arctype_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="35" selection-start="4044" selection-end="4044" vertical-scroll-proportion="0.9148265">
-          <folding />
-        </state>
+        <state line="116" column="35" selection-start="4044" selection-end="4044" vertical-scroll-proportion="0.9148265" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/function/function_core.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="316" column="21" selection-start="9165" selection-end="9165" vertical-scroll-proportion="0.2082019">
-          <folding />
-        </state>
+        <state line="316" column="21" selection-start="9165" selection-end="9165" vertical-scroll-proportion="0.2082019" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/c/arctype.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="39" selection-start="3979" selection-end="3979" vertical-scroll-proportion="0.72239745">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/statics.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="45" selection-start="1078" selection-end="1087" vertical-scroll-proportion="0.6676971">
-          <folding />
-        </state>
+        <state line="133" column="39" selection-start="3979" selection-end="3979" vertical-scroll-proportion="0.72239745" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jslib/dwz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1358241758000" expanded="false" signature="372:407" placeholder="..." />
-            <marker date="1358241758000" expanded="false" signature="580:593" placeholder="..." />
-            <marker date="1358241758000" expanded="false" signature="632:645" placeholder="..." />
-            <marker date="1358241758000" expanded="false" signature="684:697" placeholder="..." />
-            <marker date="1358241758000" expanded="false" signature="1024:1034" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jslib/jquery.scrollfix.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jslib/lost.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="6" selection-start="230" selection-end="230" vertical-scroll-proportion="0.2688629">
-          <folding>
-            <marker date="1358400751000" expanded="false" signature="12416:12426" placeholder="..." />
-          </folding>
-        </state>
+        <state line="19" column="6" selection-start="230" selection-end="230" vertical-scroll-proportion="0.2688629" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/templates/news_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="25" selection-start="3057" selection-end="3057" vertical-scroll-proportion="1.0473856">
-          <folding />
-        </state>
+        <state line="81" column="25" selection-start="3057" selection-end="3057" vertical-scroll-proportion="1.0473856" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/c/news.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="10" selection-start="2684" selection-end="2686" vertical-scroll-proportion="1.2303921">
-          <folding />
-        </state>
+        <state line="93" column="10" selection-start="2684" selection-end="2686" vertical-scroll-proportion="1.2303921" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/extend/cstatics.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="61" selection-start="990" selection-end="990" vertical-scroll-proportion="0.6797386">
-          <folding />
-        </state>
+        <state line="26" column="61" selection-start="990" selection-end="990" vertical-scroll-proportion="0.6797386" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/core.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="315" selection-end="315" vertical-scroll-proportion="0.19783616">
+        <state line="19" column="0" selection-start="315" selection-end="315" vertical-scroll-proportion="0.19783616" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="22" selection-start="507" selection-end="507" vertical-scroll-proportion="0.6666667" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/statics.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.42040184">
           <folding />
         </state>
       </provider>
