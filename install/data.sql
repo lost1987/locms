@@ -2,7 +2,7 @@
 --  Records of `lo_admin`
 -- ----------------------------
 BEGIN;
-INSERT INTO `lo_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '默认管理员', '0');
+INSERT INTO `lo_admin` VALUES ('1', 'lost', '1c9a44eb2e8eaf3da1eb551da310cce7', 'buhuan', '15');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

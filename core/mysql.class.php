@@ -2,28 +2,28 @@
 
 if( ! defined('BASEPATH')) exit('No direct script access allowed');
 
- Class DB {
+ Class Mysql {
  	
 	private $link;
 	public $queryState;
 	private $debug = FALSE;
 	private $trans_state;
  	
-	function DB(){
+	function Mysql(){
 
-        $host = Config::item('DB','HOST');
-        $user =  Config::item('DB','USERNAME');
-        $pwd = Config::item('DB','PASSWORD');
-        $debug = Config::item('DB','DEBUG');
-        $database = Config::item('DB','DBNAME');
+        $this -> host = Config::item('DB','HOST');
+        $this -> user =  Config::item('DB','USERNAME');
+        $this -> pwd = Config::item('DB','PASSWORD');
+        $this -> debug = Config::item('DB','DEBUG');
+        $this -> database = Config::item('DB','DBNAME');
 
-		$this -> link = mysql_connect($host,$user,$pwd);
+		$this -> link = mysql_connect($this -> host,$this -> user,$this -> pwd);
 		
 		if(empty($this -> link)){
 			exit('database init error!');
 		}
 		
-		$this -> init($database,$debug);
+		$this -> init($this -> database,$this -> debug);
 	}
 	
 	private function init($database,$debug){
@@ -173,6 +173,17 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
         unset($result);
         exit;
     }
+
+    public function show_tables(){
+        $sql = "show tables";
+        $result = mysql_query($sql);
+        $tables = array();
+        while($row = mysql_fetch_row($result)){
+            $tables[] = $row[0];
+        }
+        return $tables;
+    }
+
  }
 
 ?>

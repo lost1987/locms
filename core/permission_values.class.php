@@ -8,7 +8,8 @@ class Permission_values {
 		$this -> pv = array(
 		  'ADMIN' =>	array('value' => 1, 'displayModuleId' => 'admin_display' , 'desp' => '管理员管理权限'),
 		  'CONTENT' => 	array('value' => 2, 'displayModuleId' => 'content_display' , 'desp' => '内容管理权限'),
-		  'SITE' =>      array('value' => 4, 'displayModuleId' => 'site_display' , 'desp' => '站点管理权限')
+		  'SITE' =>      array('value' => 4, 'displayModuleId' => 'site_display' , 'desp' => '站点管理权限'),
+          'TABLE' =>      array('value' => 8, 'displayModuleId' => 'table_display' , 'desp' => '数据字典管理权限')
 		);	
 	}
 	

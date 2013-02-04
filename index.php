@@ -11,13 +11,15 @@ session_start();
 
 define('BASEPATH',dirname(__FILE__).DIRECTORY_SEPARATOR);
 
-require 'config.inc.php';
+require BASEPATH.'conf/config.inc.php';
+require_once BASEPATH . NORMAL_DIRECTORY .'/conf/config.php';
+require_once BASEPATH . NORMAL_DIRECTORY .'/conf/config.aop.php';
 
 if(WEB_DEBUG)error_reporting(E_ALL);
 else error_reporting(0);
 require BASEPATH.'function/function_core.php';
 require BASEPATH.'core/factory.class.php';
-require BASEPATH.'core/mysql.class.php';
+require BASEPATH.'core/db_engine.class.php';
 require BASEPATH.'core/core.class.php';
 require BASEPATH . 'extend/smarty/Smarty.class.php';
 
@@ -43,11 +45,12 @@ if(get_magic_quotes_runtime()){
     $settings = unserialize(file_get_contents(BASEPATH.'site.inc.php'));
 }
 
-$pathinfo = new Pathinfo('op'); //初始化url path类
+$pathinfo = new Pathinfo(); //初始化url path类
 
 $entrance = $pathinfo -> entrance;//通过pathinfo类得到程序的入口文件名
 
-$db = new DB();  //初始化DB类
+$db_engine = Config::item('DB','ENGINE');
+$db = DB_ENGINE::init($db_engine);  //初始化DB类
 
 $cookie = new Cookie();//初始化cookie类
 
@@ -63,12 +66,16 @@ $f = &new Factory($globals);
 
 $controllerClass = $f -> pathinfo -> controller;
 
+Aop::beforeMethod();
+
 $c = new $controllerClass;
 
 if(method_exists($c,$f->pathinfo->method)){
     call_user_func(array($c,$f->pathinfo->method));
     exit;
 }
+
+Aop::afterMethod();
 
 header("HTTP/1.1 404 Not Found");
 

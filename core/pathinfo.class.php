@@ -18,16 +18,12 @@ class Pathinfo
 
     public $entrance;
 
-    function Pathinfo($symbol){
-        $this -> init($symbol);
+    function Pathinfo(){
+        $this -> init();
     }
 
-    /**
-     * @param $symbol 前台还是后台
-     * ac = 后台
-     * op = 前台
-     */
-    private function init($symbol){
+
+    private function init(){
 
         $request_uri = $_SERVER['REQUEST_URI'];
 
@@ -41,19 +37,19 @@ class Pathinfo
 
         if(count($params) == 1){
             $this -> entrance = 'index.php';
-            $this -> controller = Config::item($symbol,'default');
-            $this -> method = Config::item($symbol,'default_method');
+            $this -> controller = Config::item('controller','default');
+            $this -> method = Config::item('controller','default_method');
         }
 
         else if(count($params) == 2){
                list(,$this -> entrance) = $params;
-               $this -> controller = Config::item($symbol,'default');
-               $this -> method = Config::item($symbol,'default_method');
+               $this -> controller = Config::item('controller','default');
+               $this -> method = Config::item('controller','default_method');
         }
 
         else if(count($params) == 3){
                list(,$this -> entrance , $this ->controller) = $params;
-               $this -> method = Config::item($symbol,'default_method');
+               $this -> method = Config::item('controller','default_method');
         }
 
         else{

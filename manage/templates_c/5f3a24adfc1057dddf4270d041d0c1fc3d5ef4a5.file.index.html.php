@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-11 17:11:29
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-01 14:25:12
          compiled from "/Users/lost/www/locms/manage/templates/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:212725438550ed3091e2a263-09701469%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f3a24adfc1057dddf4270d041d0c1fc3d5ef4a5' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/index.html',
-      1 => 1357895429,
+      1 => 1359699907,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'admin_display' => 0,
     'site_display' => 0,
     'content_display' => 0,
+    'table_display' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -169,18 +170,11 @@ themes"}); // themeBase 相对于index页面的主题base路径
 				<ul class="nav">
 					<li><a href="javascript:;" ><?php echo smarty_cookie_decode(array('key'=>'admin'),$_smarty_tpl);?>
 </a></li>
-					<li><a href="http://weibo.com/dwzui" target="_blank">微博</a></li>
-					<li><a href="http://bbs.dwzjs.com" target="_blank">论坛</a></li>
 					<li><a href="<?php echo smarty_site_url(array('action_method'=>'login/logout'),$_smarty_tpl);?>
 ">退出</a></li>
 				</ul>
 				<ul class="themeList" id="themeList">
 					<li theme="default"><div class="selected">蓝色</div></li>
-					<li theme="green"><div>绿色</div></li>
-					<!--<li theme="red"><div>红色</div></li>-->
-					<li theme="purple"><div>紫色</div></li>
-					<li theme="silver"><div>银色</div></li>
-					<li theme="azure"><div>天蓝</div></li>
 				</ul>
 			</div>
 
@@ -279,13 +273,17 @@ dwz.frag.xml" target="navTab" external="true">dwz.frag.xml</a></li>
 					
 					
 					
-					<div class="accordionHeader">
-						<h2><span>Folder</span>其他</h2>
+					<div class="accordionHeader" <?php echo $_smarty_tpl->tpl_vars['table_display']->value;?>
+>
+						<h2><span>Folder</span>数据字典</h2>
 					</div>
-					<div class="accordionContent">
+					<div class="accordionContent" <?php echo $_smarty_tpl->tpl_vars['table_display']->value;?>
+>
 						<ul class="tree">
-							<li><a href="newPage1.html" target="dialog" rel="dlg_page">列表</a></li>
-							<li><a href="newPage1.html" target="dialog" rel="dlg_page2">列表</a></li>
+							<li><a href="<?php echo smarty_site_url(array('action_method'=>'table'),$_smarty_tpl);?>
+" target="navTab" rel="table_list">列表</a></li>
+							<li><a href="<?php echo smarty_site_url(array('action_method'=>'table/edit'),$_smarty_tpl);?>
+" target="navTab" rel="table_add">新建数据表</a></li>
 						</ul>
 					</div>
 				</div>

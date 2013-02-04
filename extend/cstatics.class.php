@@ -6,6 +6,8 @@
  * Time: 下午3:42
  * To change this template use File | Settings | File Templates.
  */
+if( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Cstatics extends Statics
 {
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>comet</title>
+</head>
+<script type="text/javascript" src="<!@{$smarty.const.WEBROOT}@>js/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="<!@{$smarty.const.WEBROOT}@>jslib/lost.js" ></script>
+<script>
+    $(function(){
+        $.comet({
+            url:"<!@{Smarty_site_url action_method='comet'}@>",
+            success:function(data){
+                    $('body').append(data);
+            }
+        })
+    })
+</script>
+<body>
+
+</body>
+</html>

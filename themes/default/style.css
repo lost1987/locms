@@ -201,5 +201,18 @@ body, #splitBar { background:#e5edef;}
 .combox, .combox div, .combox div a { background:url(../default/images/search-bg.gif) no-repeat; }
 
 
+/**************lost**************/
+.btn_orange{
+    background-image: url('images/btn_orange.png');
+    border:0px;
+    color:white;
+    cursor:pointer;
+}
 
+.btn_grey{
+    background-image: url('images/btn_grey.png');
+    border:0px;
+    color:white;
+    cursor:pointer;
+}
 

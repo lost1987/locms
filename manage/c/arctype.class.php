@@ -10,7 +10,6 @@ class Arctype extends Core implements Action
 {
 
     function arctype(){
-        check_login();
         $this -> permission -> checkPermssion($this->cookie->userdata('permission'),$this->permission->getPermissions('CONTENT'));
         $this -> arcModel = new Arctype_m();
     }

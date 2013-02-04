@@ -7,6 +7,8 @@
  * To change this template use File | Settings | File Templates.
  * 静态生成类
  */
+if( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 abstract class Statics
 {
 

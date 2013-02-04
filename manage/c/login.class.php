@@ -16,7 +16,6 @@ class Login extends Core{
     }
 
     function index(){
-        check_login();
         $this -> initModulePermission($this->cookie->userdata('permission'));
         $this -> tpl -> display('index.html');
     }

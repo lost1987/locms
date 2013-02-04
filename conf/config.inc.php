@@ -8,9 +8,9 @@
  */
 if( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-define('APPNAME','locms');
+define('APPNAME','');
 
-define('HOST','http://localhost/');
+define('HOST','http://dev.locms.com/');
 
 //后台文件存放的文件夹名
 define('ADMIN_DIRECTORY','manage');

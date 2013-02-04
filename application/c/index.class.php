@@ -10,7 +10,11 @@ class Index extends  Core
 {
 
     public function main(){
-        echo 'running success';
+        $this -> tpl -> display('index.html');
+    }
+
+    public function comet(){
+        $this -> tpl -> display('comet.html');
     }
 
 }

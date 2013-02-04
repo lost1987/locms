@@ -10,7 +10,6 @@ class Admin extends Core implements Action{
    
    
    function admin(){
-	   check_login();
 	   $this -> permission -> checkPermssion($this->cookie->userdata('permission'),$this->permission->getPermissions('ADMIN'));
 	   $this -> adminModel = new Admin_m();
    }

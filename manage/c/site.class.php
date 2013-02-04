@@ -10,7 +10,6 @@ class Site extends Core
 {
 
     function site(){
-        check_login();
         $this -> permission -> checkPermssion($this->cookie->userdata('permission'),$this->permission->getPermissions('SITE'));
     }
 

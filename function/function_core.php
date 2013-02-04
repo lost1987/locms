@@ -149,7 +149,7 @@ function check_login()
     $cookie = $f->cookie;
     $admin = $cookie->userdata('admin');
     $admin_id = $cookie->userdata('admin_id');
-    if (empty($admin) || empty($admin_id)) {
+    if ((empty($admin) || empty($admin_id)) && $f->pathinfo->method != 'loginpage') {
         mappingforward('login/loginpage');
     }
 }

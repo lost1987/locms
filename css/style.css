@@ -1,0 +1,72 @@
+body{
+    background-image: url('../imagelib/bg_main.png');
+}
+
+.top{
+    background-image: url('../imagelib/bg_top.png');
+    width:100%;
+    position:fixed;
+    top:0px;
+    height:35px;
+    left:0px;
+    vertical-align: middle;
+    line-height: 35px;
+    z-index:999;
+}
+
+.main_search{
+    width:358px;
+    margin-left:-300px;
+    height:30px;
+    position:relative;
+    left:50%;
+    float:left;
+    overflow:hidden;
+}
+
+.main_search input{
+    width:350px;
+    height:20px;
+}
+
+.main_search img{
+    vertical-align: middle;
+    line-height: 25px;
+    height:24px;
+    margin-left:-25px;
+    cursor:pointer;
+}
+
+.userinfo{
+    float:right;
+    margin-right:100px;
+    color:white;
+    font-size:10px;
+}
+
+.userinfo a{
+    color:white;
+}
+
+.userinfo a img{
+    vertical-align: middle;
+}
+
+.formtext{
+    width:80px;
+    margin-left:5px;
+    height:10px;
+}
+
+.norm_btn{
+    background-image: url('../imagelib/bg_long_btn.png');
+    border:1px black solid;
+}
+
+#container{
+    position:absolute;
+    left:20px;
+    top:50px;
+    width:auto;
+    height:auto;
+}

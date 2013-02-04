@@ -12,8 +12,7 @@ class Config
 {
 
     public static function item($key,$tw_key = ''){
-
-        require BASEPATH.'config.php';
+        global $config;
 
         if(empty($tw_key)){
             return $config[$key];

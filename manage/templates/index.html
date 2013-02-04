@@ -90,17 +90,10 @@ $(function(){
 				<a class="logo" href="http://j-ui.com">标志</a>
 				<ul class="nav">
 					<li><a href="javascript:;" ><!@{Smarty_cookie_decode key='admin'}@></a></li>
-					<li><a href="http://weibo.com/dwzui" target="_blank">微博</a></li>
-					<li><a href="http://bbs.dwzjs.com" target="_blank">论坛</a></li>
 					<li><a href="<!@{Smarty_site_url action_method='login/logout'}@>">退出</a></li>
 				</ul>
 				<ul class="themeList" id="themeList">
 					<li theme="default"><div class="selected">蓝色</div></li>
-					<li theme="green"><div>绿色</div></li>
-					<!--<li theme="red"><div>红色</div></li>-->
-					<li theme="purple"><div>紫色</div></li>
-					<li theme="silver"><div>银色</div></li>
-					<li theme="azure"><div>天蓝</div></li>
 				</ul>
 			</div>
 
@@ -183,13 +176,13 @@ $(function(){
 					
 					
 					
-					<div class="accordionHeader">
-						<h2><span>Folder</span>其他</h2>
+					<div class="accordionHeader" <!@{$table_display}@>>
+						<h2><span>Folder</span>数据字典</h2>
 					</div>
-					<div class="accordionContent">
+					<div class="accordionContent" <!@{$table_display}@>>
 						<ul class="tree">
-							<li><a href="newPage1.html" target="dialog" rel="dlg_page">列表</a></li>
-							<li><a href="newPage1.html" target="dialog" rel="dlg_page2">列表</a></li>
+							<li><a href="<!@{Smarty_site_url action_method='table'}@>" target="navTab" rel="table_list">列表</a></li>
+							<li><a href="<!@{Smarty_site_url action_method='table/edit'}@>" target="navTab" rel="table_add">新建数据表</a></li>
 						</ul>
 					</div>
 				</div>

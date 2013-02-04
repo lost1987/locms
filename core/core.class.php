@@ -14,9 +14,6 @@ abstract class Core
 
     const SUBFIX = '.class.php';
 
-    function Core(){
-
-    }
 
     public static function autoload($className){
 
@@ -61,7 +58,7 @@ abstract class Core
 
     function __get($property){
         global $f;
-        return $f -> $property;
+        return $f->{strtolower($property)};
     }
 
 }
