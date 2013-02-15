@@ -12,6 +12,7 @@ class Table_m extends Core implements CRUD
     function table_m(){
         $prefix =Config::item('DB','PREFIX');
         $this -> tableName = $prefix.'table_config';
+        $this -> tableNameField = $prefix.'table_field';
     }
 
     function lists($start, $pagecount)
@@ -34,6 +35,7 @@ class Table_m extends Core implements CRUD
     function update($array, $condition)
     {
         // TODO: Implement update() method.
+        return $this -> db -> update($this->tableName,$array,$condition);
     }
 
     function del($id)
@@ -55,4 +57,44 @@ class Table_m extends Core implements CRUD
     function get_config($tableName){
         return $this -> db -> query("select * from $this->tableName where tableName = '$tableName'") -> row_array();
     }
+
+    function del_config($tableName){
+        return $this -> db -> query("delete from $this->tableName where tableName = '$tableName'") -> queryState;
+    }
+
+    function save_fields($fieldNames,$fieldTypes,$refer,$datasource,$condition,$tableName){
+        $total = count($fieldNames);
+        $sql = "insert into $this->tableNameField (tableName,fieldName,fieldType,refer,datasource,cond) values ";
+        for($i =0 ; $i<$total ; $i++){
+                $sql .= " ('$tableName','$fieldNames[$i]','$fieldTypes[$i]','$refer[$i]','$datasource[$i]','$condition[$i]'),";
+        }
+        $sql = substr($sql,0,strlen($sql) - 1);
+        return $this -> db -> query($sql) -> queryState;
+    }
+
+    function save_field($array){
+        return $this -> db -> insert($this->tableNameField,$array);
+    }
+
+    function update_field($array,$condition){
+        return $this -> db -> update($this->tableNameField,$array,$condition);
+    }
+
+    function get_field($tableName){
+        $result =  $this -> db -> query("select * from $this->tableNameField where tableName='$tableName'") -> result_array();
+        $fields = array();
+        foreach($result as $field){
+            $fields[$field['fieldName']] = $field;
+        }
+        return $fields;
+    }
+
+    function del_field($tableName,$fieldName){
+        return $this -> db -> query("delete  from $this->tableNameField where tableName='$tableName' and fieldName = '$fieldName'") -> queryState;
+    }
+
+    function del_all_field($tableName){
+        return $this -> db -> query("delete  from $this->tableNameField where tableName='$tableName' ") -> queryState;
+    }
+
 }

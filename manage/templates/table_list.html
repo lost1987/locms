@@ -24,7 +24,7 @@
     <div class="panelBar">
         <ul class="toolBar">
             <li><a class="add" href="<!@{Smarty_site_url action_method='table/edit'}@>?op=edit&tableName={tableName}" target="navTab" ><span>编辑</span></a></li>
-            <li><a class="delete" href="<!@{Smarty_site_url action_method='table/del'}@>" target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?"><span>删除</span></a></li>
+            <li><a class="delete" href="<!@{Smarty_site_url action_method='table/del'}@>?op=edit&tableName={tableName}" target="ajaxTodo"  title="确定要删除吗?此操作无法还原!!"><span>删除</span></a></li>
             <li class="line">line</li>
         </ul>
     </div>

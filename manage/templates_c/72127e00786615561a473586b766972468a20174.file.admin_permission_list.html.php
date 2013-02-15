@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-15 14:38:43
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-12 17:28:05
          compiled from "/Users/lost/www/locms/manage/templates/admin_permission_list.html" */ ?>
-<?php /*%%SmartyHeaderCode:100062962750efa9fb686740-61785810%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1732366412511a0b2523e1d9-54025058%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,12 +11,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '100062962750efa9fb686740-61785810',
+  'nocache_hash' => '1732366412511a0b2523e1d9-54025058',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_50efa9fb6c11b7_75484464',
   'variables' => 
   array (
     'admins' => 0,
@@ -24,8 +22,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'permissions' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_511a0b2533d936_52377574',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50efa9fb6c11b7_75484464')) {function content_50efa9fb6c11b7_75484464($_smarty_tpl) {?><div class="pageFormContent">
+<?php if ($_valid && !is_callable('content_511a0b2533d936_52377574')) {function content_511a0b2533d936_52377574($_smarty_tpl) {?><div class="pageFormContent">
 	<form id="perform" method="post" action="<?php echo smarty_site_url(array('action_method'=>'admin/save_module_permission'),$_smarty_tpl);?>
 " onsubmit="return validateCallback(this, navTabAjaxDone)">
 		<input type="hidden" name ="permission" id="permission_values" value="0" />

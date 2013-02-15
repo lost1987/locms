@@ -178,9 +178,10 @@ function site_url($action_method)
 
 function inputFilter($str)
 {
-    if (empty($str)) {
+    if (empty($str) && intval($str)!=0) {
         return;
     }
+
     if ($str == "") {
         return $str;
     }

@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-04 12:44:10
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-07 21:48:18
          compiled from "/Users/lost/www/locms/manage/templates/table_list.html" */ ?>
-<?php /*%%SmartyHeaderCode:448210295510a76d84f67e5-60993396%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:17227133555113b0a28fa186-25282310%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '18421b3ee7e3182f81007899a20f0f593ab69c22' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/table_list.html',
-      1 => 1359952976,
+      1 => 1360227646,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '448210295510a76d84f67e5-60993396',
+  'nocache_hash' => '17227133555113b0a28fa186-25282310',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_510a76d857eb57_72060473',
   'variables' => 
   array (
     'page' => 0,
@@ -24,8 +22,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'element' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_5113b0a294c830_97979907',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_510a76d857eb57_72060473')) {function content_510a76d857eb57_72060473($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5113b0a294c830_97979907')) {function content_5113b0a294c830_97979907($_smarty_tpl) {?>
 <form id="pagerForm" method="post" action="<?php echo smarty_site_url(array('action_method'=>'table'),$_smarty_tpl);?>
 ">
     <input type="hidden" name="pageNum" value="<?php echo $_smarty_tpl->tpl_vars['page']->value['currentPage'];?>
@@ -56,7 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <li><a class="add" href="<?php echo smarty_site_url(array('action_method'=>'table/edit'),$_smarty_tpl);?>
 ?op=edit&tableName={tableName}" target="navTab" ><span>编辑</span></a></li>
             <li><a class="delete" href="<?php echo smarty_site_url(array('action_method'=>'table/del'),$_smarty_tpl);?>
-" target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?"><span>删除</span></a></li>
+?op=edit&tableName={tableName}" target="ajaxTodo"  title="确定要删除吗?此操作无法还原!!"><span>删除</span></a></li>
             <li class="line">line</li>
         </ul>
     </div>

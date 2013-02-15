@@ -1,0 +1,29 @@
+<div class="pageContent">
+    <form method="post" action="<!@{Smarty_site_url action_method = $autoform->action|cat:'/save'}@>" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+        <input type="hidden" name="id" value="<!@{$id|default:''}@>" />
+        <div class="pageFormContent" layoutH="56">
+            <fieldset>
+                <legend><!@{$autoform->desp}@></legend>
+                <!@{foreach from = $autoform->fields  item=field name=foo}@>
+                <!@{if $smarty.foreach.foo.iteration neq 1}@>
+                <dl class="nowrap">
+                    <dt><!@{$field.Comment}@>:</dt>
+                    <dd>
+                        <!@{Smarty_field name=$field.Field type=$field.form_field_type value=$field.value|default:"" refer=$field.refer datasource=$field.datasource condition=$field.cond}@>
+                    </dd>
+                </dl>
+                <!@{/if}@>
+                <!@{/foreach}@>
+            </fieldset>
+        </div>
+        <div class="formBar">
+            <ul>
+                <!--<li><a class="buttonActive" href="javascript:;"><span>保存</span></a></li>-->
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li>
+                    <div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>

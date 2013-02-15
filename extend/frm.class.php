@@ -50,7 +50,7 @@ class Frm
      * @return array
      */
     public function fields($tableName){
-          return $this -> db -> query("desc $tableName")->result_array();
+          return $this -> db -> query("show full fields from $tableName")->result_array();
     }
 
     /**
@@ -72,15 +72,17 @@ class Frm
 
             $sql = "alter table $tableName add column ";
             foreach($kv as $column){
-                list($columnName,$columnType,$comment) = $column;
-                $sql .= "$columnName $columnType comment '$comment',";
+                list($columnName,$columnType,$comment,$default,$isnull) = $column;
+                if(is_numeric($default)){
+                    $sql .= "$columnName $columnType comment '$comment' $isnull default $default ,";
+                }else if(!empty($default)){
+                    $sql .= "$columnName $columnType comment '$comment' $isnull default '$default' ,";
+                }else{
+                    $sql .= "$columnName $columnType comment '$comment' $isnull ,";
+                }
             }
             $sql = substr($sql,0,strlen($sql) - 1);
-
-           if($this -> db -> query($sql) -> queryState){
-               return TRUE;
-           }
-           return FALSE;
+            return $this -> db -> query($sql) -> queryState;
     }
 
     /**
@@ -90,17 +92,14 @@ class Frm
      * @return true/false
      */
     public function delColumns($tableName,$k){
-        if(empty($tableName) OR empty($kv))return FALSE;
+        if(empty($tableName) OR empty($k))return FALSE;
 
         $sql = "alter table $tableName drop column ";
         foreach($k as $columnName){
             $sql .= "$columnName,";
         }
         $sql = substr($sql,0,strlen($sql) - 1);
-        if($this -> db -> query($sql) -> queryState){
-            return TRUE;
-        }
-        return FALSE;
+        return $this -> db -> query($sql) -> queryState;
     }
 
     /**
@@ -114,15 +113,20 @@ class Frm
 
         $sql = "alter table $tableName change ";
         foreach($kv as $column){
-            list($from,$columnName,$columnType,$comment) = $column;
-            $sql .= "$from $columnName $columnType comment '$comment',";
+            list($from,$columnName,$columnType,$comment,$default,$isnull) = $column;
+
+            if(is_numeric($default)){
+                $sql .= " $from $columnName $columnType comment '$comment' $isnull default $default ,";
+            }else if(!empty($default)){
+                $sql .= " $from $columnName $columnType comment '$comment' $isnull default '$default' ,";
+            }else{
+                $sql .= " $from $columnName $columnType comment '$comment' $isnull ,";
+            }
         }
         $sql = substr($sql,0,strlen($sql) - 1);
 
-        if($this -> db -> query($sql) -> queryState){
-            return TRUE;
-        }
-        return FALSE;
+        return $this -> db -> query($sql) -> queryState;
+
     }
 
 
@@ -162,9 +166,9 @@ class Frm
             }
 
             if($i==0 && $isprimarykey){
-                $sql .= " $column_isnull[$i] primary key $autocrement  comment '$columnComments[$i]',";
+                $sql .= "  primary key  $autocrement  comment '$columnComments[$i]' $column_isnull[$i] ,";
             }else{
-                $sql .= " $column_isnull[$i] comment '$columnComments[$i]',";
+                $sql .= "  comment '$columnComments[$i]' $column_isnull[$i] ,";
             }
 
 
@@ -178,18 +182,16 @@ class Frm
 
         $sql .= " DEFAULT CHARSET=$table_charset;";
 
-
-        if($this -> db -> query($sql) -> queryState){
-            return TRUE;
-        }
-        return FALSE;
+        return $this -> db -> query($sql) -> queryState;
     }
 
     public function drop_table($tableName){
-        if($this -> db -> query("drop table $tableName") -> queryState){
-            return TRUE;
-        }
-        return FALSE;
+       return $this -> db -> query("drop table $tableName") -> queryState;
     }
+
+    public function alter_table($tableName,$change){
+        return $this -> db -> query("alter table $tableName $change") -> queryState;
+    }
+
 
 }

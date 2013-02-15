@@ -1,24 +1,27 @@
 <div class="pageContent">
-	<form method="post" action="<!@{Smarty_site_url action_method='table/save'}@>" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+	<form method="post" action="<!@{Smarty_site_url action_method='table/save'}@>" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone,'修改不能恢复,确认提交吗?');">
 		<input type="hidden" name="op" value="<!@{$op}@>" />
         <div class="pageFormContent" layoutH="56">
             <fieldset>
-                <legend><!@{$title}@></legend>
+                <legend>
+                    <!@{$title}@>
+                    <!@{if $op eq 'edit'}@><input type="button" class="btn_orange" value="修改" onclick="alterTable(this)" /><!@{/if}@>
+                </legend>
                 <dl class="nowrap">
                     <dt>表名称:</dt>
-                    <dd><input name="tableName" class="textInput required" type="text" size="15" value="<!@{$tableinfo.Name}@>" /></dd>
+                    <dd><input name="tableName" class="textInput required" type="text" size="15" value="<!@{$tableinfo.Name}@>" <!@{$disabled|default:''}@>/></dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>表引擎:</dt>
                     <dd>
                         <!@{foreach from = $table_engine item = element name=foo}@>
                         <!@{if $element eq $tableinfo.Engine }@>
-                            <input name="table_engine" type="radio" class="radio required" checked value="<!@{$element}@>">&nbsp;<!@{$element}@>&nbsp;
+                            <input name="table_engine" type="radio" class="radio required" checked value="<!@{$element}@>" >&nbsp;<!@{$element}@>&nbsp;
                         <!@{else}@>
                               <!@{if $smarty.foreach.foo.iteration eq 1}@>
-                                 <input name="table_engine" type="radio" class="radio required" checked value="<!@{$element}@>">&nbsp;<!@{$element}@>&nbsp;
+                                 <input name="table_engine" type="radio" class="radio required" checked value="<!@{$element}@>" >&nbsp;<!@{$element}@>&nbsp;
                                <!@{else}@>
-                                 <input name="table_engine" type="radio" class="radio required" value="<!@{$element}@>">&nbsp;<!@{$element}@>&nbsp;
+                                 <input name="table_engine" type="radio" class="radio required" value="<!@{$element}@>" >&nbsp;<!@{$element}@>&nbsp;
                               <!@{/if}@>
                         <!@{/if}@>
                         <!@{/foreach}@>
@@ -29,12 +32,12 @@
                     <dd>
                         <!@{foreach from = $table_charset item = element name=foo}@>
                         <!@{if $element eq $tableinfo.Collation }@>
-                        <input name="table_charset" type="radio" class="radio required" checked value="<!@{$element}@>">&nbsp;<!@{$element}@>&nbsp;
+                        <input name="table_charset" type="radio" class="radio required" checked value="<!@{$element}@>" <!@{$disabled|default:''}@>>&nbsp;<!@{$element}@>&nbsp;
                         <!@{else}@>
                             <!@{if $smarty.foreach.foo.iteration eq 1}@>
-                            <input name="table_charset" type="radio" class="radio required" checked value="<!@{$element}@>">&nbsp;<!@{$element}@>&nbsp;
+                            <input name="table_charset" type="radio" class="radio required" checked value="<!@{$element}@>" <!@{$disabled|default:''}@>>&nbsp;<!@{$element}@>&nbsp;
                             <!@{else}@>
-                            <input name="table_charset" type="radio" class="radio required" value="<!@{$element}@>">&nbsp;<!@{$element}@>&nbsp;
+                            <input name="table_charset" type="radio" class="radio required" value="<!@{$element}@>" <!@{$disabled|default:''}@>>&nbsp;<!@{$element}@>&nbsp;
                             <!@{/if}@>
                         <!@{/if}@>
                         <!@{/foreach}@>
@@ -44,14 +47,14 @@
                     <dt>ID自增:</dt>
                     <dd>
                         <!@{if $primary_field[0].Extra eq 'auto_increment'}@>
-                        <input type="radio" name="autocrement" checked value="auto_increment" >自增
-                        <input type="radio" name="autocrement"  value="" >不自增
+                        <input type="radio" name="autocrement" checked value="auto_increment" <!@{$disabled|default:''}@>>自增
+                        <input type="radio" name="autocrement"  value="" <!@{$disabled|default:''}@>>不自增
                         <!@{elseif $primary_field[0].Extra eq ''}@>
-                        <input type="radio" name="autocrement"  checked value="auto_increment" >自增
-                        <input type="radio" name="autocrement"  value="" >不自增
+                        <input type="radio" name="autocrement"  checked value="auto_increment" <!@{$disabled|default:''}@>>自增
+                        <input type="radio" name="autocrement"  value="" <!@{$disabled|default:''}@>>不自增
                         <!@{else}@>
-                        <input type="radio" name="autocrement"   value="auto_increment" >自增
-                        <input type="radio" name="autocrement"  checked value="" >不自增
+                        <input type="radio" name="autocrement"   value="auto_increment" <!@{$disabled|default:''}@>>自增
+                        <input type="radio" name="autocrement"  checked value="" <!@{$disabled|default:''}@>>不自增
                         <!@{/if}@>
                     </dd>
                 </dl>
@@ -59,20 +62,20 @@
                     <dt>需要主键:</dt>
                     <dd>
                         <!@{if $is_primary}@>
-                        <input type="radio" name="isprimarykey" checked  value="1" >是
-                        <input type="radio" name="isprimarykey"  value="0" >否
+                        <input type="radio" name="isprimarykey" checked  value="1" <!@{$disabled|default:''}@>>是
+                        <input type="radio" name="isprimarykey"  value="0" <!@{$disabled|default:''}@>>否
                         <!@{elseif $is_primary eq ''}@>
-                        <input type="radio" name="isprimarykey" checked  value="1" >是
-                        <input type="radio" name="isprimarykey"   value="0" >否
+                        <input type="radio" name="isprimarykey" checked  value="1" <!@{$disabled|default:''}@>>是
+                        <input type="radio" name="isprimarykey"   value="0" <!@{$disabled|default:''}@>>否
                         <!@{else}@>
-                        <input type="radio" name="isprimarykey"   value="1" >是
-                        <input type="radio" name="isprimarykey"  checked value="0" >否
+                        <input type="radio" name="isprimarykey"   value="1" <!@{$disabled|default:''}@>>是
+                        <input type="radio" name="isprimarykey"  checked value="0" <!@{$disabled|default:''}@>>否
                         <!@{/if}@>
                     </dd>
                 </dl>
             </fieldset>
             <fieldset>
-                <legend>附加选项</legend>
+                <legend>附加选项<!@{if $op eq 'edit'}@>&nbsp;<input type="button" class="btn_orange" value="修改" onclick="alterTableConfig(this)" /><!@{/if}@></legend>
                 <dl class="nowrap">
                     <dt>描述表名(中文):</dt>
                     <dd><input name="desp" class="textInput required" type="text" size="15" value="<!@{$tableconfig.desp}@>" /></dd>
@@ -81,26 +84,35 @@
                     <dt>自动生成后台表单:</dt>
                     <dd>
                         <!@{if $tableconfig.auto_form_fields neq 1}@>
-                        <input type="radio" name="auto_form"  value="1" >是
-                        <input type="radio" name="auto_form" checked value="0" >否
+                        <input type="radio" name="auto_form"   value="1" onclick="controllerEnabled(this)">是
+                        <input type="radio" name="auto_form"  checked onclick="controllerDisabled(this)" value="0" >否
                         <!@{else}@>
-                        <input type="radio" name="auto_form" checked value="1" >是
-                        <input type="radio" name="auto_form"  value="0" >否
+                        <input type="radio" name="auto_form"  onclick="controllerEnabled(this)" checked value="1" >是
+                        <input type="radio" name="auto_form" onclick="controllerDisabled(this)" value="0" >否
                         <!@{/if}@>
                     </dd>
+                </dl>
+                <dl class="nowrap" >
+                    <dt>控制器类名:</dt>
+                    <dd><input id="controller" name="controller" class="textInput" type="text" size="15" value="<!@{$tableconfig.controller}@>" <!@{$controller_disabled}@> /></dd>
                 </dl>
             </fieldset>
             <!@{foreach from = $fields item = element name= foo}@>
             <!@{if $smarty.foreach.foo.iteration eq 1}@>
-            <fieldset>
-                <legend>字段&nbsp;<input type="button" name="" class="btn_orange" value="新增字段" onclick="addColumn()"/>[如果需要主键,该字段为主键名称]</legend>
+            <fieldset class="column">
+                <legend>字段&nbsp;<input type="button" name="" class="btn_orange" value="新增字段" onclick="addColumn()" />
+                    <!@{if $op eq 'edit' && $is_primary == false}@>
+                    &nbsp;<input type="button" value="修改" class="btn_orange" onclick="updateColumn(this)" />&nbsp;<input type="button" value="删除" class="btn_grey" onclick="delColumn(this)" />
+                    <!@{/if}@>
+                    [如果需要主键,该字段为主键名称]
+                </legend>
                 <dl class="nowrap">
                     <dt>名称:</dt>
-                    <dd><input name="column1" class="textInput required" type="text" size="15" value="<!@{$element.Field}@>" /> </dd>
+                    <dd><input name="column1" class="textInput required" type="text" size="15" value="<!@{$element.Field}@>" <!@{$primary_disabled|default:""}@>/> <input type="hidden" class="sourceColumn" value="<!@{$element.Field}@>"></dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>类型:</dt>
-                    <dd><select class="typecombox" name="type1">
+                    <dd><select class="typecombox" name="type1" <!@{$primary_disabled|default:""}@>>
                         <!@{foreach from=$field_types item = field_type}@>
                             <!@{if $field_type eq $element.Type}@>
                                  <option value="<!@{$field_type}@>" selected><!@{$field_type}@></option>
@@ -112,35 +124,60 @@
                 </dl>
                 <dl class="nowrap">
                     <dt>长度:</dt>
-                    <dd><input name="length1" class="textInput digits" type="text" size="5" value="<!@{$element.Length|default:''}@>" /></dd>
+                    <dd><input name="length1" class="textInput digits" type="text" size="5" value="<!@{$element.Length|default:''}@>" <!@{$primary_disabled|default:""}@>/></dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>描述:</dt>
-                    <dd><input  name="comment1" class="textInput" type="text" size="30" value="<!@{$element.Comment|default:''}@>" /></dd>
+                    <dd><input  name="comment1" class="textInput" type="text" size="30" value="<!@{$element.Comment|default:''}@>" <!@{$primary_disabled|default:""}@>/></dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>允许为空:</dt>
                     <dd>
                         <!@{if $element.Null eq 'YES'}@>
-                        &nbsp;&nbsp;<input type="radio" name="isnull1" checked value="">&nbsp;null
-                        &nbsp;&nbsp;<input type="radio" name="isnull1" value="not null">&nbsp;not null
+                        &nbsp;&nbsp;<input type="radio" name="isnull1" checked value="" <!@{$primary_disabled|default:""}@>>&nbsp;null
+                        &nbsp;&nbsp;<input type="radio" name="isnull1" value="NOT NULL" <!@{$primary_disabled|default:""}@>>&nbsp;not null
                         <!@{else}@>
-                        &nbsp;&nbsp;<input type="radio" name="isnull1"  value="">&nbsp;null
-                        &nbsp;&nbsp;<input type="radio" name="isnull1" checked value="not null">&nbsp;not null
+                        &nbsp;&nbsp;<input type="radio" name="isnull1"  value="" <!@{$primary_disabled|default:""}@>>&nbsp;null
+                        &nbsp;&nbsp;<input type="radio" name="isnull1" checked value="NOT NULL" <!@{$primary_disabled|default:""}@>>&nbsp;not null
                         <!@{/if}@>
                     </dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>默认值:</dt>
-                    <dd><input  name="default1" class="textInput" type="text" size="30" value="<!@{$element.Default}@>" /></dd>
+                    <dd><input  name="default1" class="textInput" type="text" size="30" value="<!@{$element.Default}@>" <!@{$primary_disabled|default:""}@> /></dd>
+                </dl>
+               <dl class="nowrap">
+                <dt>表单类型:</dt>
+                <dd><select class="formtypecombox" name="formfieldtype1" <!@{$primary_disabled|default:""}@>>
+                    <!@{foreach from=$form_field_types item = field_type}@>
+                    <!@{if $field_type eq $element.form_field_type}@>
+                    <option value="<!@{$field_type}@>" selected><!@{$field_type}@></option>
+                    <!@{else}@>
+                    <option value="<!@{$field_type}@>"><!@{$field_type}@></option>
+                    <!@{/if}@>
+                    <!@{/foreach}@>
+                </select></dd>
+                </dl>
+                <dl class="nowrap">
+                <dt>关联:</dt>
+                <dd><input class="textInput" name="refer1" value="<!@{$element.refer|default:''}@>" <!@{$primary_disabled|default:""}@>/>例如 : admin.username.uid  ;表admin的username字段将作为select,radio,checkbox的key,uid字段将作为value</dd>
+                </dl>
+                <dl class="nowrap">
+                <dt>数据源:</dt>
+                <dd><input class="textInput" name="datasource1" style="width:450px" value="<!@{$element.datasource|default:''}@>" <!@{$primary_disabled|default:""}@>/>例如 : 名字1.1,名字2.2,名字3.3,名字4.4,名字5.5   ; 名字1将作为select,radio,checkbox的key,1将作为value</dd>
+                </dl>
+                </dl>
+                <dl class="nowrap">
+                <dt>关联条件:</dt>
+                <dd><input class="textInput" name="cond1" style="width:450px" value="<!@{$element.cond|default:''}@>" <!@{$primary_disabled|default:""}@>/>例如 : status=1</dd>
                 </dl>
             </fieldset>
             <!@{else}@>
-            <fieldset>
-                <legend>字段&nbsp;<input type="button" name="" class="btn_grey" value="删除字段" onclick="delColumn(this)"/></legend>
+            <fieldset class="column">
+                <legend>字段&nbsp;&nbsp;<input type="button" value="修改" class="btn_orange" onclick="updateColumn(this)" />&nbsp;<input type="button" value="删除" class="btn_grey" onclick="delColumn(this)" /></legend>
                 <dl class="nowrap">
                     <dt>名称:</dt>
-                    <dd><input name="column<!@{$smarty.foreach.foo.iteration}@>" class="textInput required" type="text" size="15" value="<!@{$element.Field}@>" /> </dd>
+                    <dd><input name="column<!@{$smarty.foreach.foo.iteration}@>" class="textInput required" type="text" size="15" value="<!@{$element.Field}@>" /> <input type="hidden" class="sourceColumn" value="<!@{$element.Field}@>"></dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>类型:</dt>
@@ -167,16 +204,40 @@
                     <dd>
                         <!@{if $element.Null eq 'YES'}@>
                         &nbsp;&nbsp;<input type="radio" name="isnull<!@{$smarty.foreach.foo.iteration}@>" checked value="">&nbsp;null
-                        &nbsp;&nbsp;<input type="radio" name="isnull<!@{$smarty.foreach.foo.iteration}@>" value="not null">&nbsp;not null
+                        &nbsp;&nbsp;<input type="radio" name="isnull<!@{$smarty.foreach.foo.iteration}@>" value="NOT NULL">&nbsp;not null
                         <!@{else}@>
                         &nbsp;&nbsp;<input type="radio" name="isnull<!@{$smarty.foreach.foo.iteration}@>"  value="">&nbsp;null
-                        &nbsp;&nbsp;<input type="radio" name="isnull<!@{$smarty.foreach.foo.iteration}@>" checked value="not null">&nbsp;not null
+                        &nbsp;&nbsp;<input type="radio" name="isnull<!@{$smarty.foreach.foo.iteration}@>" checked value="NOT NULL">&nbsp;not null
                         <!@{/if}@>
                     </dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>默认值:</dt>
                     <dd><input  name="default<!@{$smarty.foreach.foo.iteration}@>" class="textInput" type="text" size="30" value="<!@{$element.Default}@>" /></dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt>表单类型:</dt>
+                    <dd><select class="formtypecombox" name="formfieldtype<!@{$smarty.foreach.foo.iteration}@>">
+                        <!@{foreach from=$form_field_types item = field_type}@>
+                        <!@{if $field_type eq $element.form_field_type}@>
+                        <option value="<!@{$field_type}@>" selected><!@{$field_type}@></option>
+                        <!@{else}@>
+                        <option value="<!@{$field_type}@>"><!@{$field_type}@></option>
+                        <!@{/if}@>
+                        <!@{/foreach}@>
+                    </select></dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt>关联:</dt>
+                    <dd><input class="textInput" name="refer<!@{$smarty.foreach.foo.iteration}@>" value="<!@{$element.refer}@>"/></dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt>数据源:</dt>
+                    <dd><input class="textInput" name="datasource<!@{$smarty.foreach.foo.iteration}@>" style="width:450px" value="<!@{$element.datasource}@>"/></dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt>关联条件:</dt>
+                    <dd><input class="textInput" name="cond<!@{$smarty.foreach.foo.iteration}@>" style="width:450px" value="<!@{$element.cond|default:''}@>"/></dd>
                 </dl>
             </fieldset>
             <!@{/if}@>
@@ -185,11 +246,13 @@
 		</div>
 		<div class="formBar">
 			<ul>
+                <!@{if $op neq 'edit'}@>
 				<!--<li><a class="buttonActive" href="javascript:;"><span>保存</span></a></li>-->
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit" >保存</button></div></div></li>
 				<li>
 					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
 				</li>
+                <!@{/if}@>
 			</ul>
 		</div>
         <input type="hidden" name="flag" id="flag" value="1" /><!--告诉后台这个表有多少个字段-->
@@ -197,10 +260,11 @@
 </div>
 <script>
 var fieldtypes = '<!@{$field_types_str}@>';
+var form_field_types = "<!@{$form_field_str}@>";
 var fieldoptions = makeOptions();
+var fieldtypeoptions = makeFormFieldTypes();
 
 var flag = <!@{$field_nums}@>;
-
 
 function makeOptions(){
     if(fieldtypes!=''){
@@ -210,6 +274,17 @@ function makeOptions(){
             fieldoptions += '<option value="'+fieldtypes[i]+'">'+fieldtypes[i]+'</option>';
         }
         return fieldoptions;
+    }
+}
+
+function makeFormFieldTypes(){
+    if(form_field_types!=''){
+        form_field_types = form_field_types.split(',');
+        var fieldtypeoptions = '';
+        for(var i =0 ; i< form_field_types.length; i++){
+            fieldtypeoptions += '<option value="'+form_field_types[i]+'">'+form_field_types[i]+'</option>';
+        }
+        return fieldtypeoptions;
     }
 }
 
@@ -223,8 +298,80 @@ function addColumn(){
 
 function createColumn(){
     var column_template =   '';
-    column_template +=      '<fieldset>';
+    column_template +=      '<fieldset class="column">';
     column_template +=      '<legend>字段&nbsp;<input type="button" name="" class="btn_grey" value="删除字段" onclick="delColumn(this)"/></legend>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>名称:</dt>';
+    column_template +=      '<dd><input name="column'+flag+'" class="textInput required" type="text" size="15" value="" /> </dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>类型:</dt>';
+    column_template +=      '<dd><select class="typecombox" name="type'+flag+'">'+fieldoptions+'</select></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>长度:</dt>';
+    column_template +=      '<dd><input name="length'+flag+'" class="textInput digits" type="text" size="5" value="" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>描述:</dt>';
+    column_template +=      '<dd><input  name="comment'+flag+'" class="textInput" type="text" size="30" value="" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>允许为空:</dt>';
+    column_template +=      '<dd>&nbsp;&nbsp;<input type="radio" name="isnull'+flag+'" checked value="">&nbsp;null&nbsp;&nbsp;<input type="radio" name="isnull'+flag+'" value="NOT NULL">&nbsp;not null</dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>默认值:</dt>';
+    column_template +=      '<dd><input  name="default'+flag+'" class="textInput" type="text" size="30" value="" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>表单类型:</dt>';
+    column_template +=      '<dd><select class="formtypecombox" name="formfieldtype'+flag+'">'+fieldtypeoptions+'</select></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>关联:</dt>';
+    column_template +=      '<dd><input class="textInput" name="refer'+flag+'" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>数据源:</dt>';
+    column_template +=      '<dd><input class="textInput" name="datasource'+flag+'" style="width:450px" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>关联条件:</dt>';
+    column_template +=      '<dd><input class="textInput" name="cond'+flag+'" style="width:450px" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '</fieldset>';
+    return column_template;
+}
+
+function delColumn(node){
+    $(node).parent().parent().remove();
+    flag--;
+    $("#flag").val(flag);
+}
+
+function controllerEnabled(node){
+    _node = $(node);
+    _node.parent().parent().next().find("input").eq(0).attr('disabled',false);
+}
+
+function controllerDisabled(node){
+    _node = $(node);
+    _node.parent().parent().next().find("input").eq(0).val('').attr('disabled',true);
+}
+
+
+<!--编辑表时 保存那些字段是修改的,那些字段是删除的,那些字段是新增的-->
+<!@{if $op eq 'edit'}@>
+
+var tableName = '<!@{$tableinfo.Name}@>';
+
+
+function createColumn(){
+    var column_template =   '';
+    column_template +=      '<fieldset class="column">';
+    column_template +=      '<legend>字段&nbsp;<input type="button" name="" class="btn_orange" value="保存" onclick="saveColumn(this)"/>&nbsp;<input type="button" name="" class="btn_grey" value="删除" onclick="delColumn(this)"/></legend>';
     column_template +=      '<dl class="nowrap">';
     column_template +=      '<dt>名称:</dt>';
     column_template +=      '<dd><input name="column'+flag+'" class="textInput required" type="text" size="15" value="" /> </dd>';
@@ -249,15 +396,134 @@ function createColumn(){
     column_template +=      '<dt>默认值:</dt>';
     column_template +=      '<dd><input  name="default'+flag+'" class="textInput" type="text" size="30" value="" /></dd>';
     column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>表单类型:</dt>';
+    column_template +=      '<dd><select class="formtypecombox" name="formfieldtype'+flag+'">'+fieldtypeoptions+'</select></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>关联:</dt>';
+    column_template +=      '<dd><input class="textInput" name="refer'+flag+'" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>数据源:</dt>';
+    column_template +=      '<dd><input class="textInput" name="datasource'+flag+'" style="width:450px" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>关联条件:</dt>';
+    column_template +=      '<dd><input class="textInput" name="cond'+flag+'" style="width:450px" /></dd>';
+    column_template +=      '</dl>';
     column_template +=      '</fieldset>';
     return column_template;
 }
 
 function delColumn(node){
-    $(node).parent().parent().remove();
-    flag--;
+    _node = $(node);
+    if(!_node.parent().next().find("input[class='sourceColumn']").val()){
+        _node.parent().parent().remove();
+    }else{
+       if(confirm("删除将不可还原!请确认删除")){
+            var columnName  =  _node.parent().next().find("input[class='sourceColumn']").val();
+            $.post('<!@{Smarty_site_url action_method="table/delColumnByAjax"}@>','tableName='+tableName+'&columnName='+columnName,function(data){
+                    if(data.replace(/\s+/g,'') == 1){
+                        _node.parent().parent().remove();
+                        return;
+                    }
+                    alert('修改出错,请联系开发人员');
+            })
+       }
+    }
 }
+
+function updateColumn(node){
+    _node = $(node);
+    var sourceColumn = _node.parent().next().find('input').eq(1).val();
+    var columnName = _node.parent().next().find('input').eq(0).val();
+    if(columnName.replace(/\s+/g,'')!=''){
+        if(confirm("请确认修改操作?")){
+            var columnType = _node.parent().parent().children().eq(2).find('select').val();
+            var columnLength = _node.parent().parent().children().eq(3).find('input').val();
+            var comment = _node.parent().parent().children().eq(4).find('input').val();
+            var isnull = _node.parent().parent().children().eq(5).find('input:checked').val();
+            var columndefault = _node.parent().parent().children().eq(6).find('input').val();
+            var formfieldtype = _node.parent().parent().children().eq(7).find('select').val();
+            var refer = _node.parent().parent().children().eq(8).find('input').val();
+            var datasource = _node.parent().parent().children().eq(9).find('input').val();
+            var condition = _node.parent().parent().children().eq(10).find('input').val();
+
+            var data = "tableName="+tableName+"&columnName="+columnName+"&columnType="+columnType+"&columnLength="+columnLength;
+            data += "&comment="+comment+"&isnull="+isnull+"&columndefault="+columndefault+"&sourceColumn="+sourceColumn+"&formfieldtype="+formfieldtype+"&refer="+refer+"&datasource="+datasource+"&cond="+condition;
+
+            $.post('<!@{Smarty_site_url action_method="table/updateColumnByAjax"}@>',data,function(data){
+                if(data.replace(/\s+/g,'')==1){
+                    _node.parent().next().find('input').eq(1).val(columnName);
+                    return;
+                }
+                alert('修改出错,请联系开发人员');
+            })
+        }
+    }
+}
+
+
+function saveColumn(node){
+    _node = $(node);
+    var columnName = _node.parent().next().find('input').eq(0).val();
+    if(columnName.replace(/\s+/g,'')!=''){
+           if(confirm("请确认添加操作?")){
+                var columnType = _node.parent().parent().children().eq(2).find('select').val();
+                var columnLength = _node.parent().parent().children().eq(3).find('input').val();
+                var comment = _node.parent().parent().children().eq(4).find('input').val();
+                var isnull = _node.parent().parent().children().eq(5).find('input:checked').val();
+                var columndefault = _node.parent().parent().children().eq(6).find('input').val();
+                var formfieldtype = _node.parent().parent().children().eq(7).find('select').val();
+                var refer = _node.parent().parent().children().eq(8).find('input').val();
+                var datasource = _node.parent().parent().children().eq(9).find('input').val();
+                var condition = _node.parent().parent().children().eq(10).find('input').val();
+
+                var data = "tableName="+tableName+"&columnName="+columnName+"&columnType="+columnType+"&columnLength="+columnLength;
+                    data += "&comment="+comment+"&isnull="+isnull+"&columndefault="+columndefault+"&formfieldtype="+formfieldtype+"&refer="+refer+"&datasource="+datasource+"&cond="+condition;;
+
+               $.post('<!@{Smarty_site_url action_method="table/saveColumnByAjax"}@>',data,function(data){
+                             if(data.replace(/\s+/g,'')==1){
+                                _node.parent().next().find('input').after('<input type="hidden" class="sourceColumn" value="'+columnName+'">');
+                                _node.replaceWith('<input type="button" class="btn_orange" onclick="updateColumn(this)" value="修改" />')
+                                 return;
+                             }
+                             alert('修改出错,请联系开发人员');
+               })
+           }
+    }
+}
+
+function alterTable(node){
+    if(!confirm("确认要修改吗?"))return;
+    _node = $(node);
+    var engine = _node.parent().parent().find('dl').eq(1).find('input:checked').val();
+    $.post('<!@{Smarty_site_url action_method="table/alterTableByAjax"}@>','engine='+engine+'&tableName='+tableName,function(data){
+            if(data.replace(/\s+/g,'')!=1){
+                alert('修改出错,请联系开发人员');
+            }
+    })
+}
+
+function alterTableConfig(node){
+    if(!confirm("确认要修改吗?"))return;
+    _node = $(node);
+    var desp = _node.parent().parent().find('dl').eq(0).find('input').val();
+    var autoform = _node.parent().parent().find('dl').eq(1).find('input:checked').val();
+    var controller = _node.parent().parent().find('dl').eq(2).find('input').val();
+    $.post('<!@{Smarty_site_url action_method="table/alterTableConfigByAjax"}@>','desp='+desp+'&tableName='+tableName+'&autoform='+autoform+'&controller='+controller,function(data){
+        if(data.replace(/\s+/g,'')!=1){
+            alert('修改出错,请联系开发人员');
+        }
+    })
+}
+
+<!@{/if}@>
 </script>
+
+
 
 
 

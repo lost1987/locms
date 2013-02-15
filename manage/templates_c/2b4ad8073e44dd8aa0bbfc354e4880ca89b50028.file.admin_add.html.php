@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-11 11:53:04
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-14 18:16:21
          compiled from "/Users/lost/www/locms/manage/templates/admin_add.html" */ ?>
-<?php /*%%SmartyHeaderCode:74505179350ef8c187119e7-82572601%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1775297539511cb975118d70-09086891%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,20 +11,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '74505179350ef8c187119e7-82572601',
+  'nocache_hash' => '1775297539511cb975118d70-09086891',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_50ef8c187960f6_04158827',
   'variables' => 
   array (
     'admin' => 0,
     'title' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_511cb975186c39_11490670',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50ef8c187960f6_04158827')) {function content_50ef8c187960f6_04158827($_smarty_tpl) {?><div class="pageFormContent">
+<?php if ($_valid && !is_callable('content_511cb975186c39_11490670')) {function content_511cb975186c39_11490670($_smarty_tpl) {?><div class="pageFormContent">
 	<form method="post" action="<?php echo smarty_site_url(array('method_action'=>'admin/save'),$_smarty_tpl);?>
 " onsubmit="return validateCallback(this, navTabAjaxDone)">
 		<input type="hidden" name ="id" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['admin']->value['id'])===null||$tmp==='' ? '' : $tmp);?>

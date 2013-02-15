@@ -12,14 +12,12 @@ define('APPNAME','');
 
 define('HOST','http://dev.locms.com/');
 
-//后台文件存放的文件夹名
-define('ADMIN_DIRECTORY','manage');
-
-//前台文件存放的文件夹名
-define('NORMAL_DIRECTORY','application');
-
-define('WEB_DEBUG',TRUE);
-
 define('WEBROOT',(APPNAME=='') ? HOST : HOST.APPNAME.DIRECTORY_SEPARATOR);
+
+define('COOKIE_TIMEOUT',7200);
+
+define('COOKIE_SECRECT','abracadabra');
+
+define('COOKIE_DOMAIN','/');
 
 ?>

@@ -1,32 +1,25 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-01 14:25:12
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-07 21:48:12
          compiled from "/Users/lost/www/locms/manage/templates/index.html" */ ?>
-<?php /*%%SmartyHeaderCode:212725438550ed3091e2a263-09701469%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:16127850715113b09cbbff03-02160463%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5f3a24adfc1057dddf4270d041d0c1fc3d5ef4a5' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/index.html',
-      1 => 1359699907,
+      1 => 1360224820,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '212725438550ed3091e2a263-09701469',
+  'nocache_hash' => '16127850715113b09cbbff03-02160463',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_50ed309206ffa1_09155649',
-  'variables' => 
-  array (
-    'admin_display' => 0,
-    'site_display' => 0,
-    'content_display' => 0,
-    'table_display' => 0,
-  ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_5113b09ccf2761_30363734',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50ed309206ffa1_09155649')) {function content_50ed309206ffa1_09155649($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5113b09ccf2761_30363734')) {function content_5113b09ccf2761_30363734($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -182,113 +175,10 @@ themes"}); // themeBase 相对于index页面的主题base路径
 			
 		</div>
 
-		<div id="leftside">
-			<div id="sidebar_s">
-				<div class="collapse">
-					<div class="toggleCollapse"><div></div></div>
-				</div>
-			</div>
-			<div id="sidebar">
-				<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
+        <?php echo $_smarty_tpl->getSubTemplate ('menu.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
-				<div class="accordion" fillSpace="sidebar">
-					
-					<div class="accordionHeader" <?php echo $_smarty_tpl->tpl_vars['admin_display']->value;?>
- >
-						<h2><span>Folder</span>管理员管理</h2>
-					</div>
-					<div class="accordionContent" <?php echo $_smarty_tpl->tpl_vars['admin_display']->value;?>
- >
-						<ul class="tree treeFolder">
-                            <li><a href="javascript:;">管理员</a>
-                                <ul>
-                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'admin'),$_smarty_tpl);?>
-" target="navTab" rel="admin_list">列表</a></li>
-                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'admin/edit'),$_smarty_tpl);?>
-" target="navTab" rel="admin_edit">添加</a></li>
-                                </ul>
-                            </li>
-							<li><a href="javascript:;">权限分配</a>
-                                <ul>
-                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'admin/module_permission'),$_smarty_tpl);?>
-" target="navTab" rel="adminp_list">模块权限</a></li>
-                                </ul>
-                            </li>
-						</ul>
-					</div>
-					
-					
-					<div class="accordionHeader" <?php echo $_smarty_tpl->tpl_vars['site_display']->value;?>
- >
-						<h2><span>Folder</span>全局设置</h2>
-					</div>
-					<div class="accordionContent" <?php echo $_smarty_tpl->tpl_vars['site_display']->value;?>
->
-						<ul class="tree treeFolder">
-							<li><a href="javascript:;">运行环境</a>
-								<ul>
-									<li><a href="<?php echo smarty_site_url(array('action_method'=>'info'),$_smarty_tpl);?>
-" target="navTab" rel="main">phpinfo</a></li>
-                                    <li><a href="<?php echo @WEBROOT;?>
-dwz.frag.xml" target="navTab" external="true">dwz.frag.xml</a></li>
-								</ul>
-							</li>
-							
-							<li><a>站点设置</a>
-								<ul>
-									<li><a href="<?php echo smarty_site_url(array('action_method'=>'site'),$_smarty_tpl);?>
-" target="navTab" rel="site">设置</a></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-					
-					
-					
-					<div class="accordionHeader" <?php echo $_smarty_tpl->tpl_vars['content_display']->value;?>
- >
-						<h2><span>Folder</span>内容管理</h2>
-					</div>
-					<div class="accordionContent" <?php echo $_smarty_tpl->tpl_vars['content_display']->value;?>
- >
-						<ul class="tree treeFolder">
-                            <li><a href="javascript:;">栏目</a>
-                                <ul>
-                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'arctype'),$_smarty_tpl);?>
-" target="navTab" rel="arctype_list">列表</a></li>
-                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'arctype/edit'),$_smarty_tpl);?>
-" target="navTab" rel="arctype_edit">添加</a></li>
-                                </ul>
-                            </li>
-							<li><a href="javascript:;">新闻</a>
-                                <ul>
-                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'news'),$_smarty_tpl);?>
-" target="navTab" rel="news_list">列表</a></li>
-                                    <li><a href="<?php echo smarty_site_url(array('action_method'=>'news/edit'),$_smarty_tpl);?>
-" target="navTab" rel="news_edit">添加</a></li>
-                                </ul>
-                            </li>
-						</ul>
-					</div>
-					
-					
-					
-					<div class="accordionHeader" <?php echo $_smarty_tpl->tpl_vars['table_display']->value;?>
->
-						<h2><span>Folder</span>数据字典</h2>
-					</div>
-					<div class="accordionContent" <?php echo $_smarty_tpl->tpl_vars['table_display']->value;?>
->
-						<ul class="tree">
-							<li><a href="<?php echo smarty_site_url(array('action_method'=>'table'),$_smarty_tpl);?>
-" target="navTab" rel="table_list">列表</a></li>
-							<li><a href="<?php echo smarty_site_url(array('action_method'=>'table/edit'),$_smarty_tpl);?>
-" target="navTab" rel="table_add">新建数据表</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+
+
 		<div id="container">
 			<div id="navTab" class="tabsPage">
 				<div class="tabsPageHeader">

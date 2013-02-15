@@ -49,4 +49,14 @@ $config['mysql_table_charset'] = array(
     'gbk'
 );
 
+$config['form_field_types'] = array(
+    'textfield',
+    'password',
+    'combox',
+    'radio',
+    'textarea',
+    'checkbox',
+    'textedit'
+);
+
 ?>

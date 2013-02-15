@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  * //数据库引擎选择
  */
+if( ! defined('BASEPATH')) exit('No direct script access allowed');
 class DB_ENGINE
 {
 

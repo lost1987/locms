@@ -28,7 +28,19 @@ class Aop
      }
 
      public static function afterMethod(){
+         global $aop;
+         foreach($aop['after'] as $object){
+             if(is_array($object)){
 
+                 if(count($object) == 1){//如果是普通方法
+                     eval($object[0].'();');
+                 }else{//如果是类方法
+                     list($class,$method) = $object;
+                     call_user_func(array(new $class,$method));
+                 }
+
+             }
+         }
      }
 
 }

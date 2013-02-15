@@ -6,6 +6,7 @@
  * Time: 下午4:33
  * To change this template use File | Settings | File Templates.
  */
+if( ! defined('BASEPATH')) exit('No direct script access allowed');
 interface CRUD
 {
     function lists($start,$pagecount);

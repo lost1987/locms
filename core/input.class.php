@@ -26,11 +26,13 @@ class Input
     {
         $post  = $_POST;
         if (!empty($k)) {
-            if(empty($post[$k]))return '';
+            if(!isset($post[$k]) || (empty($post[$k]) && $post[$k] != 0))return '';
+            if(is_array($post[$k]))$post[$k] = implode(',',$post[$k]);//针对checkbox做处理
             $post[$k] = inputFilter($post[$k]);
             return $post[$k];
         }
         foreach ($post as $k => $v) {
+            if(is_array($v))$v = implode(',',$v);//针对checkbox做处理
             $post[$k] = inputFilter($v);
         }
         return $post;
@@ -41,7 +43,7 @@ class Input
     {
         $get = $_GET;
         if (!empty($k)) {
-            if(empty($get[$k]))return '';
+            if(!isset($get[$k]) || (empty($get[$k]) && $get[$k] != 0))return '';
             $get[$k] = inputFilter($get[$k]);
             return $get[$k];
         }
@@ -55,11 +57,13 @@ class Input
     {
         $req =  $_REQUEST;
         if (!empty($k)) {
-            if(empty($req[$k]))return '';
+            if(!isset($req[$k]) || (empty($req[$k]) && $req[$k]))return '';
+            if(is_array($req[$k]))$req[$k] = implode(',',$req[$k]);//针对checkbox做处理
             $req[$k] = inputFilter($req[$k]);
             return $req[$k];
         }
         foreach ($req as $k => $v) {
+            if(is_array($v))$v = implode(',',$v);//针对checkbox做处理
             $req[$k] = inputFilter($v);
         }
         return $req;

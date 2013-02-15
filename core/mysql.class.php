@@ -84,7 +84,7 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
           if(is_array($array) && count($array)>0 && !empty($tablename)){
               foreach($array as $ckey => $cvalue){
                     $sql_key .= "$ckey,";
-                    if(gettype($cvalue) == 'string' || empty($cvalue)){
+                    if(gettype($cvalue) == 'string' || (empty($cvalue) && $cvalue!=0)){
                         $sql_val .= "'$cvalue',";
                     }else{
                         $sql_val .= "$cvalue,";
@@ -114,7 +114,8 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
              $sql .= "$tablename set ";
              foreach($array as $ckey => $cvalue){
                  $sql .= "$ckey=";
-                 if(gettype($cvalue) == 'string' || empty($cvalue)){
+
+                 if(gettype($cvalue) == 'string' || (empty($cvalue) && $cvalue!=0)){
                      $sql .= "'$cvalue',";
                  }else{
                      $sql .= "$cvalue,";
@@ -122,6 +123,7 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
              }
              $sql = substr($sql,0,strlen($sql) - 1);
              $sql .= " where ".$condition;
+
              if(mysql_query($sql)){
                  return TRUE;
              }

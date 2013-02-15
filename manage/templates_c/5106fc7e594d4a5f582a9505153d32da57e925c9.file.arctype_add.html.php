@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-10 14:57:54
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-10 19:34:48
          compiled from "/Users/lost/www/locms/manage/templates/arctype_add.html" */ ?>
-<?php /*%%SmartyHeaderCode:213385071950ee6672ec2372-94982855%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1172654853511785d8f2d603-12562522%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '213385071950ee6672ec2372-94982855',
+  'nocache_hash' => '1172654853511785d8f2d603-12562522',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_50ee6673036870_36093843',
+  'unifunc' => 'content_511785d9104e41_58622958',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50ee6673036870_36093843')) {function content_50ee6673036870_36093843($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_511785d9104e41_58622958')) {function content_511785d9104e41_58622958($_smarty_tpl) {?>
 <div class="pageContent">
 	<form method="post" action="<?php echo smarty_site_url(array('action_method'=>'arctype/save'),$_smarty_tpl);?>
 " class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">

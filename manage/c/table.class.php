@@ -17,50 +17,53 @@ class Table extends Core implements Action
     function save()
     {
         // TODO: Implement save() method.
-        $op = $this -> input -> post('op');
-        if($op == 'edit'){
-
+        //获取表单数据
+        $tableName = Config::item('DB','PREFIX').$this -> input -> post('tableName');
+        $table_engine = $this -> input -> post('table_engine');
+        $table_charset = $this -> input -> post('table_charset');
+        $autocrement = $this -> input -> post('autocrement');
+        $isprimarykey = $this -> input -> post('isprimarykey');
+        $flag = $this -> input -> post('flag');//字段的数量
+        $columns = array();
+        $column_types = array();
+        $column_length = array();
+        $column_comments = array();
+        $column_default = array();
+        $column_isnull = array();
+        for($i =1 ; $i <= $flag; $i++){
+            $columns[] = $this -> input -> post('column'.$i);
+            $column_types[] = $this -> input -> post('type'.$i);
+            $column_length[] = $this -> input -> post('length'.$i);
+            $column_comments[] = $this -> input -> post('comment'.$i);
+            $column_default[] = $this -> input -> post('default'.$i);
+            $column_isnull[] = $_POST['isnull'.$i];//过滤字符会吧null加混淆 所以这里不用input方法
+            $form_field_types[] = $this -> input -> post('formfieldtype'.$i);
+            $refer[] = $this -> input -> post('refer'.$i);
+            $datasource[] = $this -> input -> post('datasource'.$i);
+            $condition[] = $this -> input -> post('cond'.$i);
         }
 
-        else{
-            $tableName = Config::item('DB','PREFIX').$this -> input -> post('tableName');
-            $table_engine = $this -> input -> post('table_engine');
-            $table_charset = $this -> input -> post('table_charset');
-            $autocrement = $this -> input -> post('autocrement');
-            $isprimarykey = $this -> input -> post('isprimarykey');
-            $flag = $this -> input -> post('flag');//字段的数量
-            $columns = array();
-            $column_types = array();
-            $column_length = array();
-            $column_comments = array();
-            $column_default = array();
-            $column_isnull = array();
-            for($i =1 ; $i <= $flag; $i++){
-                    $columns[] = $this -> input -> post('column'.$i);
-                    $column_types[] = $this -> input -> post('type'.$i);
-                    $column_length[] = $this -> input -> post('length'.$i);
-                    $column_comments[] = $this -> input -> post('comment'.$i);
-                    $column_default[] = $this -> input -> post('default'.$i);
-                    $column_isnull[] = $this -> input -> post('isnull'.$i);
-            }
+        //附加表 table_config表
+        $desp = $this->input->post('desp');
+        $auto_form = $this->input->post('auto_form');
+        $controller = $this -> input -> post('controller');
+        $config = array('tableName'=>$this ->input->post('tableName'),'desp'=>$desp,'auto_form_fields'=>$auto_form,'controller'=>$controller);
 
-            //附加表 table_config表
-            $desp = $this->input->post('desp');
-            $auto_form = $this->input->post('auto_form');
-            $config = array('tableName'=>$this ->input->post('tableName'),'desp'=>$desp,'auto_form_fields'=>$auto_form);
-            /*//test
-            $res = $this->frm->create_table($tableName,$table_engine,$table_charset,$autocrement,$columns,$column_types,$column_length,$column_comments,$column_default,$column_isnull,$isprimarykey);
-            echo $res;*/
+        $op = $this -> input -> post('op');
 
-            if($this->frm->create_table($tableName,$table_engine,$table_charset,$autocrement,$columns,$column_types,$column_length,$column_comments,$column_default,$column_isnull,$isprimarykey)){
-                if($this -> tableModel -> save_config($config)){
-                    dwz_success();
-                }
-                $this -> frm -> drop_table($tableName);
-                dwz_failed();
+
+        /*//test
+        $res = $this->frm->create_table($tableName,$table_engine,$table_charset,$autocrement,$columns,$column_types,$column_length,$column_comments,$column_default,$column_isnull,$isprimarykey);
+        echo $res;*/
+
+        if($this->frm->create_table($tableName,$table_engine,$table_charset,$autocrement,$columns,$column_types,$column_length,$column_comments,$column_default,$column_isnull,$isprimarykey)){
+            if($this -> tableModel -> save_config($config) && $this -> tableModel -> save_fields($columns,$form_field_types,$refer,$datasource,$condition,$this ->input->post('tableName'))){
+                dwz_success();
             }
+            $this -> frm -> drop_table($tableName);
             dwz_failed();
         }
+        dwz_failed();
     }
 
     function edit()
@@ -69,6 +72,9 @@ class Table extends Core implements Action
         $op = $this -> input -> get('op');
 
 
+        //取得字段的表单类型集合
+        $form_field_types = Config::item('form_field_types');
+        $form_field_str = implode(',',Config::item('form_field_types'));
         //取数据库的字段类型集合
         $field_types = $this -> frm -> field_types();
         $table_engine = $this -> frm -> table_engine();
@@ -77,12 +83,14 @@ class Table extends Core implements Action
         $fields = array(array('Field'=>'','Type'=>'','Null'=>'','Key'=>'','Default'=>'','Extra'=>''));//给予默认值
         $tableinfo = null;
         $primary_field = null;
-        $is_primary = '';
+        $is_primary = FALSE;
         $tableconfig = null;
+        $controller_disabled = 'disabled=disabled';
 
         if(!empty($op) && $op == 'edit'){
             $tableName = Config::item('DB','PREFIX').$this -> input -> get('tableName');
             $tableconfig = $this -> tableModel -> get_config($this -> input -> get('tableName'));
+            $table_field = $this -> tableModel -> get_field($this -> input -> get('tableName'));
             $fields = $this -> frm -> fields($tableName);
             $field_nums = count($fields);
             $tableinfo = $this -> frm -> table_info($tableName);
@@ -90,22 +98,38 @@ class Table extends Core implements Action
             $tableinfo['Collation'] = preg_replace('/(.*?)_(.*)/i','$1',$tableinfo['Collation']);
 
             $primary_field = array();
+            $this->tpl->assign('primary_disabled','');
+
+            if($tableconfig['auto_form_fields'] == 1){
+                $controller_disabled = '';
+            }
 
             $flag = 0;
             foreach($fields as &$field){
                 $type = $field['Type'];
                 $field['Type'] = preg_replace('/(.*)\((.*)\)/i','$1',$type);//将字段类型分别取出类型和长度
                 $field['Length'] = preg_replace('/(.*)\((.*)\)/i','$2',$type);
+                //字段的附加信息如 关联或数据源
+                if(!empty($table_field)){//如果table_field表里有记录 则读取 否则就非自动表单
+                    $field['form_field_type'] = $table_field[$field['Field']]['fieldType'];
+                    $field['refer'] = $table_field[$field['Field']]['refer'];
+                    $field['datasource'] = $table_field[$field['Field']]['datasource'];
+                    $field['cond'] = $table_field[$field['Field']]['cond'];
+                }
                 if(!is_numeric($field['Length']))$field['Length']='';
                 if($field['Key'] == 'PRI'){
                     $primary_field = array_slice($fields,$flag,1);
                     $is_primary = TRUE ; //该数据表是有主键的
+                    $this->tpl->assign('primary_disabled','disabled=disabled');
                 }
                 $flag++;
             }
-
+            $this->tpl->assign('disabled','disabled="disabled"');
         }
 
+        $this -> tpl -> assign('form_field_types',$form_field_types);
+        $this -> tpl -> assign('form_field_str',$form_field_str);
+        $this -> tpl -> assign('controller_disabled',$controller_disabled);
         $this -> tpl -> assign('tableconfig',$tableconfig);
         $this -> tpl -> assign('primary_field',$primary_field);
         $this -> tpl -> assign('is_primary',$is_primary);
@@ -124,6 +148,14 @@ class Table extends Core implements Action
     function del()
     {
         // TODO: Implement del() method.
+        $tableName = $this -> input -> get('tableName');
+        if($this -> frm -> drop_table(Config::item('DB','PREFIX').$tableName)){
+            if($this -> tableModel -> del_config($tableName)){
+                if($this -> tableModel -> del_all_field($tableName))
+                dwz_success('操作成功','table');
+            }
+        }
+        dwz_failed('操作失败','table');
     }
 
     public function index(){
@@ -145,4 +177,107 @@ class Table extends Core implements Action
         $this ->  tpl -> assign('list',$list);
         $this ->  tpl -> display('table_list.html');
    }
+
+  /********************************AJAX METHOD*************************************************************/
+
+   public function delColumnByAjax(){
+       $tableName = Config::item('DB','PREFIX').$this -> input -> post('tableName');
+       $columnName = $this -> input -> post('columnName');
+
+       if($this-> frm -> delColumns($tableName,array($columnName))){
+           if($this->tableModel->del_field($this -> input -> post('tableName'),$columnName))
+           die('1');
+       }
+       die('0');
+   }
+
+    public function updateColumnByAjax(){
+        $tableName = Config::item('DB','PREFIX').$this -> input -> post('tableName');
+        $tableSourceName = $this -> input -> post('tableName');
+        $columnName = $this -> input -> post('columnName');
+        $columnType = $this -> input -> post('columnType');
+        $columnLength = $this -> input -> post('columnLength');
+        $comment = $this -> input -> post('comment');
+        $columndefault = $this -> input -> post('columndefault');
+        $isnull = $_POST['isnull'];
+        $from = $this -> input -> post('sourceColumn');
+        $form_field_type = $this -> input -> post('formfieldtype');
+        $refer = $this -> input -> post('refer');
+        $datasource = $this -> input -> post('datasource');
+        $condition = $this -> input -> post('cond');
+
+        $formfieldtype = array(
+            'tableName' => $tableSourceName,
+            'fieldName' => $columnName,
+            'fieldType' => $form_field_type,
+            'refer' => $refer,
+            'datasource' => $datasource,
+            'cond' => $condition
+        );
+
+        if(!empty($columnLength) && $columnLength != 0){
+            $columnType .= "($columnLength)";
+        }
+        $columninfo =array( array($from,$columnName,$columnType,$comment,$columndefault,$isnull) );
+        if($this -> frm -> alterColumns($tableName,$columninfo)){
+            if($this -> tableModel -> update_field($formfieldtype,"tableName='$tableSourceName' and fieldName='$from'"))
+            die('1');
+        }
+        die('0');
+    }
+
+    public function saveColumnByAjax(){
+        $tableName = Config::item('DB','PREFIX').$this -> input -> post('tableName');
+        $columnName = $this -> input -> post('columnName');
+        $columnType = $this -> input -> post('columnType');
+        $columnLength = $this -> input -> post('columnLength');
+        $comment = $this -> input -> post('comment');
+        $columndefault = $this -> input -> post('columndefault');
+        $isnull = $_POST['isnull'];
+        $form_field_type = $this -> input -> post('formfieldtype');
+        $refer = $this -> input -> post('refer');
+        $datasource = $this -> input -> post('datasource');
+        $condition = $this -> input -> post('cond');
+
+        $formfieldtype = array(
+            'tableName' => $this -> input -> post('tableName'),
+            'fieldName' => $columnName,
+            'fieldType' => $form_field_type,
+            'refer' => $refer,
+            'datasource' => $datasource,
+            'cond' => $condition
+        );
+
+        if(!empty($columnLength) && $columnLength != 0){
+            $columnType .= "($columnLength)";
+        }
+        $columninfo =array( array($columnName,$columnType,$comment,$columndefault,$isnull) );
+        if($this -> frm -> addColumns($tableName,$columninfo)){
+            if($this -> tableModel -> save_field($formfieldtype))
+            die('1');
+        }
+        die('0');
+    }
+
+    public function alterTableByAjax(){
+        $engine = $this -> input -> post('engine');
+        $tableName = Config::item('DB','PREFIX').$this -> input -> post('tableName');
+        if($this -> frm -> alter_table($tableName,"engine=".$engine)){
+            die('1');
+        }
+        die('0');
+    }
+
+    public function alterTableConfigByAjax(){
+        $desp = $this -> input -> post('desp');
+        $autoform = $this -> input -> post('autoform');
+        $tableName = $this -> input -> post('tableName');
+        $controller = $this -> input -> post('controller');
+
+        $array =  array('desp' => $desp,'auto_form_fields' => intval($autoform) ,'controller' => $controller);
+        if($this -> tableModel -> update($array," tableName = '$tableName'")){
+            die('1');
+        }
+        die('0');
+    }
 }

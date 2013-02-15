@@ -12,7 +12,8 @@
 //后台aop
 if( ! defined('BASEPATH')) exit('No direct script access allowed');
 $aop['before'] = array(
-        array('check_login')
+        array('check_login'),
+        array('Autoform','init_auto_form')
 );
 
 $aop['after'] = array();

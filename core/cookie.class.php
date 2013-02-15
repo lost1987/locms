@@ -11,9 +11,9 @@ Class Cookie {
 	private $path;
 	
 	public function __construct(){
-		$this -> secret = 'abracadabra';
-		$this -> timeout = 7200;
-		$this ->　path = '/';
+		$this -> secret = COOKIE_SECRECT;
+		$this -> timeout = COOKIE_TIMEOUT;
+		$this ->　path = COOKIE_DOMAIN;
 	}
 	
 	public function set_userdata($key,$val=''){
