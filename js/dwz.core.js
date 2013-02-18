@@ -106,7 +106,7 @@ var DWZ = {
 		if (json.statusCode === undefined && json.message === undefined) { // for iframeCallback
 			if (alertMsg) return alertMsg.error(json);
 			else return alert(json);
-		} 
+		}
 		if(json.statusCode == DWZ.statusCode.error) {
 			if(json.message && alertMsg) alertMsg.error(json.message);
 		} else if (json.statusCode == DWZ.statusCode.timeout) {
@@ -114,7 +114,7 @@ var DWZ = {
 			else DWZ.loadLogin();
 		} else {
 			if(json.message && alertMsg) alertMsg.correct(json.message);
-		};
+		}
 	},
 
 	init:function(pageFrag, options){
@@ -188,14 +188,27 @@ var DWZ = {
 				cache: false,
 				success: function(response){
 					var json = DWZ.jsonEval(response);
-					
+
 					if (json.statusCode==DWZ.statusCode.timeout){
-						alertMsg.error(json.message || DWZ.msg("sessionTimout"), {okCall:function(){
+                        //自定义方法 改写timeout方法 当timeout的时候弹出提示 点击确定跳到登陆额页面
+                        art.dialog({
+                            title:false,
+                            content:'您已经登录超时,请重新登录!',
+                            ok: function () {
+                                window.location.href = DWZ._set.loginUrl; ///点击OK按钮执行跳转
+                                return false;
+                            },
+                            beforeunload:function(){
+                                window.location.href = DWZ._set.loginUrl;//在用户点击弹窗的X前 执行跳转
+                            }
+                        });
+                        return;//结束脚本,以免在页面输出json代码
+						/*alertMsg.error(json.message || DWZ.msg("sessionTimout"), {okCall:function(){
 							if ($.pdialog) $.pdialog.checkTimeout();
 							if (navTab) navTab.checkTimeout();
 	
 							DWZ.loadLogin();
-						}});
+						}});*/
 					} 
 					
 					if (json.statusCode==DWZ.statusCode.error){

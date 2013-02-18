@@ -55,6 +55,7 @@ function initLayout(){
 }
 
 function initUI(_box){
+
 	var $p = $(_box || document);
 
 	$("div.panel", $p).jPanel();

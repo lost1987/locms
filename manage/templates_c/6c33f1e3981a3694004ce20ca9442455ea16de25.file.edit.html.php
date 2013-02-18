@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-15 16:52:32
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 16:16:36
          compiled from "/Users/lost/www/locms/manage/templates/auto/edit.html" */ ?>
 <?php /*%%SmartyHeaderCode:1843426866511a1e6c94bd01-74873018%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6c33f1e3981a3694004ce20ca9442455ea16de25' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/auto/edit.html',
-      1 => 1360918300,
+      1 => 1361175394,
       2 => 'file',
     ),
   ),
@@ -41,12 +41,14 @@ foreach ($_from as $_smarty_tpl->tpl_vars['field']->key => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['field']->_loop = true;
  $_smarty_tpl->tpl_vars['smarty']->value['foreach']['foo']['iteration']++;
 ?>
-                <?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration']!=1){?>
+                <?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration']==1&&$_smarty_tpl->tpl_vars['field']->value['Key']=='PRI'){?>
+                    <!--{如果第一个字段是主键则不显示}-->
+                <?php }else{ ?>
                 <dl class="nowrap">
                     <dt><?php echo $_smarty_tpl->tpl_vars['field']->value['Comment'];?>
 :</dt>
                     <dd>
-                        <?php echo smarty_field(array('name'=>$_smarty_tpl->tpl_vars['field']->value['Field'],'type'=>$_smarty_tpl->tpl_vars['field']->value['form_field_type'],'value'=>(($tmp = @$_smarty_tpl->tpl_vars['field']->value['value'])===null||$tmp==='' ? '' : $tmp),'refer'=>$_smarty_tpl->tpl_vars['field']->value['refer'],'datasource'=>$_smarty_tpl->tpl_vars['field']->value['datasource'],'condition'=>$_smarty_tpl->tpl_vars['field']->value['cond']),$_smarty_tpl);?>
+                        <?php echo smarty_field(array('name'=>$_smarty_tpl->tpl_vars['field']->value['Field'],'type'=>$_smarty_tpl->tpl_vars['field']->value['form_field_type'],'value'=>(($tmp = @$_smarty_tpl->tpl_vars['field']->value['value'])===null||$tmp==='' ? '' : $tmp),'refer'=>$_smarty_tpl->tpl_vars['field']->value['refer'],'datasource'=>$_smarty_tpl->tpl_vars['field']->value['datasource'],'condition'=>$_smarty_tpl->tpl_vars['field']->value['cond'],'validate'=>$_smarty_tpl->tpl_vars['field']->value['formValidate']),$_smarty_tpl);?>
 
                     </dd>
                 </dl>

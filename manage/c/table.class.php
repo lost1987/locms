@@ -41,6 +41,8 @@ class Table extends Core implements Action
             $refer[] = $this -> input -> post('refer'.$i);
             $datasource[] = $this -> input -> post('datasource'.$i);
             $condition[] = $this -> input -> post('cond'.$i);
+            $formValidate[] =  $this -> input -> post('formValidate'.$i);
+            $searchable[] = $this -> input -> post('searchable'.$i);
         }
 
         //附加表 table_config表
@@ -57,7 +59,7 @@ class Table extends Core implements Action
         echo $res;*/
 
         if($this->frm->create_table($tableName,$table_engine,$table_charset,$autocrement,$columns,$column_types,$column_length,$column_comments,$column_default,$column_isnull,$isprimarykey)){
-            if($this -> tableModel -> save_config($config) && $this -> tableModel -> save_fields($columns,$form_field_types,$refer,$datasource,$condition,$this ->input->post('tableName'))){
+            if($this -> tableModel -> save_config($config) && $this -> tableModel -> save_fields($columns,$form_field_types,$refer,$datasource,$condition,$formValidate,$searchable,$this ->input->post('tableName'))){
                 dwz_success();
             }
             $this -> frm -> drop_table($tableName);
@@ -115,6 +117,8 @@ class Table extends Core implements Action
                     $field['refer'] = $table_field[$field['Field']]['refer'];
                     $field['datasource'] = $table_field[$field['Field']]['datasource'];
                     $field['cond'] = $table_field[$field['Field']]['cond'];
+                    $field['formValidate'] = $table_field[$field['Field']]['formValidate'];
+                    $field['searchable'] = $table_field[$field['Field']]['searchable'];
                 }
                 if(!is_numeric($field['Length']))$field['Length']='';
                 if($field['Key'] == 'PRI'){
@@ -205,6 +209,8 @@ class Table extends Core implements Action
         $refer = $this -> input -> post('refer');
         $datasource = $this -> input -> post('datasource');
         $condition = $this -> input -> post('cond');
+        $formValidate = $this -> input -> post('formValidate');
+        $searchable = $this -> input -> post('searchable');
 
         $formfieldtype = array(
             'tableName' => $tableSourceName,
@@ -212,7 +218,9 @@ class Table extends Core implements Action
             'fieldType' => $form_field_type,
             'refer' => $refer,
             'datasource' => $datasource,
-            'cond' => $condition
+            'cond' => $condition,
+            'formValidate' => $formValidate,
+            'searchable' => $searchable
         );
 
         if(!empty($columnLength) && $columnLength != 0){
@@ -238,6 +246,8 @@ class Table extends Core implements Action
         $refer = $this -> input -> post('refer');
         $datasource = $this -> input -> post('datasource');
         $condition = $this -> input -> post('cond');
+        $formValidate = $this -> input -> post('formValidate');
+        $searchable = $this -> input -> post('searchable');
 
         $formfieldtype = array(
             'tableName' => $this -> input -> post('tableName'),
@@ -245,7 +255,9 @@ class Table extends Core implements Action
             'fieldType' => $form_field_type,
             'refer' => $refer,
             'datasource' => $datasource,
-            'cond' => $condition
+            'cond' => $condition,
+            'formValidate' => $formValidate,
+            'searchable' => $searchable
         );
 
         if(!empty($columnLength) && $columnLength != 0){

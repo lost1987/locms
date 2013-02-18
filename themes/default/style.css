@@ -204,15 +204,20 @@ body, #splitBar { background:#e5edef;}
 /**************lost**************/
 .btn_orange{
     background-image: url('images/btn_orange.png');
-    border:0px;
+    border:1px black solid;
     color:white;
     cursor:pointer;
 }
 
 .btn_grey{
     background-image: url('images/btn_grey.png');
-    border:0px;
+    border:1px black solid;
     color:white;
     cursor:pointer;
 }
 
+.btn_big{
+    width:100px;
+    height:20px;
+    font-size:12px;
+}

@@ -11,7 +11,10 @@
 <!--[if IE]>
 <link href="<!@{$smarty.const.WEBROOT}@>themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
 <![endif]-->
+<link media="all" rel="stylesheet" type="text/css" href="<!@{$smarty.const.WEBROOT}@>js/dialog/default.css" />
 
+<script src="<!@{$smarty.const.WEBROOT}@>js/dialog/artDialog.min.js"></script>
+<script src="<!@{$smarty.const.WEBROOT}@>js/dialog/artDialog.plugins.min.js"></script>
 <script src="<!@{$smarty.const.WEBROOT}@>js/speedup.js" type="text/javascript"></script>
 <script src="<!@{$smarty.const.WEBROOT}@>js/jquery-1.7.2.js" type="text/javascript"></script>
 <script src="<!@{$smarty.const.WEBROOT}@>js/jquery.cookie.js" type="text/javascript"></script>
@@ -68,7 +71,7 @@
 <script type="text/javascript">
 $(function(){
 	DWZ.init("<!@{$smarty.const.WEBROOT}@>dwz.frag.xml", {
-		loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
+		loginUrl:"<!@{Smarty_site_url action_method='login/loginpage'}@>", loginTitle:"登录",	// 弹出登录对话框
 //		loginUrl:"login.html",	// 跳到登录页面
 		statusCode:{ok:200, error:300, timeout:301}, //【可选】
 		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】

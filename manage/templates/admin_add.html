@@ -1,5 +1,5 @@
 <div class="pageFormContent">
-	<form method="post" action="<!@{Smarty_site_url method_action='admin/save'}@>" onsubmit="return validateCallback(this, navTabAjaxDone)">
+	<form method="post" action="<!@{Smarty_site_url action_method='admin/save'}@>" onsubmit="return validateCallback(this, navTabAjaxDone)">
 		<input type="hidden" name ="id" value="<!@{$admin.id|default:''}@>">
 		<fieldset>
 			<legend><!@{$title}@></legend>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-14 18:16:21
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 11:57:46
          compiled from "/Users/lost/www/locms/manage/templates/admin_add.html" */ ?>
 <?php /*%%SmartyHeaderCode:1775297539511cb975118d70-09086891%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2b4ad8073e44dd8aa0bbfc354e4880ca89b50028' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/admin_add.html',
-      1 => 1357876350,
+      1 => 1361159859,
       2 => 'file',
     ),
   ),
@@ -15,17 +15,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_511cb975186c39_11490670',
   'variables' => 
   array (
     'admin' => 0,
     'title' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_511cb975186c39_11490670',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_511cb975186c39_11490670')) {function content_511cb975186c39_11490670($_smarty_tpl) {?><div class="pageFormContent">
-	<form method="post" action="<?php echo smarty_site_url(array('method_action'=>'admin/save'),$_smarty_tpl);?>
+	<form method="post" action="<?php echo smarty_site_url(array('action_method'=>'admin/save'),$_smarty_tpl);?>
 " onsubmit="return validateCallback(this, navTabAjaxDone)">
 		<input type="hidden" name ="id" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['admin']->value['id'])===null||$tmp==='' ? '' : $tmp);?>
 ">

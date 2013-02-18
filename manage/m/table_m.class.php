@@ -62,11 +62,11 @@ class Table_m extends Core implements CRUD
         return $this -> db -> query("delete from $this->tableName where tableName = '$tableName'") -> queryState;
     }
 
-    function save_fields($fieldNames,$fieldTypes,$refer,$datasource,$condition,$tableName){
+    function save_fields($fieldNames,$fieldTypes,$refer,$datasource,$condition,$formValidate,$searchable,$tableName){
         $total = count($fieldNames);
-        $sql = "insert into $this->tableNameField (tableName,fieldName,fieldType,refer,datasource,cond) values ";
+        $sql = "insert into $this->tableNameField (tableName,fieldName,fieldType,refer,datasource,cond,formValidate,searchable) values ";
         for($i =0 ; $i<$total ; $i++){
-                $sql .= " ('$tableName','$fieldNames[$i]','$fieldTypes[$i]','$refer[$i]','$datasource[$i]','$condition[$i]'),";
+                $sql .= " ('$tableName','$fieldNames[$i]','$fieldTypes[$i]','$refer[$i]','$datasource[$i]','$condition[$i]','$formValidate[$i]',$searchable[$i]),";
         }
         $sql = substr($sql,0,strlen($sql) - 1);
         return $this -> db -> query($sql) -> queryState;

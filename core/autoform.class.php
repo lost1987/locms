@@ -40,7 +40,7 @@ class Autoform extends Core
     public function init_fields($tableName){
         $tableSourceName = str_replace(Config::item('DB','PREFIX'),'',$tableName);
         $fields = $this -> frm -> fields($tableName);
-        $id = $this -> input -> post('id');
+        $id = $this -> input -> get('id');
         if(!empty($id) && strpos($id,',') === FALSE){
             $object = $this -> db -> query("select * from $tableName where id = $id") -> row_array();
         }
@@ -57,6 +57,8 @@ class Autoform extends Core
               $field['refer'] = $field_types[$field['Field']]['refer'];
               $field['datasource'] = $field_types[$field['Field']]['datasource'];
               $field['cond'] = $field_types[$field['Field']]['cond'];
+              $field['formValidate'] = $field_types[$field['Field']]['formValidate'];
+              $field['searchable'] = $field_types[$field['Field']]['searchable'];
               $field['Type'] = preg_replace('/(.*)\(.*\)/','$1',$field['Type']);//去除长度显示的字段类型如varchar(32) 则为 varchar
               if(isset($object)){
                   $field['value'] = $object[$field['Field']];

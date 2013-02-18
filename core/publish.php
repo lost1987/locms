@@ -9,18 +9,18 @@
  */
 if( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-require BASEPATH.'function/function_core.php';
 require BASEPATH.'function/function_message.php';
+require BASEPATH.'function/function_core.php';
 require BASEPATH.'core/factory.class.php';
 require BASEPATH.'core/db_engine.class.php';
 require BASEPATH.'core/autoload.class.php';
 require BASEPATH . 'core/smarty/Smarty.class.php';
 
 $tpl = new Tpl();
-$tpl->template_dir = BASEPATH.ADMIN_DIRECTORY."/templates/";
-$tpl->compile_dir = BASEPATH.ADMIN_DIRECTORY."/templates_c/";
-$tpl->config_dir = BASEPATH.ADMIN_DIRECTORY."/configs/";
-$tpl->cache_dir = BASEPATH.ADMIN_DIRECTORY."/cache/";
+$tpl->template_dir = BASEPATH.PHP_DIRECTORY."/templates/";
+$tpl->compile_dir = BASEPATH.PHP_DIRECTORY."/templates_c/";
+$tpl->config_dir = BASEPATH.PHP_DIRECTORY."/configs/";
+$tpl->cache_dir = BASEPATH.PHP_DIRECTORY."/cache/";
 //$tpl->cache_lifetime = 60 * 60 * 24;      //设置缓存时间
 $tpl->left_delimiter = '<!@{';
 $tpl->caching        = false;             //这里是调试时设为false,发布时请使用true

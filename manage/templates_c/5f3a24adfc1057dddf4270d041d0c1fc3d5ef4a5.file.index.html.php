@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-07 21:48:12
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 18:55:04
          compiled from "/Users/lost/www/locms/manage/templates/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:16127850715113b09cbbff03-02160463%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f3a24adfc1057dddf4270d041d0c1fc3d5ef4a5' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/index.html',
-      1 => 1360224820,
+      1 => 1361184325,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
   'unifunc' => 'content_5113b09ccf2761_30363734',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5113b09ccf2761_30363734')) {function content_5113b09ccf2761_30363734($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,7 +36,13 @@ themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
 <link href="<?php echo @WEBROOT;?>
 themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
 <![endif]-->
+<link media="all" rel="stylesheet" type="text/css" href="<?php echo @WEBROOT;?>
+js/dialog/default.css" />
 
+<script src="<?php echo @WEBROOT;?>
+js/dialog/artDialog.min.js"></script>
+<script src="<?php echo @WEBROOT;?>
+js/dialog/artDialog.plugins.min.js"></script>
 <script src="<?php echo @WEBROOT;?>
 js/speedup.js" type="text/javascript"></script>
 <script src="<?php echo @WEBROOT;?>
@@ -139,7 +145,8 @@ js/dwz.regional.zh.js" type="text/javascript"></script>
 $(function(){
 	DWZ.init("<?php echo @WEBROOT;?>
 dwz.frag.xml", {
-		loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
+		loginUrl:"<?php echo smarty_site_url(array('action_method'=>'login/loginpage'),$_smarty_tpl);?>
+", loginTitle:"登录",	// 弹出登录对话框
 //		loginUrl:"login.html",	// 跳到登录页面
 		statusCode:{ok:200, error:300, timeout:301}, //【可选】
 		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】

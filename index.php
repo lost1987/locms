@@ -11,15 +11,15 @@ session_start();
 
 define('BASEPATH',dirname(__FILE__).DIRECTORY_SEPARATOR);
 //前台文件存放的文件夹名
-define('NORMAL_DIRECTORY','application');
+define('PHP_DIRECTORY','application');
 define('WEB_DEBUG',TRUE);
 
 if(WEB_DEBUG)error_reporting(E_ALL);
 else error_reporting(0);
 
 require BASEPATH.'conf/config.inc.php';
-require BASEPATH . NORMAL_DIRECTORY .'/conf/config.php';
-require BASEPATH . NORMAL_DIRECTORY .'/conf/config.aop.php';
+require BASEPATH . PHP_DIRECTORY .'/conf/config.php';
+require BASEPATH . PHP_DIRECTORY .'/conf/config.aop.php';
 require BASEPATH . 'core/publish.php';
 
 ?>

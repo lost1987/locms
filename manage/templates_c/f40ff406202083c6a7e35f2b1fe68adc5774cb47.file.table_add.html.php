@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-14 18:16:27
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 14:41:23
          compiled from "/Users/lost/www/locms/manage/templates/table_add.html" */ ?>
 <?php /*%%SmartyHeaderCode:20940948215113b09f8fbdf9-30905374%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f40ff406202083c6a7e35f2b1fe68adc5774cb47' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/table_add.html',
-      1 => 1360836640,
+      1 => 1361169679,
       2 => 'file',
     ),
   ),
@@ -41,7 +41,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5113b09faee964_91530677')) {function content_5113b09faee964_91530677($_smarty_tpl) {?><div class="pageContent">
+<?php if ($_valid && !is_callable('content_5113b09faee964_91530677')) {function content_5113b09faee964_91530677($_smarty_tpl) {?><div style="position:fixed;left:900px;z-index:10"><input type="button" name="" class="btn_orange btn_big" value="新增字段" onclick="addColumn()" />&nbsp;<input type="button" name="" class="btn_orange btn_big" value="说明" onclick="readme()" /></div>
+<div class="pageContent">
 	<form method="post" action="<?php echo smarty_site_url(array('action_method'=>'table/save'),$_smarty_tpl);?>
 " class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone,'修改不能恢复,确认提交吗?');">
 		<input type="hidden" name="op" value="<?php echo $_smarty_tpl->tpl_vars['op']->value;?>
@@ -196,7 +197,7 @@ $_smarty_tpl->tpl_vars['element']->_loop = true;
 ?>
             <?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration']==1){?>
             <fieldset class="column">
-                <legend>字段&nbsp;<input type="button" name="" class="btn_orange" value="新增字段" onclick="addColumn()" />
+                <legend>字段&nbsp;
                     <?php if ($_smarty_tpl->tpl_vars['op']->value=='edit'&&$_smarty_tpl->tpl_vars['is_primary']->value==false){?>
                     &nbsp;<input type="button" value="修改" class="btn_orange" onclick="updateColumn(this)" />&nbsp;<input type="button" value="删除" class="btn_grey" onclick="delColumn(this)" />
                     <?php }?>
@@ -304,6 +305,24 @@ $_smarty_tpl->tpl_vars['field_type']->_loop = true;
 " <?php echo (($tmp = @$_smarty_tpl->tpl_vars['primary_disabled']->value)===null||$tmp==='' ? '' : $tmp);?>
 />例如 : status=1</dd>
                 </dl>
+                <dl class="nowrap">
+                <dt>字段验证:</dt>
+                <dd><input class="textInput" name="formValidate1" style="width:450px" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['element']->value['formValidate'])===null||$tmp==='' ? '' : $tmp);?>
+" <?php echo (($tmp = @$_smarty_tpl->tpl_vars['primary_disabled']->value)===null||$tmp==='' ? '' : $tmp);?>
+/>必填required 邮件email 整数digits 浮点数number 字母lettersonly 网址url 电话phone 多个以","分割</dd>
+                </dl>
+                <dl class="nowrap">
+                <dt>查询可用:</dt>
+                <?php if ((($tmp = @$_smarty_tpl->tpl_vars['element']->value['searchable'])===null||$tmp==='' ? 0 : $tmp)==1){?>
+                <dd><input name="searchable1" type="radio" value="1" checked <?php echo (($tmp = @$_smarty_tpl->tpl_vars['primary_disabled']->value)===null||$tmp==='' ? '' : $tmp);?>
+>是&nbsp;<input name="searchable1" type="radio" value="0" <?php echo (($tmp = @$_smarty_tpl->tpl_vars['primary_disabled']->value)===null||$tmp==='' ? '' : $tmp);?>
+>否</dd>
+                <?php }else{ ?>
+                <dd><input name="searchable1" type="radio" value="1" <?php echo (($tmp = @$_smarty_tpl->tpl_vars['primary_disabled']->value)===null||$tmp==='' ? '' : $tmp);?>
+>是&nbsp;<input name="searchable1" type="radio" value="0" checked <?php echo (($tmp = @$_smarty_tpl->tpl_vars['primary_disabled']->value)===null||$tmp==='' ? '' : $tmp);?>
+>否</dd>
+                <?php }?>
+                </dl>
             </fieldset>
             <?php }else{ ?>
             <fieldset class="column">
@@ -409,6 +428,23 @@ $_smarty_tpl->tpl_vars['field_type']->_loop = true;
 " style="width:450px" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['element']->value['cond'])===null||$tmp==='' ? '' : $tmp);?>
 "/></dd>
                 </dl>
+                <dl class="nowrap">
+                    <dt>字段验证:</dt>
+                    <dd><input class="textInput" name="formValidate1" style="width:450px" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['element']->value['formValidate'])===null||$tmp==='' ? '' : $tmp);?>
+" /></dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt>查询可用:</dt>
+                    <?php if ((($tmp = @$_smarty_tpl->tpl_vars['element']->value['searchable'])===null||$tmp==='' ? 0 : $tmp)==1){?>
+                    <dd><input name="searchable<?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration'];?>
+" type="radio" value="1" checked>是&nbsp;<input name="searchable<?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration'];?>
+" type="radio" value="0" >否</dd>
+                    <?php }else{ ?>
+                    <dd><input name="searchable<?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration'];?>
+" type="radio" value="1" >是&nbsp;<input name="searchable<?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration'];?>
+" type="radio" value="0" checked>否</dd>
+                    <?php }?>
+                </dl>
             </fieldset>
             <?php }?>
             <?php } ?>
@@ -428,6 +464,8 @@ $_smarty_tpl->tpl_vars['field_type']->_loop = true;
         <input type="hidden" name="flag" id="flag" value="1" /><!--告诉后台这个表有多少个字段-->
 	</form>
 </div>
+
+
 <script>
 var fieldtypes = '<?php echo $_smarty_tpl->tpl_vars['field_types_str']->value;?>
 ';
@@ -514,6 +552,14 @@ function createColumn(){
     column_template +=      '<dt>关联条件:</dt>';
     column_template +=      '<dd><input class="textInput" name="cond'+flag+'" style="width:450px" /></dd>';
     column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>字段验证:</dt>';
+    column_template +=      '<dd><input class="textInput" name="formValidate'+flag+'" style="width:450px" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>查询可用:</dt>';
+    column_template +=      '<dd><input name="searchable'+flag+'" type="radio" value="1">是&nbsp;<input name="searchable'+flag+'" type="radio" value="0" checked>否</dd>';
+    column_template +=      '</dl>';
     column_template +=      '</fieldset>';
     return column_template;
 }
@@ -532,6 +578,11 @@ function controllerEnabled(node){
 function controllerDisabled(node){
     _node = $(node);
     _node.parent().parent().next().find("input").eq(0).val('').attr('disabled',true);
+}
+
+function readme(){
+    var content = $("fieldset[class='column']").eq(0).html();
+    art.dialog({title:"字段说明",content:content});
 }
 
 
@@ -587,6 +638,14 @@ function createColumn(){
     column_template +=      '<dt>关联条件:</dt>';
     column_template +=      '<dd><input class="textInput" name="cond'+flag+'" style="width:450px" /></dd>';
     column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>字段验证:</dt>';
+    column_template +=      '<dd><input class="textInput" name="formValidate'+flag+'" style="width:450px" /></dd>';
+    column_template +=      '</dl>';
+    column_template +=      '<dl class="nowrap">';
+    column_template +=      '<dt>查询可用:</dt>';
+    column_template +=      '<dd><input name="searchable'+flag+'" type="radio" value="1">是&nbsp;<input name="searchable'+flag+'" type="radio" value="0" checked>否</dd>';
+    column_template +=      '</dl>';
     column_template +=      '</fieldset>';
     return column_template;
 }
@@ -596,17 +655,17 @@ function delColumn(node){
     if(!_node.parent().next().find("input[class='sourceColumn']").val()){
         _node.parent().parent().remove();
     }else{
-       if(confirm("删除将不可还原!请确认删除")){
+        art.confirm('删除将不可还原!请确认删除?', function () {
             var columnName  =  _node.parent().next().find("input[class='sourceColumn']").val();
             $.post('<?php echo smarty_site_url(array('action_method'=>"table/delColumnByAjax"),$_smarty_tpl);?>
 ','tableName='+tableName+'&columnName='+columnName,function(data){
-                    if(data.replace(/\s+/g,'') == 1){
-                        _node.parent().parent().remove();
-                        return;
-                    }
-                    alert('修改出错,请联系开发人员');
+                if(data.replace(/\s+/g,'') == 1){
+                    _node.parent().parent().remove();
+                    return;
+                }
+                art.alert('修改出错,请联系开发人员');
             })
-       }
+        }, function () {});
     }
 }
 
@@ -615,7 +674,7 @@ function updateColumn(node){
     var sourceColumn = _node.parent().next().find('input').eq(1).val();
     var columnName = _node.parent().next().find('input').eq(0).val();
     if(columnName.replace(/\s+/g,'')!=''){
-        if(confirm("请确认修改操作?")){
+        art.confirm('确认要修改吗?', function () {
             var columnType = _node.parent().parent().children().eq(2).find('select').val();
             var columnLength = _node.parent().parent().children().eq(3).find('input').val();
             var comment = _node.parent().parent().children().eq(4).find('input').val();
@@ -625,9 +684,11 @@ function updateColumn(node){
             var refer = _node.parent().parent().children().eq(8).find('input').val();
             var datasource = _node.parent().parent().children().eq(9).find('input').val();
             var condition = _node.parent().parent().children().eq(10).find('input').val();
+            var formValidate = _node.parent().parent().children().eq(11).find('input').val();
+            var searchable = _node.parent().parent().children().eq(12).find('input:checked').val();
 
             var data = "tableName="+tableName+"&columnName="+columnName+"&columnType="+columnType+"&columnLength="+columnLength;
-            data += "&comment="+comment+"&isnull="+isnull+"&columndefault="+columndefault+"&sourceColumn="+sourceColumn+"&formfieldtype="+formfieldtype+"&refer="+refer+"&datasource="+datasource+"&cond="+condition;
+            data += "&comment="+comment+"&isnull="+isnull+"&columndefault="+columndefault+"&sourceColumn="+sourceColumn+"&formfieldtype="+formfieldtype+"&refer="+refer+"&datasource="+datasource+"&cond="+condition+"&formValidate="+formValidate+"&searchable="+searchable;
 
             $.post('<?php echo smarty_site_url(array('action_method'=>"table/updateColumnByAjax"),$_smarty_tpl);?>
 ',data,function(data){
@@ -635,9 +696,9 @@ function updateColumn(node){
                     _node.parent().next().find('input').eq(1).val(columnName);
                     return;
                 }
-                alert('修改出错,请联系开发人员');
+                art.alert('修改出错,请联系开发人员');
             })
-        }
+        }, function () {});
     }
 }
 
@@ -646,57 +707,61 @@ function saveColumn(node){
     _node = $(node);
     var columnName = _node.parent().next().find('input').eq(0).val();
     if(columnName.replace(/\s+/g,'')!=''){
-           if(confirm("请确认添加操作?")){
-                var columnType = _node.parent().parent().children().eq(2).find('select').val();
-                var columnLength = _node.parent().parent().children().eq(3).find('input').val();
-                var comment = _node.parent().parent().children().eq(4).find('input').val();
-                var isnull = _node.parent().parent().children().eq(5).find('input:checked').val();
-                var columndefault = _node.parent().parent().children().eq(6).find('input').val();
-                var formfieldtype = _node.parent().parent().children().eq(7).find('select').val();
-                var refer = _node.parent().parent().children().eq(8).find('input').val();
-                var datasource = _node.parent().parent().children().eq(9).find('input').val();
-                var condition = _node.parent().parent().children().eq(10).find('input').val();
+        art.confirm('确认要修改吗?', function () {
+            var columnType = _node.parent().parent().children().eq(2).find('select').val();
+            var columnLength = _node.parent().parent().children().eq(3).find('input').val();
+            var comment = _node.parent().parent().children().eq(4).find('input').val();
+            var isnull = _node.parent().parent().children().eq(5).find('input:checked').val();
+            var columndefault = _node.parent().parent().children().eq(6).find('input').val();
+            var formfieldtype = _node.parent().parent().children().eq(7).find('select').val();
+            var refer = _node.parent().parent().children().eq(8).find('input').val();
+            var datasource = _node.parent().parent().children().eq(9).find('input').val();
+            var condition = _node.parent().parent().children().eq(10).find('input').val();
+            var formValidate = _node.parent().parent().children().eq(11).find('input').val();
+            var searchable = _node.parent().parent().children().eq(12).find('input:checked').val();
 
-                var data = "tableName="+tableName+"&columnName="+columnName+"&columnType="+columnType+"&columnLength="+columnLength;
-                    data += "&comment="+comment+"&isnull="+isnull+"&columndefault="+columndefault+"&formfieldtype="+formfieldtype+"&refer="+refer+"&datasource="+datasource+"&cond="+condition;;
+            var data = "tableName="+tableName+"&columnName="+columnName+"&columnType="+columnType+"&columnLength="+columnLength;
+            data += "&comment="+comment+"&isnull="+isnull+"&columndefault="+columndefault+"&formfieldtype="+formfieldtype+"&refer="+refer+"&datasource="+datasource+"&cond="+condition+"&formValidate="+formValidate+"&searchable="+searchable;;
 
-               $.post('<?php echo smarty_site_url(array('action_method'=>"table/saveColumnByAjax"),$_smarty_tpl);?>
+            $.post('<?php echo smarty_site_url(array('action_method'=>"table/saveColumnByAjax"),$_smarty_tpl);?>
 ',data,function(data){
-                             if(data.replace(/\s+/g,'')==1){
-                                _node.parent().next().find('input').after('<input type="hidden" class="sourceColumn" value="'+columnName+'">');
-                                _node.replaceWith('<input type="button" class="btn_orange" onclick="updateColumn(this)" value="修改" />')
-                                 return;
-                             }
-                             alert('修改出错,请联系开发人员');
-               })
-           }
+                if(data.replace(/\s+/g,'')==1){
+                    _node.parent().next().find('input').after('<input type="hidden" class="sourceColumn" value="'+columnName+'">');
+                    _node.replaceWith('<input type="button" class="btn_orange" onclick="updateColumn(this)" value="修改" />')
+                    return;
+                }
+                art.alert('修改出错,请联系开发人员');
+            })
+            },function(){});
     }
 }
 
 function alterTable(node){
-    if(!confirm("确认要修改吗?"))return;
-    _node = $(node);
-    var engine = _node.parent().parent().find('dl').eq(1).find('input:checked').val();
-    $.post('<?php echo smarty_site_url(array('action_method'=>"table/alterTableByAjax"),$_smarty_tpl);?>
+    art.confirm('确认要修改吗?', function () {
+        _node = $(node);
+        var engine = _node.parent().parent().find('dl').eq(1).find('input:checked').val();
+        $.post('<?php echo smarty_site_url(array('action_method'=>"table/alterTableByAjax"),$_smarty_tpl);?>
 ','engine='+engine+'&tableName='+tableName,function(data){
             if(data.replace(/\s+/g,'')!=1){
-                alert('修改出错,请联系开发人员');
+                art.alert('修改出错,请联系开发人员');
             }
-    })
+        })
+    }, function () {});
 }
 
 function alterTableConfig(node){
-    if(!confirm("确认要修改吗?"))return;
-    _node = $(node);
-    var desp = _node.parent().parent().find('dl').eq(0).find('input').val();
-    var autoform = _node.parent().parent().find('dl').eq(1).find('input:checked').val();
-    var controller = _node.parent().parent().find('dl').eq(2).find('input').val();
-    $.post('<?php echo smarty_site_url(array('action_method'=>"table/alterTableConfigByAjax"),$_smarty_tpl);?>
+    art.confirm('确认要修改吗?', function () {
+        _node = $(node);
+        var desp = _node.parent().parent().find('dl').eq(0).find('input').val();
+        var autoform = _node.parent().parent().find('dl').eq(1).find('input:checked').val();
+        var controller = _node.parent().parent().find('dl').eq(2).find('input').val();
+        $.post('<?php echo smarty_site_url(array('action_method'=>"table/alterTableConfigByAjax"),$_smarty_tpl);?>
 ','desp='+desp+'&tableName='+tableName+'&autoform='+autoform+'&controller='+controller,function(data){
-        if(data.replace(/\s+/g,'')!=1){
-            alert('修改出错,请联系开发人员');
-        }
-    })
+            if(data.replace(/\s+/g,'')!=1){
+                art.alert('修改出错,请联系开发人员');
+            }
+        })
+    }, function () {});
 }
 
 <?php }?>

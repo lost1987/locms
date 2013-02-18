@@ -143,15 +143,33 @@ function uploadImage($file_form_name = '', $upload_path = '', $web_path = '', $d
 
 }
 
+//判断是否是ajax请求
+function is_ajax_req(){
+    if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+        //如果是ajax请求
+       return TRUE;
+    }
+    return FALSE;
+}
+
 function check_login()
 {
     global $f;
     $cookie = $f->cookie;
     $admin = $cookie->userdata('admin');
     $admin_id = $cookie->userdata('admin_id');
-    if ((empty($admin) || empty($admin_id)) && $f->pathinfo->method != 'loginpage') {
+
+    if(is_ajax_req()){
+        //如果是ajax请求
+        if(empty($admin) || empty($admin_id))
+        dwz_timeout();
+    }
+
+
+    if ((empty($admin) || empty($admin_id)) && $f->pathinfo->method != 'loginpage' && $f->pathinfo->method != 'dologin') {
         mappingforward('login/loginpage');
     }
+
 }
 
 /**
@@ -163,6 +181,7 @@ function mappingforward($action_method)
     global $entrance;
     $url = WEBROOT . $entrance . '/' . $action_method;
     header("location:".$url);
+    exit;
 }
 
 function site_url($action_method)

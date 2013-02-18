@@ -1,0 +1,72 @@
+<form id="pagerForm" method="post" action="<!@{Smarty_site_url action_method=$autoform->action}@>">
+    <input type="hidden" name="pageNum" value="<!@{$page.currentPage}@>" />
+</form>
+<div class="pageHeader">
+    <form onsubmit="return navTabSearch(this);" rel="pagerForm" action="<!@{Smarty_site_url action_method=$autoform->action}@>" method="post">
+        <div class="searchBar">
+            <table class="searchContent">
+                <tr>
+                    <!@{foreach from = $autoform->fields  item = field name=foo}@>
+                    <!@{if $smarty.foreach.foo.iteration eq 1 && $field.Key eq 'PRI'}@>
+                     <!--{如果第一个字段是主键则不显示}-->
+                    <!@{else}@>
+                        <!@{Smarty_search_field comment=$field.Comment name=$field.Field type=$field.form_field_type value=$field.value|default:"" refer=$field.refer datasource=$field.datasource condition=$field.cond searchable=$field.searchable}@>
+                    <!@{/if}@>
+                    <!@{/foreach}@>
+                </tr>
+            </table>
+            <div class="subBar">
+                <ul>
+                    <li><div class="buttonActive"><div class="buttonContent"><button type="submit">搜索</button></div></div></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <li><a class="edit" href="<!@{Smarty_site_url action_method=$autoform->action|cat:'/edit'}@>?id={gid}" target="navTab"><span>编辑查看详情</span></a></li>
+            <li><a class="delete" href="<!@{Smarty_site_url action_method=$autoform->action|cat:'/del'}@>" target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?"><span>批量删除</span></a></li>
+            <li class="line">line</li>
+        </ul>
+    </div>
+    <table class="table" width="100%" layoutH="138">
+        <thead>
+        <tr>
+            <th width="1"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+            <!@{foreach from = $autoform->fields item = field}@>
+                <!@{if $field.form_field_type neq 'textedit' && $field.form_field_type neq 'textarea'}@>
+                        <th><!@{$field.Comment}@></th>
+                <!@{/if}@>
+            <!@{/foreach}@>
+        </tr>
+        </thead>
+        <tbody>
+        <!@{foreach from = $list item = element}@>
+        <tr target="gid" rel="<!@{$element.id}@>" >
+            <td><input name="ids" value="<!@{$element.id}@>" type="checkbox"></td>
+            <!@{foreach from = $autoform->fields item = field}@>
+            <!@{if $field.form_field_type neq 'textedit' && $field.form_field_type neq 'textarea'}@>
+                <td><!@{$element[$field.Field]}@></td>
+            <!@{/if}@>
+            <!@{/foreach}@>
+        </tr>
+        <!@{/foreach}@>
+        </tbody>
+    </table>
+    <div class="panelBar">
+        <div class="pages">
+            <span>共: <font color="red"><!@{$page.totalCount}@></font> 条记录</span>
+        </div>
+        <div class="pagination" targetType="navTab" totalCount="<!@{$page.totalCount}@>" numPerPage="<!@{$page.numPerPage}@>" pageNumShown="10" currentPage="<!@{$page.currentPage}@>"></div>
+    </div>
+</div>
+<style type="text/css" media="screen">
+    .imgs{text-align:center;}
+    .imgs div{height:100px!important;}
+    td a{
+        color:#006400;
+        font-weight: bold;
+    }
+</style>

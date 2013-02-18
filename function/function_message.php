@@ -21,4 +21,8 @@ function dwz_failed($msg='操作失败',$callbackUrl=''){
     else
         die( json_encode(array('statusCode'=>'300', 'message'=>$msg)) );
 }
+
+function dwz_timeout(){
+        die( json_encode(array('statusCode'=>'301')) );
+}
 ?>

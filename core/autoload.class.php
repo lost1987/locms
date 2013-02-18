@@ -28,36 +28,19 @@ abstract class Autoload
             require_once $classpath;
         }
 
-        if(defined('ADMIN_DIRECTORY')){
 
-                $classpath = BASEPATH.ADMIN_DIRECTORY.'/c/'.$className.self::SUBFIX;
+        $classpath = BASEPATH.PHP_DIRECTORY.'/c/'.$className.self::SUBFIX;
 
-                if(file_exists($classpath)){
-                    require_once $classpath;
-                }
-
-                $classpath = BASEPATH.ADMIN_DIRECTORY.'/m/'.$className.self::SUBFIX;
-
-                if(file_exists($classpath)){
-                    require_once $classpath;
-                }
-
+        if(file_exists($classpath)){
+            require_once $classpath;
         }
 
-        if(defined('NORMAL_DIRECTORY')){
+        $classpath = BASEPATH.PHP_DIRECTORY.'/m/'.$className.self::SUBFIX;
 
-                $classpath = BASEPATH.NORMAL_DIRECTORY.'/m/'.$className.self::SUBFIX;
-
-                if(file_exists($classpath)){
-                    require_once $classpath;
-                }
-
-                $classpath = BASEPATH.NORMAL_DIRECTORY.'/c/'.$className.self::SUBFIX;
-
-                if(file_exists($classpath)){
-                    require_once $classpath;
-                }
-
+        if(file_exists($classpath)){
+            require_once $classpath;
         }
+
+
     }
 }

@@ -31,7 +31,7 @@ var alertMsg = {
 	 */
 	_open: function(type, msg, buttons){
 		$(this._boxId).remove();
-		var butsHtml = "";
+		/*var butsHtml = "";
 		if (buttons) {
 			for (var i = 0; i < buttons.length; i++) {
 				var sRel = buttons[i].call ? "callback" : "";
@@ -39,8 +39,9 @@ var alertMsg = {
 			}
 		}
 		var boxHtml = DWZ.frag["alertBoxFrag"].replace("#type#", type).replace("#title#", this._getTitle(type)).replace("#message#", msg).replace("#butFragment#", butsHtml);
-		$(boxHtml).appendTo("body").css({top:-$(this._boxId).height()+"px"}).animate({top:"0px"}, 500);
-				
+		$(boxHtml).appendTo("body").css({top:-$(this._boxId).height()+"px"}).animate({top:"0px"}, 500);*/
+
+    /*
 		if (this._closeTimer) {
 			clearTimeout(this._closeTimer);
 			this._closeTimer = null;
@@ -66,7 +67,19 @@ var alertMsg = {
 			if (buttons[i].keyCode == DWZ.keyCode.ESC) {
 				jDoc.bind("keydown",{target:jButs.eq(i)}, this._keydownEsc);
 			}
-		}
+		}*/
+
+        //改写dwz弹窗
+        $("#alertBackground").remove();
+        if(type == 'confirm'){
+            art.confirm(msg, function () {
+                buttons[0].call();//点击确认
+            }, function () {
+                //取消则什么也不做
+            });
+        }else{
+            art.dialog({title:this._getTitle(type),content:msg,time:4000});
+        }
 	},
 	close: function(){
 		$(document).unbind("keydown", this._keydownOk).unbind("keydown", this._keydownEsc);

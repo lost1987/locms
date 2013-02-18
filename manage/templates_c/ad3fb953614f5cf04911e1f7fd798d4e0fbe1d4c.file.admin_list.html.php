@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-14 18:16:21
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 09:13:34
          compiled from "/Users/lost/www/locms/manage/templates/admin_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:1551558584511cb9756af4c5-69781141%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ad3fb953614f5cf04911e1f7fd798d4e0fbe1d4c' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/admin_list.html',
-      1 => 1357882649,
+      1 => 1361149465,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_511cb97579acf1_17658335',
   'variables' => 
   array (
     'page' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'element' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_511cb97579acf1_17658335',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_511cb97579acf1_17658335')) {function content_511cb97579acf1_17658335($_smarty_tpl) {?><form id="pagerForm" method="post" action="<?php echo smarty_site_url(array('action_method'=>'admin'),$_smarty_tpl);?>
 ">
@@ -79,7 +79,7 @@ $_smarty_tpl->tpl_vars['element']->_loop = true;
 ?>
 			<tr target="gid" rel="<?php echo $_smarty_tpl->tpl_vars['element']->value['id'];?>
 ">
-				<td><input name="id" value="<?php echo $_smarty_tpl->tpl_vars['element']->value['id'];?>
+				<td><input name="ids" value="<?php echo $_smarty_tpl->tpl_vars['element']->value['id'];?>
 " type="checkbox"></td>
 				<td><?php echo $_smarty_tpl->tpl_vars['element']->value['id'];?>
 </td>
