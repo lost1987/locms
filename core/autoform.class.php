@@ -60,8 +60,13 @@ class Autoform extends Core
               $field['formValidate'] = $field_types[$field['Field']]['formValidate'];
               $field['searchable'] = $field_types[$field['Field']]['searchable'];
               $field['Type'] = preg_replace('/(.*)\(.*\)/','$1',$field['Type']);//去除长度显示的字段类型如varchar(32) 则为 varchar
+
               if(isset($object)){
-                  $field['value'] = $object[$field['Field']];
+                  if($field['form_field_type']=='datepicker'){
+                      $field['value'] =   date('Y-m-d H:i:s',$object[$field['Field']]) ;
+                  }else{
+                      $field['value'] =   $object[$field['Field']];
+                  }
               }else{
                   $field['value'] = '';
               }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 14:41:23
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-19 22:34:51
          compiled from "/Users/lost/www/locms/manage/templates/table_add.html" */ ?>
 <?php /*%%SmartyHeaderCode:20940948215113b09f8fbdf9-30905374%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f40ff406202083c6a7e35f2b1fe68adc5774cb47' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/table_add.html',
-      1 => 1361169679,
+      1 => 1361284487,
       2 => 'file',
     ),
   ),
@@ -44,7 +44,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_5113b09faee964_91530677')) {function content_5113b09faee964_91530677($_smarty_tpl) {?><div style="position:fixed;left:900px;z-index:10"><input type="button" name="" class="btn_orange btn_big" value="新增字段" onclick="addColumn()" />&nbsp;<input type="button" name="" class="btn_orange btn_big" value="说明" onclick="readme()" /></div>
 <div class="pageContent">
 	<form method="post" action="<?php echo smarty_site_url(array('action_method'=>'table/save'),$_smarty_tpl);?>
-" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone,'修改不能恢复,确认提交吗?');">
+" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone,'确认提交吗?');">
 		<input type="hidden" name="op" value="<?php echo $_smarty_tpl->tpl_vars['op']->value;?>
 " />
         <div class="pageFormContent" layoutH="56">

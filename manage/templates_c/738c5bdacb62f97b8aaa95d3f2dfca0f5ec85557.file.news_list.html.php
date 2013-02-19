@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 09:03:58
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-19 20:23:20
          compiled from "/Users/lost/www/locms/manage/templates/news_list.html" */ ?>
 <?php /*%%SmartyHeaderCode:163308612851217dfe143177-50950865%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '738c5bdacb62f97b8aaa95d3f2dfca0f5ec85557' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/news_list.html',
-      1 => 1358672071,
+      1 => 1361276592,
       2 => 'file',
     ),
   ),
@@ -15,16 +15,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_51217dfe233ca0_77391517',
   'variables' => 
   array (
     'page' => 0,
+    'static_on' => 0,
     'list' => 0,
     'element' => 0,
-    'static_on' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_51217dfe233ca0_77391517',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51217dfe233ca0_77391517')) {function content_51217dfe233ca0_77391517($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/Users/lost/www/locms/core/smarty/plugins/modifier.date_format.php';
 ?>
@@ -55,9 +55,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
+            <?php if ($_smarty_tpl->tpl_vars['static_on']->value==1){?>
             <li><a class="add" href="<?php echo smarty_site_url(array('action_method'=>'news/make'),$_smarty_tpl);?>
-" target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?"><span>批量生成</span></a></li>
-			<li><a class="delete" href="<?php echo smarty_site_url(array('action_method'=>'news/del'),$_smarty_tpl);?>
+" target="selectedTodo" rel="ids" postType="string" title="确定要生成吗?"><span>批量生成</span></a></li>
+			<?php }?>
+            <li><a class="delete" href="<?php echo smarty_site_url(array('action_method'=>'news/del'),$_smarty_tpl);?>
 " target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?"><span>批量删除</span></a></li>
 			<li class="line">line</li>
 		</ul>

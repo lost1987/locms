@@ -19,9 +19,11 @@ function initEnv() {
 	var ajaxbg = $("#background,#progressBar");
 	ajaxbg.hide();
 	$(document).ajaxStart(function(){
-		ajaxbg.show();
+        ajaxbg = art.dialog({title:false,padding:0,showclose:false,showborder:false});
+		//ajaxbg.show();
 	}).ajaxStop(function(){
-		ajaxbg.hide();
+		//ajaxbg.hide();
+        ajaxbg.close();
 	});
 	
 	$("#leftside").jBar({minW:150, maxW:700});

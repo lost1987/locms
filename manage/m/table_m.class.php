@@ -62,6 +62,14 @@ class Table_m extends Core implements CRUD
         return $this -> db -> query("delete from $this->tableName where tableName = '$tableName'") -> queryState;
     }
 
+    function check_table_config_exists($tableName){
+        $this -> db -> query("select id from $this->tableName where tableName='$tableName'");
+        if($this->db->num_rows() > 0){
+            return TRUE;
+        }
+        return FALSE;
+    }
+
     function save_fields($fieldNames,$fieldTypes,$refer,$datasource,$condition,$formValidate,$searchable,$tableName){
         $total = count($fieldNames);
         $sql = "insert into $this->tableNameField (tableName,fieldName,fieldType,refer,datasource,cond,formValidate,searchable) values ";

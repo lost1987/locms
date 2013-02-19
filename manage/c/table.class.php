@@ -18,7 +18,11 @@ class Table extends Core implements Action
     {
         // TODO: Implement save() method.
         //获取表单数据
-        $tableName = Config::item('DB','PREFIX').$this -> input -> post('tableName');
+        $sourceTableName = $this -> input -> post('tableName');
+        $tableName = Config::item('DB','PREFIX').$sourceTableName;
+        //检测表名称是否存在
+        if($this->tableModel ->check_table_config_exists($sourceTableName))dwz_failed('表名称已经存在,请更换!');
+
         $table_engine = $this -> input -> post('table_engine');
         $table_charset = $this -> input -> post('table_charset');
         $autocrement = $this -> input -> post('autocrement');
@@ -49,21 +53,23 @@ class Table extends Core implements Action
         $desp = $this->input->post('desp');
         $auto_form = $this->input->post('auto_form');
         $controller = $this -> input -> post('controller');
-        $config = array('tableName'=>$this ->input->post('tableName'),'desp'=>$desp,'auto_form_fields'=>$auto_form,'controller'=>$controller);
+        $config = array('tableName'=>$sourceTableName,'desp'=>$desp,'auto_form_fields'=>$auto_form,'controller'=>$controller);
 
         $op = $this -> input -> post('op');
 
-
-        /*//test
-        $res = $this->frm->create_table($tableName,$table_engine,$table_charset,$autocrement,$columns,$column_types,$column_length,$column_comments,$column_default,$column_isnull,$isprimarykey);
-        echo $res;*/
-
         if($this->frm->create_table($tableName,$table_engine,$table_charset,$autocrement,$columns,$column_types,$column_length,$column_comments,$column_default,$column_isnull,$isprimarykey)){
-            if($this -> tableModel -> save_config($config) && $this -> tableModel -> save_fields($columns,$form_field_types,$refer,$datasource,$condition,$formValidate,$searchable,$this ->input->post('tableName'))){
-                dwz_success();
+            try{
+                if(!$this -> tableModel -> save_config($config))throw new Exception('table_config write data error!');
+                try{
+                    if(!$this -> tableModel -> save_fields($columns,$form_field_types,$refer,$datasource,$condition,$formValidate,$searchable,$sourceTableName))throw new Exception('table_field write data error!');
+                    dwz_success();
+                }catch (Exception $e){
+                    $this -> tableModel -> del_config($tableName);
+                }
+            }catch (Exception $e){
+                $this -> frm -> drop_table($tableName);
+                dwz_failed($e -> getMessage());
             }
-            $this -> frm -> drop_table($tableName);
-            dwz_failed();
         }
         dwz_failed();
     }

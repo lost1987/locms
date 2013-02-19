@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="<!@{$smarty.const.WEBROOT}@>css/login.css" rel="stylesheet" type="text/css" />
+    <link media="all" rel="stylesheet" type="text/css" href="<!@{$smarty.const.WEBROOT}@>js/dialog/default.css" />
+    <script type="text/javascript" src="<!@{$smarty.const.WEBROOT}@>js/jquery-1.7.2.js"></script>
+    <script src="<!@{$smarty.const.WEBROOT}@>js/dialog/artDialog.min.js"></script>
+
+
+<body onkeydown="enterSubmit(event)">
+
+<div id="container">
+<div id="form_el">
+	<form action="<!@{Smarty_site_url action_method='login/dologin'}@>" method="post" id="loginform">
+		<span class="login_span"><input type="text" name="username" id="username" class="login_input" /></span>
+		<span class="login_span"><input type="password" name="password" id="password" class="login_input" /></span>
+		<span class="login_btn_span"><input type="button" value= "登  录" class="login_btn" onclick="login()" /></span>
+        <br/>
+        <p id="tips"><!@{$error_msg}@></p>
+	</form>
+</div>
+</div>
+<script type="text/javascript" >
+    function login(){
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        art.dialog({title:false,padding:0,showborder:false,showclose:false});
+        if(username != '' && password != ''){
+            document.getElementById('loginform').submit();
+        }
+    }
+
+    function enterSubmit(event){
+        var e = event || window.event;
+        if(e.keyCode == 13){
+            login();
+        }
+    }
+</script>
+</body>
+
+
+</html>
+

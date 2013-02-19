@@ -68,6 +68,7 @@ abstract class AutoModel extends Core
                                         $condition .= " $columnName = '$columnValue' and";
                                      break;
                     case 'checkbox':    $condition .= " locate($columnValue,$columnName) > 0 and";break;
+                    case 'datepicker':  $condition .= " $columnName = $columnValue and"; break;
 
                 }
 

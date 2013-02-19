@@ -54,6 +54,9 @@ function smarty_field($params){
         case 'password':    $form_field = '<input type="password" class="'.$class.'" name="'.$name.'" value="" style="width:350px" />';
                             break;
 
+        case 'datepicker':  $form_field = '<input type="text" datefmt="yyyy-MM-dd HH:mm:ss" readonly="true" class="date '.$class.'" name="'.$name.'" value="'.$value.'" style="width:200px" />';
+                            break;
+
         case 'combox':
                             $form_field = '<select name="'.$name.'" class="'.$class.'" >';
                             $options = '';
@@ -182,6 +185,10 @@ function smarty_search_field($params){
 
         case 'password':    $search_field = '';
             break;
+
+        case 'datepicker':  $search_field .= '<input type="text" datefmt="yyyy-MM-dd HH:mm:ss" readonly="true" class="date" name="'.$name.'" value="'.$value.'" />';
+                            $search_field .= '</td>';
+                            break;
 
         case 'combox':
             $search_field .= '<select name="'.$name.'"  >';

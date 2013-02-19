@@ -23,8 +23,10 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-            <li><a class="add" href="<!@{Smarty_site_url action_method='news/make'}@>" target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?"><span>批量生成</span></a></li>
-			<li><a class="delete" href="<!@{Smarty_site_url action_method='news/del'}@>" target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?"><span>批量删除</span></a></li>
+            <!@{if $static_on eq 1}@>
+            <li><a class="add" href="<!@{Smarty_site_url action_method='news/make'}@>" target="selectedTodo" rel="ids" postType="string" title="确定要生成吗?"><span>批量生成</span></a></li>
+			<!@{/if}@>
+            <li><a class="delete" href="<!@{Smarty_site_url action_method='news/del'}@>" target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?"><span>批量删除</span></a></li>
 			<li class="line">line</li>
 		</ul>
 	</div>

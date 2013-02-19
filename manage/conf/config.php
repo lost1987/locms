@@ -52,6 +52,7 @@ $config['mysql_table_charset'] = array(
 $config['form_field_types'] = array(
     'textfield',
     'password',
+    'datepicker',
     'combox',
     'radio',
     'textarea',

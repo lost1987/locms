@@ -42,6 +42,7 @@ abstract class AutoController extends Core
            $id = $this -> input -> post('id');
            $post = $this -> input -> post();
            unset($post['id']);
+           $this->save_fields_transfer($post);
 
            if(!empty($id)){
                 if($this-> model-> update($post,"id=$id")){
@@ -73,12 +74,15 @@ abstract class AutoController extends Core
     }
 
     /**
-     * 改变结果集,将checkbox,select,radio的值转换为key显示给用户
+     * 改变结果集,将checkbox,select,radio,的值转换为key显示给用户,datepicker的值转化为日期格式
      * @param $list  数据库查询出来返回的数组
      */
     function html_special_value_transfer(&$list){
         foreach($list as &$item){
             foreach($this->autoform->fields as $field){
+
+                if($field['form_field_type'] == 'datepicker') $item[$field['Field']] = date('Y-m-d H:i:s',$item[$field['Field']] );
+
                 if(!empty($field['datasource']) || !empty($field['refer'])){
                     switch($field['form_field_type']){
                         case 'combox':
@@ -169,7 +173,7 @@ abstract class AutoController extends Core
     }
 
     /**
-     * 将表单搜索post过来的值 与 autoform的fields字段合并,如果key相等 则把值赋予fields的value属性 并设置model中查询需要重组的post字段数组
+     * 将表单搜索post过来的值 与 autoform的fields字段合并,如果key相等 则把值赋予fields的value属性 并设置model中查询需要重组的post字段数组 datepicker的值转化为日期格式
      * @param $post
      */
     function set_search_fields_value(&$post){
@@ -178,10 +182,24 @@ abstract class AutoController extends Core
               if(array_key_exists($field['Field'],$post)){
                   $field['value'] = $post[$field['Field']];
                   $newpost[$field['Field']]['form_field_type'] = $field['form_field_type'];//将字段的表单元素类型赋予post 用于判断model中查询条件的符号是等号还是like
-                  $newpost[$field['Field']]['value'] = $post[$field['Field']];
+                  if($field['form_field_type'] == 'datepicker')$newpost[$field['Field']]['value'] = strtotime(str_replace('&nbsp;','',$post[$field['Field']]));
+                  else $newpost[$field['Field']]['value'] = $post[$field['Field']];
               }
         }
         $post = $newpost;
+    }
+
+
+    /**
+     * 将save或edit post过来的值 进行转化 如日期类型 存储为int
+     * @param $post
+     */
+    function fields_transfer(&$post){
+        foreach($this -> autoform -> fields as $field){
+            if($field['form_field_type'] == 'datepicker'){
+                $post[$field['Field']] = strtotime(str_replace('&nbsp;','',$post[$field['Field']]));
+            }
+        }
     }
 
 }
