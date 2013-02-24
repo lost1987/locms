@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-19 13:05:59
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-21 16:38:46
          compiled from "/Users/lost/www/locms/manage/templates/login.html" */ ?>
 <?php /*%%SmartyHeaderCode:6245540005122f19816f585-06629117%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9928a4d5261e49ed94bbe52d8a33685d3b48377f' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/login.html',
-      1 => 1361250355,
+      1 => 1361435328,
       2 => 'file',
     ),
   ),
@@ -30,7 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="<?php echo @WEBROOT;?>
-css/login.css" rel="stylesheet" type="text/css" />
+css/admin/login.css" rel="stylesheet" type="text/css" />
     <link media="all" rel="stylesheet" type="text/css" href="<?php echo @WEBROOT;?>
 js/dialog/default.css" />
     <script type="text/javascript" src="<?php echo @WEBROOT;?>

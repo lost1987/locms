@@ -18,11 +18,13 @@ function initEnv() {
 
 	var ajaxbg = $("#background,#progressBar");
 	ajaxbg.hide();
+
 	$(document).ajaxStart(function(){
         ajaxbg = art.dialog({title:false,padding:0,showclose:false,showborder:false});
 		//ajaxbg.show();
 	}).ajaxStop(function(){
 		//ajaxbg.hide();
+        if(ajaxbg.__proto__.hasOwnProperty('close'))
         ajaxbg.close();
 	});
 	

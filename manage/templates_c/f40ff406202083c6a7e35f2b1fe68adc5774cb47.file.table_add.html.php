@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-19 22:34:51
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-24 19:03:54
          compiled from "/Users/lost/www/locms/manage/templates/table_add.html" */ ?>
 <?php /*%%SmartyHeaderCode:20940948215113b09f8fbdf9-30905374%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f40ff406202083c6a7e35f2b1fe68adc5774cb47' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/table_add.html',
-      1 => 1361284487,
+      1 => 1361703829,
       2 => 'file',
     ),
   ),
@@ -413,13 +413,13 @@ $_smarty_tpl->tpl_vars['field_type']->_loop = true;
                 <dl class="nowrap">
                     <dt>关联:</dt>
                     <dd><input class="textInput" name="refer<?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration'];?>
-" value="<?php echo $_smarty_tpl->tpl_vars['element']->value['refer'];?>
+" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['element']->value['refer'])===null||$tmp==='' ? '' : $tmp);?>
 "/></dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>数据源:</dt>
                     <dd><input class="textInput" name="datasource<?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['foo']['iteration'];?>
-" style="width:450px" value="<?php echo $_smarty_tpl->tpl_vars['element']->value['datasource'];?>
+" style="width:450px" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['element']->value['datasource'])===null||$tmp==='' ? '' : $tmp);?>
 "/></dd>
                 </dl>
                 <dl class="nowrap">

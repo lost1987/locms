@@ -14,7 +14,11 @@ require BASEPATH.'function/function_core.php';
 require BASEPATH.'core/factory.class.php';
 require BASEPATH.'core/db_engine.class.php';
 require BASEPATH.'core/autoload.class.php';
-require BASEPATH . 'core/smarty/Smarty.class.php';
+require BASEPATH.'core/pathinfo.class.php';
+require BASEPATH.'core/config.class.php';
+require BASEPATH.'core/smarty/Smarty.class.php';
+
+spl_autoload_register(array('Autoload','_autoload'));
 
 $tpl = new Tpl();
 $tpl->template_dir = BASEPATH.PHP_DIRECTORY."/templates/";
@@ -28,8 +32,6 @@ $tpl->caching        = false;             //这里是调试时设为false,发布
 $tpl->right_delimiter = '}@>';
 $tpl->compile_check = true;
 $tpl->debugging = false;
-
-spl_autoload_register(array('Autoload','_autoload'));
 
 global $settings;
 if(get_magic_quotes_runtime()){

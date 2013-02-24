@@ -1,0 +1,18 @@
+<div style="margin-top:10px;margin-left:15px;">
+地址&nbsp;:&nbsp;<input type="text" name="url" id="url" value="http://" style="width:300px"/>
+目标网页编码&nbsp;:&nbsp;<input type="radio" name="charset" value="UTF-8" checked="checked">UTF-8 &nbsp;  <input type="radio" name="charset" value="GBK" >GBK
+<button type="button" id="ck_btn"  onclick="getUrls()" >开始检测</button>
+<button type="button" id="res_btn"  onclick="showresult()" >查看结果</button>
+<button type="button"  onclick="clearCheck()" >清空结果</button>
+
+<link rel="stylesheet" type="text/css" href="<!@{$smarty.const.WEBROOT}@>css/admin/crawler.css" />
+<script src="<!@{$smarty.const.WEBROOT}@>jslib/lost.js" ></script>
+<script src="<!@{$smarty.const.WEBROOT}@>jslib/crawler.js" ></script>
+
+<div id="error_info">
+    <a href=></a>
+</div>
+<table id="links">
+
+</table>
+</div>

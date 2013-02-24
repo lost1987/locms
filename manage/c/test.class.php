@@ -13,4 +13,5 @@ class Test extends AutoController
     function test(){
         $this -> model = new Test_m();
     }
+
 }

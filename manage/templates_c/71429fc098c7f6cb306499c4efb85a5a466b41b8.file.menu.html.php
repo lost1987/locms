@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-07 21:48:12
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-21 16:38:49
          compiled from "/Users/lost/www/locms/manage/templates/menu.html" */ ?>
 <?php /*%%SmartyHeaderCode:4688592835113b09ccfa541-22265194%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '71429fc098c7f6cb306499c4efb85a5a466b41b8' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/menu.html',
-      1 => 1360241027,
+      1 => 1361435441,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_5113b09cd35404_92350643',
   'variables' => 
   array (
     'admin_display' => 0,
@@ -23,8 +25,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'table_display' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5113b09cd35404_92350643',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5113b09cd35404_92350643')) {function content_5113b09cd35404_92350643($_smarty_tpl) {?><div id="leftside">
     <div id="sidebar_s">
@@ -134,6 +134,16 @@ dwz.frag.xml" target="navTab" external="true">dwz.frag.xml</a></li>
 " target="navTab" rel="table_add">测试list</a></li>
     <li><a href="<?php echo smarty_site_url(array('action_method'=>'test/edit'),$_smarty_tpl);?>
 " target="navTab" rel="table_add">测试add</a></li>
+</ul>
+</div>
+
+<div class="accordionHeader">
+<h2><span>Folder</span>工具</h2>
+</div>
+<div class="accordionContent" >
+<ul class="tree">
+    <li><a href="<?php echo smarty_site_url(array('action_method'=>'crawler'),$_smarty_tpl);?>
+" target="navTab" rel="table_list">坏链检测</a></li>
 </ul>
 </div>
 

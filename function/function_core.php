@@ -360,4 +360,25 @@ function fetch_array($start , $limit ,$array){
     return $newarray;
 }
 
+
+/**
+ * @param $dir String  目录的路径最后需要加'/'
+ * 取得指定目录下的所有子目录
+ */
+function fetch_children_dir($dir){
+
+      if(!preg_match('/.*\/$/i',$dir)){
+          $dir = $dir.DIRECTORY_SEPARATOR;
+      }
+
+      $files_dirs = scandir($dir);
+      $dirnames = array();
+      foreach($files_dirs as $dirname){
+          if(is_dir($dir.$dirname) && strpos($dirname,'.') === false){
+                $dirnames[] = $dirname;
+          }
+      }
+      return $dirnames;
+}
+
 ?>

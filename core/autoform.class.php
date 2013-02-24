@@ -46,6 +46,7 @@ class Autoform extends Core
         }
 
         $form_field_types = $this->db->query("select * from $this->tableNameField where tableName = '$tableSourceName'")->result_array();
+
         $field_types = array();
         foreach($form_field_types as $field_type){
             $field_types[$field_type['fieldName']] = $field_type;

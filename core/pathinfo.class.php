@@ -18,6 +18,8 @@ class Pathinfo
 
     public $entrance;
 
+    public $directory;
+
     function Pathinfo(){
         $this -> init();
     }
@@ -52,8 +54,16 @@ class Pathinfo
                $this -> method = Config::item('controller','default_method');
         }
 
-        else{
+        else if(count($params) == 4){
             list(,$this -> entrance, $this -> controller , $this -> method) =  $params;
+            if(!class_exists($this->controller)){//如果控制器或者模型在c或m文件夹里还有文件夹包着 就会进入此逻辑
+                list(,$this -> entrance, $this->directory, $this -> controller) =  $params;
+                $this -> method = Config::item('controller','default_method');
+            }
+        }
+
+        else if(count($params) == 5){
+            list(,$this -> entrance, $this->directory, $this -> controller , $this -> method) =  $params;
         }
 
     }
