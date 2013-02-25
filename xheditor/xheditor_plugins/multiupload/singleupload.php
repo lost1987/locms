@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
@@ -12,7 +15,7 @@
 $(window).load(pageInit);
 function pageInit()
 {
-	var uploadurl='',ext='所有文件 (*.*)',size='2 MB',count=1,useget=0,params={}//默认值
+	var uploadurl='upload.php',ext='所有文件 (*.jpg;*.gif;*.png)',size='1 MB',count=1,useget=0,params={}//默认值
 
 	uploadurl=getQuery('uploadurl')||uploadurl;ext=getQuery('ext')||ext;size=getQuery('size')||size;count=getQuery('count')||count;useget=getQuery('useget')||useget;
 	var tmpParams=getQuery('params');

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 16:16:39
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 17:36:30
          compiled from "/Users/lost/www/locms/manage/templates/auto/list.html" */ ?>
 <?php /*%%SmartyHeaderCode:572970743511f21b9274b43-86389135%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '36e29f9077abd62b88be37792e45c04eb8f09582' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/auto/list.html',
-      1 => 1361175357,
+      1 => 1361784988,
       2 => 'file',
     ),
   ),
@@ -104,8 +104,14 @@ foreach ($_from as $_smarty_tpl->tpl_vars['field']->key => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['field']->_loop = true;
 ?>
             <?php if ($_smarty_tpl->tpl_vars['field']->value['form_field_type']!='textedit'&&$_smarty_tpl->tpl_vars['field']->value['form_field_type']!='textarea'){?>
-                <td><?php echo $_smarty_tpl->tpl_vars['element']->value[$_smarty_tpl->tpl_vars['field']->value['Field']];?>
+                <?php if ($_smarty_tpl->tpl_vars['field']->value['form_field_type']=='upload'){?>
+                     <td class="imgs"><img src="<?php echo @WEBROOT;?>
+<?php echo $_smarty_tpl->tpl_vars['element']->value[$_smarty_tpl->tpl_vars['field']->value['Field']];?>
+" width="150"/></td>
+                 <?php }else{ ?>
+                     <td><?php echo $_smarty_tpl->tpl_vars['element']->value[$_smarty_tpl->tpl_vars['field']->value['Field']];?>
 </td>
+                <?php }?>
             <?php }?>
             <?php } ?>
         </tr>

@@ -23,28 +23,44 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pathinfo.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/pathinfo.class.php">
+      <file leaf-file-name="function_smarty.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/function/function_smarty.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="32" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.0">
+            <state line="151" column="20" selection-start="8557" selection-end="8563" vertical-scroll-proportion="-17.807692">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="table.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage/c/table.class.php">
+      <file leaf-file-name="edit.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manage/templates/auto/edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="85" column="16" selection-start="4530" selection-end="4530" vertical-scroll-proportion="-24.153847">
+              <folding>
+                <marker date="1361783549000" expanded="true" signature="2028:2109" placeholder="..." />
+                <marker date="1361783549000" expanded="true" signature="2295:2309" placeholder="..." />
+                <marker date="1361783549000" expanded="true" signature="2342:2368" placeholder="..." />
+                <marker date="1361783549000" expanded="true" signature="2904:2985" placeholder="..." />
+                <marker date="1361783549000" expanded="true" signature="3171:3185" placeholder="..." />
+                <marker date="1361783549000" expanded="true" signature="3218:3244" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/manage/templates/auto/list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="1" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.47685835">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage/c/test.class.php">
+      <file leaf-file-name="autocontroller.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/autocontroller.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0">
+            <state line="44" column="33" selection-start="1351" selection-end="1351" vertical-scroll-proportion="-24.192308">
               <folding />
             </state>
           </provider>
@@ -53,64 +69,43 @@
       <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manage/conf/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="32" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
+            <state line="60" column="11" selection-start="1176" selection-end="1182" vertical-scroll-proportion="-22.23077">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memcaches.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/extend/memcaches.class.php">
+      <file leaf-file-name="news_list.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manage/templates/news_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="7" selection-start="953" selection-end="953" vertical-scroll-proportion="-8.5">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="table_add.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage/templates/table_add.html">
+      <file leaf-file-name="news_add.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manage/templates/news_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="261" column="70" selection-start="17172" selection-end="17172" vertical-scroll-proportion="-140.57692">
+            <state line="103" column="450" selection-start="5509" selection-end="5509" vertical-scroll-proportion="-18.461538">
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1361780550000" expanded="false" signature="5089:5170" placeholder="..." />
+                <marker date="1361780550000" expanded="false" signature="5347:5361" placeholder="..." />
+                <marker date="1361780550000" expanded="false" signature="5394:5420" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="autoform.class.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/autoform.class.php">
+      <file leaf-file-name="singleupload.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xheditor/xheditor_plugins/multiupload/singleupload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="8" selection-start="1943" selection-end="1943" vertical-scroll-proportion="0.6942605">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="autoload.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/autoload.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="29" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="function_core.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/function/function_core.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="371" column="7" selection-start="10193" selection-end="10193" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="url_check.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/extend/url_check.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="26" selection-start="3432" selection-end="3432" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="37" column="61" selection-start="1478" selection-end="1478" vertical-scroll-proportion="-24.192308">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,29 +120,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/extend/url_check.class.php" />
-        <option value="$PROJECT_DIR$/js/dwz.ui.js" />
-        <option value="$PROJECT_DIR$/jslib/lost.js" />
-        <option value="$PROJECT_DIR$/manage/templates/crawler.html" />
-        <option value="$PROJECT_DIR$/jslib/crawler.js" />
-        <option value="$PROJECT_DIR$/manage/c/p/k.class.php" />
-        <option value="$PROJECT_DIR$/core/publish.php" />
-        <option value="$PROJECT_DIR$/function/function_core.php" />
-        <option value="$PROJECT_DIR$/core/autoload.class.php" />
-        <option value="$PROJECT_DIR$/core/pathinfo.class.php" />
-        <option value="$PROJECT_DIR$/manage/c/test.class.php" />
-        <option value="$PROJECT_DIR$/manage/conf/config.php" />
-        <option value="$PROJECT_DIR$/extend/memcache.class.php" />
         <option value="$PROJECT_DIR$/extend/memcaches.class.php" />
-        <option value="$PROJECT_DIR$/manage/templates/table_add.html" />
         <option value="$PROJECT_DIR$/core/autoform.class.php" />
+        <option value="$PROJECT_DIR$/manage/templates/table_add.html" />
+        <option value="$PROJECT_DIR$/js/uploadify/uploadify.css" />
+        <option value="$PROJECT_DIR$/manage/c/upload.class.php" />
+        <option value="$PROJECT_DIR$/crossdomain.xml" />
+        <option value="$PROJECT_DIR$/manage/templates/index.html" />
+        <option value="$PROJECT_DIR$/xheditor/xheditor_plugins/multiupload/singleupload.html" />
+        <option value="$PROJECT_DIR$/xheditor/xheditor_plugins/multiupload/multiupload.html" />
+        <option value="$PROJECT_DIR$/xheditor/xheditor_plugins/multiupload/singleupload.php" />
+        <option value="$PROJECT_DIR$/manage/templates/news_add.html" />
+        <option value="$PROJECT_DIR$/core/autocontroller.class.php" />
+        <option value="$PROJECT_DIR$/function/function_smarty.php" />
+        <option value="$PROJECT_DIR$/manage/templates/auto/edit.html" />
+        <option value="$PROJECT_DIR$/manage/conf/config.php" />
+        <option value="$PROJECT_DIR$/manage/templates/auto/list.html" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -203,6 +198,74 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="xheditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xheditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xheditor_plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xheditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xheditor_plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multiupload" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -216,26 +279,26 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../newqj" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/manage/c" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/jslib" />
       <recent name="$PROJECT_DIR$/manage/templates" />
       <recent name="$PROJECT_DIR$/css" />
       <recent name="$PROJECT_DIR$/extend" />
-      <recent name="$PROJECT_DIR$/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/manage/c" />
       <recent name="$PROJECT_DIR$/css" />
       <recent name="$PROJECT_DIR$/css/admin" />
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/jslib/dialog" />
-      <recent name="$PROJECT_DIR$/conf" />
     </key>
   </component>
   <component name="RunManager">
@@ -283,14 +346,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.06990395" sideWeight="0.67686033" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09711846" sideWeight="0.67686033" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1563845" sideWeight="0.67686033" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1814921" sideWeight="0.67686033" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904148" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -360,108 +423,131 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manage/templates/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="0" selection-start="3505" selection-end="3505" vertical-scroll-proportion="0.6787004" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage/c/crawler.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="38" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage/templates/crawler.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="801" selection-end="801" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jslib/crawler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="15" selection-start="475" selection-end="475" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jslib/lost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="562" column="14" selection-start="20780" selection-end="20785" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/publish.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="31" selection-start="827" selection-end="827" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/autoload.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="29" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/function_core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="371" column="7" selection-start="10193" selection-end="10193" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/extend/url_check.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="26" selection-start="3432" selection-end="3432" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/pathinfo.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="32" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage/c/table.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="23" column="37" selection-start="487" selection-end="501" vertical-scroll-proportion="-15.038462">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/c/test.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0">
+        <state line="17" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.25757575">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extend/url_check.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="37" selection-start="2582" selection-end="2592" vertical-scroll-proportion="0.27755103">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/function/function_core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="342" column="3" selection-start="9669" selection-end="9669" vertical-scroll-proportion="0.22993197">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="16" selection-start="187" selection-end="195" vertical-scroll-proportion="-3.2692308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="545" selection-end="655" vertical-scroll-proportion="-1.9615384">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xheditor/xheditor_plugins/multiupload/multiupload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="48" selection-start="3445" selection-end="3445" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xheditor/xheditor_plugins/multiupload/multiupload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xheditor/xheditor_plugins/multiupload/singleupload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="61" selection-start="1478" selection-end="1478" vertical-scroll-proportion="-24.192308">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage/templates/news_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/function/function_smarty.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="20" selection-start="8557" selection-end="8563" vertical-scroll-proportion="-17.807692">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage/templates/auto/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="16" selection-start="4530" selection-end="4530" vertical-scroll-proportion="-24.153847">
+          <folding>
+            <marker date="1361783549000" expanded="true" signature="2028:2109" placeholder="..." />
+            <marker date="1361783549000" expanded="true" signature="2295:2309" placeholder="..." />
+            <marker date="1361783549000" expanded="true" signature="2342:2368" placeholder="..." />
+            <marker date="1361783549000" expanded="true" signature="2904:2985" placeholder="..." />
+            <marker date="1361783549000" expanded="true" signature="3171:3185" placeholder="..." />
+            <marker date="1361783549000" expanded="true" signature="3218:3244" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/conf/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="32" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
+        <state line="60" column="11" selection-start="1176" selection-end="1182" vertical-scroll-proportion="-22.23077">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extend/memcaches.class.php">
+    <entry file="file://$PROJECT_DIR$/manage/templates/news_add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="7" selection-start="953" selection-end="953" vertical-scroll-proportion="-8.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage/templates/table_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="261" column="70" selection-start="17172" selection-end="17172" vertical-scroll-proportion="-140.57692">
+        <state line="103" column="450" selection-start="5509" selection-end="5509" vertical-scroll-proportion="-18.461538">
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1361780550000" expanded="false" signature="5089:5170" placeholder="..." />
+            <marker date="1361780550000" expanded="false" signature="5347:5361" placeholder="..." />
+            <marker date="1361780550000" expanded="false" signature="5394:5420" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/autoform.class.php">
+    <entry file="file://$PROJECT_DIR$/core/autocontroller.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="8" selection-start="1943" selection-end="1943" vertical-scroll-proportion="0.6942605">
+        <state line="44" column="33" selection-start="1351" selection-end="1351" vertical-scroll-proportion="-24.192308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage/templates/auto/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="1" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.47685835">
           <folding />
         </state>
       </provider>

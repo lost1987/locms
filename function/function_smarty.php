@@ -148,6 +148,12 @@ function smarty_field($params){
         case 'textedit':
                             $form_field = '<textarea class="editor" rows="40" cols="100" name="'.$name.'">'.$value.'</textarea>';
                             break;
+
+        case 'upload' :     $form_field = '<input type="text" value="'.$value.'" style="width:300px" name="'.$name.'" id="'.$name.'" readonly="true"/>&nbsp;&nbsp;<input type="button" class="btn_orange" value="浏览" onclick="showupwindow(\''.$name.'\')" />';
+                            break;
+
+        case 'multiupload' :$form_field = '<input type="hidden" class="multi_val" value="'.$value.'"   name="'.$name.'" id="'.$name.'" />&nbsp;&nbsp;<input type="button" class="btn_orange" value="浏览多个文件" onclick="show_multi_upload(\''.$name.'\')" /><div class="multi_contianer"></div>';
+                            break;
         default:break;
     }
     echo $form_field;

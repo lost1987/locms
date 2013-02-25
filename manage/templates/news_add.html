@@ -101,7 +101,7 @@ function showupwindow(node)
 {
 $('#callback').val(node);
 var t = Date.parse(new Date());
-$('body').append('<div style="width: 349px; height: 220px; margin-left: -175px; margin-top: -110px; top: 355px;" class="xheModal" id="div_up"><div class="xheModalTitle"><span title="关闭 (Esc)" class="xheModalClose" onclick="close_up()"></span>上传文件</div><div class="xheModalContent" style="height: 191px;"><iframe frameborder="0" style="width: 100%; height: 100%;" src="<!@{$smarty.const.WEBROOT}@>xheditor/xheditor_plugins/multiupload/singleupload.html?watermark=0&t="'+t+'></iframe></div></div>');
+$('body').append('<div style="width: 349px; height: 220px; margin-left: -175px; margin-top: -110px; top: 355px;" class="xheModal" id="div_up"><div class="xheModalTitle"><span title="关闭 (Esc)" class="xheModalClose" onclick="close_up()"></span>上传文件</div><div class="xheModalContent" style="height: 191px;"><iframe frameborder="0" style="width: 100%; height: 100%;" src="<!@{$smarty.const.WEBROOT}@>xheditor/xheditor_plugins/multiupload/singleupload.php?watermark=0&t="'+t+'></iframe></div></div>');
 $('#div_up').css('top',$(document).scrollTop()+(window.screen.availHeight/2-80));
 }
 

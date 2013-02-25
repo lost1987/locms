@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-19 11:44:33
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 15:12:44
          compiled from "/Users/lost/www/locms/manage/templates/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:16127850715113b09cbbff03-02160463%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f3a24adfc1057dddf4270d041d0c1fc3d5ef4a5' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/index.html',
-      1 => 1361245383,
+      1 => 1361776361,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
-<title>简单实用国产jQuery UI框架 - DWZ富客户端框架(J-UI.com)</title>
+<title>LOCMS</title>
 
 <link href="<?php echo @WEBROOT;?>
 themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
@@ -55,7 +55,6 @@ js/jquery.validate.js" type="text/javascript"></script>
 js/jquery.bgiframe.js" type="text/javascript"></script>
 <script src="<?php echo @WEBROOT;?>
 xheditor/xheditor-1.1.14-zh-cn.min.js" type="text/javascript"></script>
-
 
 <!-- svg图表  supports Firefox 3.0+, Safari 3.0+, Chrome 5.0+, Opera 9.5+ and Internet Explorer 6.0+ -->
 <script type="text/javascript" src="<?php echo @WEBROOT;?>
@@ -264,18 +263,6 @@ Error loading XML document: dwz.frag.xml
 
 	<div id="footer">Copyright &copy; 2010 <a href="demo_page2.html" target="dialog">DWZ团队</a> Tel：010-52897073</div>
 
-<!-- 注意此处js代码用于google站点统计，非DWZ代码，请删除 -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-16716654-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? ' https://ssl' : ' http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 
 <script> $(function(){ $(".tabsPageContent").css('overflow-y','scroll'); })</script>
 

@@ -1,6 +1,7 @@
 <div class="pageContent">
     <form method="post" action="<!@{Smarty_site_url action_method = $autoform->action|cat:'/save'}@>" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
         <input type="hidden" name="id" value="<!@{$id|default:''}@>" />
+        <input type="hidden" id="callback" />
         <div class="pageFormContent" layoutH="56">
             <fieldset>
                 <legend><!@{$autoform->desp}@></legend>
@@ -8,11 +9,12 @@
                 <!@{if $smarty.foreach.foo.iteration eq 1 && $field.Key eq 'PRI'}@>
                     <!--{如果第一个字段是主键则不显示}-->
                 <!@{else}@>
-                <dl class="nowrap">
-                    <dt><!@{$field.Comment}@>:</dt>
-                    <dd>
-                        <!@{Smarty_field name=$field.Field type=$field.form_field_type value=$field.value|default:"" refer=$field.refer datasource=$field.datasource condition=$field.cond validate=$field.formValidate}@>
-                    </dd>
+                    <?php $timestamp = time(); ?>
+                    <dl class="nowrap">
+                        <dt><!@{$field.Comment}@>:</dt>
+                        <dd>
+                            <!@{Smarty_field name=$field.Field type=$field.form_field_type value=$field.value|default:"" refer=$field.refer datasource=$field.datasource condition=$field.cond validate=$field.formValidate}@>
+                        </dd>
                 </dl>
                 <!@{/if}@>
                 <!@{/foreach}@>
@@ -29,3 +31,74 @@
         </div>
     </form>
 </div>
+<link href="<!@{$smarty.const.WEBROOT}@>xheditor/xheditor_skin/default/ui.css" rel="stylesheet" type="text/css"/>
+<script>
+    //针对上传写的脚本
+    function showupwindow(node)
+    {
+        $('#callback').val(node);
+        var t = Date.parse(new Date());
+        $('body').append('<div style="width: 349px; height: 220px; margin-left: -175px; margin-top: -110px; top: 355px;" class="xheModal" id="div_auto_upload"><div class="xheModalTitle"><span title="关闭 (Esc)" class="xheModalClose" onclick="close_up()"></span>上传文件</div><div class="xheModalContent" style="height: 191px;"><iframe frameborder="0" style="width: 100%; height: 100%;" src="<!@{$smarty.const.WEBROOT}@>xheditor/xheditor_plugins/multiupload/singleupload.php?watermark=0&t="'+t+'></iframe></div></div>');
+        $('#div_auto_upload').css('top',$(document).scrollTop()+(window.screen.availHeight/2-80));
+    }
+
+    function close_up()
+    {
+        $('#div_auto_upload').remove();
+    }
+
+
+    var multiNode ;
+
+    function show_multi_upload(node){
+        multiNode = node;
+        $('#callback').val('multi_upload_callback');
+        var t = Date.parse(new Date());
+        $('body').append('<div style="width: 349px; height: 220px; margin-left: -175px; margin-top: -110px; top: 355px;" class="xheModal" id="div_auto_upload"><div class="xheModalTitle"><span title="关闭 (Esc)" class="xheModalClose" onclick="close_up()"></span>上传文件</div><div class="xheModalContent" style="height: 191px;"><iframe frameborder="0" style="width: 100%; height: 100%;" src="<!@{$smarty.const.WEBROOT}@>xheditor/xheditor_plugins/multiupload/multiupload.php?watermark=0&t="'+t+'></iframe></div></div>');
+        $('#div_auto_upload').css('top',$(document).scrollTop()+(window.screen.availHeight/2-80));
+    }
+
+    function multi_upload_callback(urls){
+        $('#multi_contianer').empty();
+        $("#"+multiNode).val(urls);
+        var urls = urls.split(',');
+        for(var i in urls){
+            $("#"+multiNode).next().next().append('<div class="ms_container"><span>'+urls[i]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<i onclick="multi_del(this)">X</i></div>');
+        }
+    }
+
+    function multi_del(node){
+        $(node).parent().remove();
+        var new_url = [];
+        var new_url_span = $("#"+multiNode).next().next().find('span').each(function(){
+                new_url.push($(this).text());
+        })
+        $("#"+multiNode).val(new_url.join(','));
+    }
+
+    $(function(){//
+        $("input[class='multi_val']").each(function(){
+            if($(this).val() != ''){
+                var urls = $(this).val().split(',');
+                for(var i in urls){
+                    $(this).next().next().append('<div class="ms_container"><span>'+urls[i]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<i onclick="multi_del(this)">X</i></div>');
+
+                }
+            }
+        });
+
+    })
+
+</script>
+
+<style>
+    .ms_container{
+        height:25px;
+        margin-top:10px;
+    }
+
+    .ms_container i{
+        cursor:pointer;
+        color:red;
+    }
+</style>

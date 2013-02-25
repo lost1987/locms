@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-31 17:00:14
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 17:29:11
          compiled from "/Users/lost/www/locms/application/templates/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:1587144547510a1f34cf3414-60220636%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bad7876abc80f41033f6afcc33a8b565d1f6542f' => 
     array (
       0 => '/Users/lost/www/locms/application/templates/index.html',
-      1 => 1359620164,
+      1 => 1361435347,
       2 => 'file',
     ),
   ),

@@ -42,7 +42,7 @@ abstract class AutoController extends Core
            $id = $this -> input -> post('id');
            $post = $this -> input -> post();
            unset($post['id']);
-           $this->save_fields_transfer($post);
+           $this->fields_transfer($post);
 
            if(!empty($id)){
                 if($this-> model-> update($post,"id=$id")){

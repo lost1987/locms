@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-24 19:03:54
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 10:54:32
          compiled from "/Users/lost/www/locms/manage/templates/table_add.html" */ ?>
 <?php /*%%SmartyHeaderCode:20940948215113b09f8fbdf9-30905374%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f40ff406202083c6a7e35f2b1fe68adc5774cb47' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/table_add.html',
-      1 => 1361703829,
+      1 => 1361760509,
       2 => 'file',
     ),
   ),
@@ -661,9 +661,10 @@ function delColumn(node){
 ','tableName='+tableName+'&columnName='+columnName,function(data){
                 if(data.replace(/\s+/g,'') == 1){
                     _node.parent().parent().remove();
+                    art.alert('操作成功!');
                     return;
                 }
-                art.alert('修改出错,请联系开发人员');
+                art.alert('修改出错,暴打程序猿');
             })
         }, function () {});
     }
@@ -694,9 +695,10 @@ function updateColumn(node){
 ',data,function(data){
                 if(data.replace(/\s+/g,'')==1){
                     _node.parent().next().find('input').eq(1).val(columnName);
+                    art.alert('操作成功!');
                     return;
                 }
-                art.alert('修改出错,请联系开发人员');
+                art.alert('修改出错,暴打程序猿');
             })
         }, function () {});
     }
@@ -728,9 +730,10 @@ function saveColumn(node){
                 if(data.replace(/\s+/g,'')==1){
                     _node.parent().next().find('input').after('<input type="hidden" class="sourceColumn" value="'+columnName+'">');
                     _node.replaceWith('<input type="button" class="btn_orange" onclick="updateColumn(this)" value="修改" />')
+                    art.alert('操作成功!');
                     return;
                 }
-                art.alert('修改出错,请联系开发人员');
+                art.alert('修改出错,暴打程序猿');
             })
             },function(){});
     }
@@ -743,8 +746,9 @@ function alterTable(node){
         $.post('<?php echo smarty_site_url(array('action_method'=>"table/alterTableByAjax"),$_smarty_tpl);?>
 ','engine='+engine+'&tableName='+tableName,function(data){
             if(data.replace(/\s+/g,'')!=1){
-                art.alert('修改出错,请联系开发人员');
+                art.alert('修改出错,暴打程序猿');return;
             }
+            art.alert('操作成功!');
         })
     }, function () {});
 }
@@ -758,8 +762,9 @@ function alterTableConfig(node){
         $.post('<?php echo smarty_site_url(array('action_method'=>"table/alterTableConfigByAjax"),$_smarty_tpl);?>
 ','desp='+desp+'&tableName='+tableName+'&autoform='+autoform+'&controller='+controller,function(data){
             if(data.replace(/\s+/g,'')!=1){
-                art.alert('修改出错,请联系开发人员');
+                art.alert('修改出错,暴打程序猿');return;
             }
+            art.alert('操作成功!');
         })
     }, function () {});
 }

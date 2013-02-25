@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-18 12:55:14
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 15:29:34
          compiled from "/Users/lost/www/locms/manage/templates/news_add.html" */ ?>
 <?php /*%%SmartyHeaderCode:20022285945121b432b44333-82690088%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cdd6251b251ce179e5d0db22268c1f4e2e268376' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/news_add.html',
-      1 => 1357813029,
+      1 => 1361777146,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.12',
+  'unifunc' => 'content_5121b432c75a12_28955158',
   'variables' => 
   array (
     'article' => 0,
@@ -23,8 +25,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'flag' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_5121b432c75a12_28955158',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5121b432c75a12_28955158')) {function content_5121b432c75a12_28955158($_smarty_tpl) {?>
 <div class="pageContent">

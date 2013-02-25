@@ -57,7 +57,9 @@ $config['form_field_types'] = array(
     'radio',
     'textarea',
     'checkbox',
-    'textedit'
+    'textedit',
+    'upload',
+    'multiupload'
 );
 
 ?>

@@ -12,7 +12,7 @@
 $(window).load(pageInit);
 function pageInit()
 {
-	var uploadurl='upload.php',ext='所有文件 (*.*)',size='2 MB',count=1,useget=0,params={}//默认值
+	var uploadurl='upload.php',ext='所有文件 (*.jpg;*.gif;*.png)',size='1 MB',count=5,useget=0,params={}//默认值
 
 	uploadurl=getQuery('uploadurl')||uploadurl;ext=getQuery('ext')||ext;size=getQuery('size')||size;count=getQuery('count')||count;useget=getQuery('useget')||useget;
 	var tmpParams=getQuery('params');
