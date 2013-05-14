@@ -44,7 +44,7 @@ class Table extends Core implements Action
             $form_field_types[] = $this -> input -> post('formfieldtype'.$i);
             $refer[] = $this -> input -> post('refer'.$i);
             $datasource[] = $this -> input -> post('datasource'.$i);
-            $condition[] = $this -> input -> post('cond'.$i);
+            $condition[] = $_POST['cond'.$i];
             $formValidate[] =  $this -> input -> post('formValidate'.$i);
             $searchable[] = $this -> input -> post('searchable'.$i);
         }
@@ -214,7 +214,7 @@ class Table extends Core implements Action
         $form_field_type = $this -> input -> post('formfieldtype');
         $refer = $this -> input -> post('refer');
         $datasource = $this -> input -> post('datasource');
-        $condition = $this -> input -> post('cond');
+        $condition = $_POST['cond'];
         $formValidate = $this -> input -> post('formValidate');
         $searchable = $this -> input -> post('searchable');
 
@@ -251,7 +251,7 @@ class Table extends Core implements Action
         $form_field_type = $this -> input -> post('formfieldtype');
         $refer = $this -> input -> post('refer');
         $datasource = $this -> input -> post('datasource');
-        $condition = $this -> input -> post('cond');
+        $condition = $_POST['cond'];
         $formValidate = $this -> input -> post('formValidate');
         $searchable = $this -> input -> post('searchable');
 

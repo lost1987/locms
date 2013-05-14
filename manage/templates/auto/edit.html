@@ -59,7 +59,7 @@
     }
 
     function multi_upload_callback(urls){
-        $('#multi_contianer').empty();
+        $("#"+multiNode).next().next().empty();
         $("#"+multiNode).val(urls);
         var urls = urls.split(',');
         for(var i in urls){
@@ -68,15 +68,16 @@
     }
 
     function multi_del(node){
+        var container = $(node).parent().parent();
         $(node).parent().remove();
         var new_url = [];
-        var new_url_span = $("#"+multiNode).next().next().find('span').each(function(){
+        var new_url_span = $(container).find('span').each(function(){
                 new_url.push($(this).text());
         })
-        $("#"+multiNode).val(new_url.join(','));
+        $(container).prev().prev().val(new_url.join(','));
     }
 
-    $(function(){//
+    $(function(){//修改时读取多上传字段的值 并写入到div中
         $("input[class='multi_val']").each(function(){
             if($(this).val() != ''){
                 var urls = $(this).val().split(',');

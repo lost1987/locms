@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-21 16:38:49
+<?php /* Smarty version Smarty-3.1.12, created on 2013-05-03 14:10:24
          compiled from "/Users/lost/www/locms/manage/templates/menu.html" */ ?>
 <?php /*%%SmartyHeaderCode:4688592835113b09ccfa541-22265194%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '71429fc098c7f6cb306499c4efb85a5a466b41b8' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/menu.html',
-      1 => 1361435441,
+      1 => 1367561420,
       2 => 'file',
     ),
   ),
@@ -112,6 +112,14 @@ dwz.frag.xml" target="navTab" external="true">dwz.frag.xml</a></li>
 " target="navTab" rel="news_list">列表</a></li>
             <li><a href="<?php echo smarty_site_url(array('action_method'=>'news/edit'),$_smarty_tpl);?>
 " target="navTab" rel="news_edit">添加</a></li>
+        </ul>
+    </li>
+    <li><a href="javascript:;">相册</a>
+        <ul>
+            <li><a href="<?php echo smarty_site_url(array('action_method'=>'album'),$_smarty_tpl);?>
+" target="navTab" rel="album_list">列表</a></li>
+            <li><a href="<?php echo smarty_site_url(array('action_method'=>'album/edit'),$_smarty_tpl);?>
+" target="navTab" rel="album_edit">添加</a></li>
         </ul>
     </li>
 </ul>

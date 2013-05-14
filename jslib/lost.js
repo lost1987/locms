@@ -492,7 +492,7 @@
             var c = document.documentElement.scrollTop==0? document.body.scrollHeight : document.documentElement.scrollHeight;
 
 
-            if(a+b == c && a!=0 && b!=0 && c!=0){
+            if(a+b == c && a!=b!=c!=0){
                 $._lazy_load();//开始加载
             }
         }

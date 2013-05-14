@@ -97,9 +97,9 @@ function smarty_field($params){
                                 $dataCollection = $f -> db -> query($sql) -> result_array();
                                 foreach($dataCollection as $data){
                                     if($value == $data[$columnValue]){
-                                        $form_field .= '<input type="radio" class="'.$class.'" name="'.$name.'" value="'.$data[$columnValue].'" checked="checked">'.$data[$columnKey];
+                                        $form_field .= '&nbsp;<input type="radio" class="'.$class.'" name="'.$name.'" value="'.$data[$columnValue].'" checked="checked">'.$data[$columnKey];
                                     }else{
-                                        $form_field .= '<input type="radio" class="'.$class.'" name="'.$name.'" value="'.$data[$columnValue].'">'.$data[$columnKey];
+                                        $form_field .= '&nbsp;<input type="radio" class="'.$class.'" name="'.$name.'" value="'.$data[$columnValue].'">'.$data[$columnKey];
                                     }
                                 }
                             }else{//以固定值形式出现
@@ -107,9 +107,9 @@ function smarty_field($params){
                                 foreach($dataCollection as $data){
                                     list($columnKey,$columnValue) = explode('.',$data);
                                     if($value == $columnValue){
-                                        $form_field .= '<input type="radio" class="'.$class.'" name="'.$name.'" value="'.$columnValue.'" checked="checked">'.$columnKey;
+                                        $form_field .= '&nbsp;<input type="radio" class="'.$class.'" name="'.$name.'" value="'.$columnValue.'" checked="checked">'.$columnKey;
                                     }else{
-                                        $form_field .= '<input type="radio" class="'.$class.'" name="'.$name.'" value="'.$columnValue.'">'.$columnKey;
+                                        $form_field .= '&nbsp;<input type="radio" class="'.$class.'" name="'.$name.'" value="'.$columnValue.'">'.$columnKey;
                                     }
                                 }
                             }
@@ -128,9 +128,9 @@ function smarty_field($params){
                                 $dataCollection = $f -> db -> query($sql) -> result_array();
                                 foreach($dataCollection as $data){
                                     if(in_array($data[$columnValue],$values)){
-                                        $form_field .= '<input type="checkbox" class="'.$class.'" name="'.$name.'[]" value="'.$data[$columnValue].'" checked="checked">'.$data[$columnKey];
+                                        $form_field .= '&nbsp;<input type="checkbox" class="'.$class.'" name="'.$name.'[]" value="'.$data[$columnValue].'" checked="checked">'.$data[$columnKey];
                                     }else{
-                                        $form_field .= '<input type="checkbox" class="'.$class.'" name="'.$name.'[]" value="'.$data[$columnValue].'">'.$data[$columnKey];
+                                        $form_field .= '&nbsp;<input type="checkbox" class="'.$class.'" name="'.$name.'[]" value="'.$data[$columnValue].'">'.$data[$columnKey];
                                     }
                                 }
                             }else{//以固定值形式出现
@@ -138,9 +138,9 @@ function smarty_field($params){
                                 foreach($dataCollection as $data){
                                     list($columnKey,$columnValue) = explode('.',$data);
                                     if(in_array($columnValue,$values)){
-                                        $form_field .= '<input type="checkbox" class="'.$class.'" name="'.$name.'[]" value="'.$columnValue.'" checked="checked">'.$columnKey;
+                                        $form_field .= '&nbsp;<input type="checkbox" class="'.$class.'" name="'.$name.'[]" value="'.$columnValue.'" checked="checked">'.$columnKey;
                                     }else{
-                                        $form_field .= '<input type="checkbox" class="'.$class.'" name="'.$name.'[]" value="'.$columnValue.'">'.$columnKey;
+                                        $form_field .= '&nbsp;<input type="checkbox" class="'.$class.'" name="'.$name.'[]" value="'.$columnValue.'">'.$columnKey;
                                     }
                                 }
                             }

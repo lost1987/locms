@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 15:29:34
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 17:51:43
          compiled from "/Users/lost/www/locms/manage/templates/news_add.html" */ ?>
 <?php /*%%SmartyHeaderCode:20022285945121b432b44333-82690088%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cdd6251b251ce179e5d0db22268c1f4e2e268376' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/news_add.html',
-      1 => 1361777146,
+      1 => 1361780550,
       2 => 'file',
     ),
   ),
@@ -152,7 +152,7 @@ function showupwindow(node)
 $('#callback').val(node);
 var t = Date.parse(new Date());
 $('body').append('<div style="width: 349px; height: 220px; margin-left: -175px; margin-top: -110px; top: 355px;" class="xheModal" id="div_up"><div class="xheModalTitle"><span title="关闭 (Esc)" class="xheModalClose" onclick="close_up()"></span>上传文件</div><div class="xheModalContent" style="height: 191px;"><iframe frameborder="0" style="width: 100%; height: 100%;" src="<?php echo @WEBROOT;?>
-xheditor/xheditor_plugins/multiupload/singleupload.html?watermark=0&t="'+t+'></iframe></div></div>');
+xheditor/xheditor_plugins/multiupload/singleupload.php?watermark=0&t="'+t+'></iframe></div></div>');
 $('#div_up').css('top',$(document).scrollTop()+(window.screen.availHeight/2-80));
 }
 

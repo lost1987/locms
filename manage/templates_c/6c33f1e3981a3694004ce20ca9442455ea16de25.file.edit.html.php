@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 17:12:37
+<?php /* Smarty version Smarty-3.1.12, created on 2013-02-25 17:50:39
          compiled from "/Users/lost/www/locms/manage/templates/auto/edit.html" */ ?>
 <?php /*%%SmartyHeaderCode:1843426866511a1e6c94bd01-74873018%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6c33f1e3981a3694004ce20ca9442455ea16de25' => 
     array (
       0 => '/Users/lost/www/locms/manage/templates/auto/edit.html',
-      1 => 1361783549,
+      1 => 1361785715,
       2 => 'file',
     ),
   ),
@@ -100,7 +100,7 @@ xheditor/xheditor_plugins/multiupload/multiupload.php?watermark=0&t="'+t+'></ifr
     }
 
     function multi_upload_callback(urls){
-        $('#multi_contianer').empty();
+        $("#"+multiNode).next().next().empty();
         $("#"+multiNode).val(urls);
         var urls = urls.split(',');
         for(var i in urls){
@@ -109,15 +109,16 @@ xheditor/xheditor_plugins/multiupload/multiupload.php?watermark=0&t="'+t+'></ifr
     }
 
     function multi_del(node){
+        var container = $(node).parent().parent();
         $(node).parent().remove();
         var new_url = [];
-        var new_url_span = $("#"+multiNode).next().next().find('span').each(function(){
+        var new_url_span = $(container).find('span').each(function(){
                 new_url.push($(this).text());
         })
-        $("#"+multiNode).val(new_url.join(','));
+        $(container).prev().prev().val(new_url.join(','));
     }
 
-    $(function(){//
+    $(function(){//修改时读取多上传字段的值 并写入到div中
         $("input[class='multi_val']").each(function(){
             if($(this).val() != ''){
                 var urls = $(this).val().split(',');
