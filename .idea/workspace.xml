@@ -98,7 +98,7 @@
       <file leaf-file-name="lost.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jslib/lost.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="493" column="0" selection-start="18597" selection-end="18597" vertical-scroll-proportion="0.8103448">
+            <state line="485" column="0" selection-start="18136" selection-end="18136" vertical-scroll-proportion="2.6310344">
               <folding>
                 <marker date="1369035036000" expanded="false" signature="19166:19353" placeholder="..." />
                 <marker date="1369035036000" expanded="false" signature="19389:19411" placeholder="..." />
@@ -509,7 +509,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jslib/lost.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="493" column="0" selection-start="18597" selection-end="18597" vertical-scroll-proportion="0.8103448">
+        <state line="485" column="0" selection-start="18136" selection-end="18136" vertical-scroll-proportion="2.6310344">
           <folding>
             <marker date="1369035036000" expanded="false" signature="19166:19353" placeholder="..." />
             <marker date="1369035036000" expanded="false" signature="19389:19411" placeholder="..." />
