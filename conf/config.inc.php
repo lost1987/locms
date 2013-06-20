@@ -20,4 +20,8 @@ define('COOKIE_SECRECT','abracadabra');
 
 define('COOKIE_DOMAIN','/');
 
+define('MEMCACHE_HOST','');
+
+define('MEMCACHE_PORT','');
+
 ?>

@@ -381,4 +381,14 @@ function fetch_children_dir($dir){
       return $dirnames;
 }
 
+/**
+ * @param $extension_name  扩展的名称
+ */
+function check_extension_is_on($extension_name){
+      $extensions = get_loaded_extensions();
+      if(in_array($extension_name,$extensions))
+      return TRUE;
+      return FALSE;
+}
+
 ?>

@@ -13,13 +13,20 @@ class Memcaches
     protected  $port;
     protected  $timeout;
 
-    function memcaches($host,$port,$timeout=1,$pconnect=false){
+    function memcaches($host,$port,$timeout=1,$pconnect=false,$debug=FALSE){
+        $this -> checkEnv();
+
         $this -> host = $host;
         $this -> port = $port;
         $this -> timeout = $timeout;
         $this -> memcache = new Memcache();
-        if($pconnect)$this -> memcache -> pconnect($host,$port,$timeout);
-        else $this -> memcache -> connect($host,$port,$timeout);
+        if($debug){
+            if($pconnect)$this -> memcache -> pconnect($host,$port,$timeout);
+            else $this -> memcache -> connect($host,$port,$timeout);
+        }else{
+            if($pconnect)@$this -> memcache -> pconnect($host,$port,$timeout);
+            else @$this -> memcache -> connect($host,$port,$timeout);
+        }
     }
 
     function getCache(){
@@ -51,5 +58,8 @@ class Memcaches
     }
 
 
-
+    private function checkEnv(){
+          if(!check_extension_is_on('memcache'))
+              throw new MemcachedException('你的memcache扩展模块未开启');
+    }
 }

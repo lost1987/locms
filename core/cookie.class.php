@@ -13,7 +13,7 @@ Class Cookie {
 	public function __construct(){
 		$this -> secret = COOKIE_SECRECT;
 		$this -> timeout = COOKIE_TIMEOUT;
-		$this ->　path = COOKIE_DOMAIN;
+		$this -> path = COOKIE_DOMAIN;
 	}
 	
 	public function set_userdata($key,$val=''){
@@ -22,12 +22,12 @@ Class Cookie {
 		
 		if(is_string($key)){
 			if(!empty($val)) $val = authcode($val,'ENCODE',$this->secret);
-			setcookie($key,$val,time()+$this -> timeout,$this ->　path);
+			setcookie($key,$val,time()+$this -> timeout,$this ->path);
 		}
 		else if(is_array($key)){
 			foreach($key as $k => $v){
 				if(!empty($v)) $v = authcode($v,'ENCODE',$this->secret);
-				setcookie($k,$v,time()+$this -> timeout,$this ->　path);
+				setcookie($k,$v,time()+$this -> timeout,$this ->path);
 			}
 		}
 		else{
@@ -45,11 +45,11 @@ Class Cookie {
 		if(empty($key))return;
 		
 		if(is_string($key)){
-			setcookie($key,'',time()-$this -> timeout,$this ->　path);
+			setcookie($key,'',time()-$this -> timeout,$this ->path);
 		}
 		else if(is_array($key)){
 			foreach($key as $k => $v){
-				setcookie($k,'',time()-$this -> timeout,$this ->　path);
+				setcookie($k,'',time()-$this -> timeout,$this ->path);
 			}
 		}
 		else{
@@ -60,7 +60,7 @@ Class Cookie {
 	public function sess_destroy(){
 		if(count($_COOKIE) > 0){
 			foreach($_COOKIE as $k => $v){
-				setcookie($k,'',time()-$this -> timeout,$this ->　path);
+				setcookie($k,'',time()-$this -> timeout,$this ->path);
 			}
 		}
 	}

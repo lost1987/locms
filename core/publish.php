@@ -17,27 +17,14 @@ require BASEPATH.'core/autoload.class.php';
 require BASEPATH.'core/pathinfo.class.php';
 require BASEPATH.'core/config.class.php';
 require BASEPATH.'core/smarty/Smarty.class.php';
+require BASEPATH.'conf/config.smarty.inc.php';
 
 spl_autoload_register(array('Autoload','_autoload'));
 
-$tpl = new Tpl();
-$tpl->template_dir = BASEPATH.PHP_DIRECTORY."/templates/";
-$tpl->compile_dir = BASEPATH.PHP_DIRECTORY."/templates_c/";
-$tpl->config_dir = BASEPATH.PHP_DIRECTORY."/configs/";
-$tpl->cache_dir = BASEPATH.PHP_DIRECTORY."/cache/";
-//$tpl->cache_lifetime = 60 * 60 * 24;      //设置缓存时间
-$tpl->left_delimiter = '<!@{';
-$tpl->caching        = false;             //这里是调试时设为false,发布时请使用true
-
-$tpl->right_delimiter = '}@>';
-$tpl->compile_check = true;
-$tpl->debugging = false;
-
-global $settings;
 if(get_magic_quotes_runtime()){
-    $settings = unserialize(stripslashes(file_get_contents(BASEPATH.'site.inc.php')));
+    $GLOBALS['settings'] = unserialize(stripslashes(file_get_contents(BASEPATH.'site.inc.php')));
 }else{
-    $settings = unserialize(file_get_contents(BASEPATH.'site.inc.php'));
+    $GLOBALS['settings'] = unserialize(file_get_contents(BASEPATH.'site.inc.php'));
 }
 
 $pathinfo = new Pathinfo(); //初始化url path类
@@ -60,16 +47,16 @@ $globals = array($pathinfo,$db,$tpl,$cookie,$input,$permission);
 require BASEPATH.'function/function_smarty.php';
 
 //实例化公共工厂类
-$f = new Factory($globals);
+$GLOBALS['f'] = new Factory($globals);
 
-$controllerClass = $f -> pathinfo -> controller;
+$controllerClass = $GLOBALS['f'] -> pathinfo -> controller;
 
 Aop::beforeMethod();
 
 $c = new $controllerClass;
 
-if(method_exists($c,$f->pathinfo->method)){
-    call_user_func(array($c,$f->pathinfo->method));
+if(method_exists($c,$GLOBALS['f']->pathinfo->method)){
+    call_user_func(array($c,$GLOBALS['f']->pathinfo->method));
 }
 
 Aop::afterMethod();
