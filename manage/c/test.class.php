@@ -14,4 +14,21 @@ class Test extends AutoController
         $this -> model = new Test_m();
     }
 
+
+    /*
+    function index(){
+           //polling test
+           LongPolling::registerFunc(array($this,'test1'),array($this,'test1'),array($this,'fetch'));
+           LongPolling::run_polling();
+    }
+
+
+    function test1(){
+        echo '1';
+    }
+
+    function fetch(){
+        return LongPolling::NO_MSG;
+    }
+*/
 }

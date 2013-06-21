@@ -154,7 +154,7 @@ function is_ajax_req(){
 
 function check_login()
 {
-    global $f;
+    $f = $GLOBALS['f'];
     $cookie = $f->cookie;
     $admin = $cookie->userdata('admin');
     $admin_id = $cookie->userdata('admin_id');
@@ -358,6 +358,36 @@ function fetch_array($start , $limit ,$array){
     }
 
     return $newarray;
+}
+
+/**
+ * @param $element  要插入的元素
+ * @param $index    要插入的索引位置
+ * @param $array    原始数组
+ * @return array
+ * 将元素插入到$index的数组位置
+ */
+function array_insert_element($element,$index,$array){
+    if($index < 0)
+        throw new OutOfRangeException('index must be > 0');
+    $next_array = array_slice($array,$index-1);
+    $pre_array = array_slice($array,0,$index-1);
+    $pre_array[] = $element;
+    return array_merge($pre_array,$next_array);
+}
+
+/**
+ * @param $index
+ * @param $array
+ * @return mixed
+ * @throws OutOfRangeException
+ * 删除下标为index的数组元素
+ */
+function array_delete_element($index,$array){
+    if($index < 0)
+        throw new OutOfRangeException('index must be > 0');
+    unset($array[$index-1]);
+    return $array;
 }
 
 

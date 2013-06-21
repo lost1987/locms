@@ -2,169 +2,14 @@
 
 if( ! defined('BASEPATH')) exit('No direct script access allowed');
 
- Class Mysql {
- 	
-	private $link;
-	public $queryState;
-	private $debug = FALSE;
-	private $trans_state;
- 	
-	function Mysql(){
-
-        $this -> host = Config::item('DB','HOST');
-        $this -> user =  Config::item('DB','USERNAME');
-        $this -> pwd = Config::item('DB','PASSWORD');
-        $this -> debug = Config::item('DB','DEBUG');
-        $this -> database = Config::item('DB','DBNAME');
-
-		$this -> link = mysql_connect($this -> host,$this -> user,$this -> pwd);
-		
-		if(empty($this -> link)){
-			exit('database init error!');
-		}
-		
-		$this -> init($this -> database,$this -> debug);
-	}
-	
-	private function init($database,$debug){
-		$this -> trans_state = TRUE;
-		mysql_select_db($database);
-		if($debug)$this -> debug = TRUE;
-		mysql_query("SET NAMES UTF8");
-	}
-	
-	public function query($sql){
-		$this -> queryState = mysql_query($sql);
-		if(!$this -> queryState){
-			if($this -> debug){
-				die(mysql_error());
-			}
-		}
-		return $this;
-	}
-	
-	public function insert_id(){
-		return mysql_insert_id();
-	}
-	
-	public function result_array(){
-		$list = array();
-		while($row = mysql_fetch_assoc($this->queryState)){
-			$list[] = $row;
-		}
-		return $list;
-	}
-	
-	public function row_array(){
-		if($row = mysql_fetch_assoc($this->queryState)){
-			return $row;
-		}
-		return '';
-	}
-
-     public function result_object(){
-         $list = array();
-         while($row = mysql_fetch_object($this->queryState)){
-             $list[] = $row;
-         }
-         return $list;
-     }
-
-     public function row_object(){
-         if($row = mysql_fetch_object($this->queryState)){
-             return $row;
-         }
-         return '';
-     }
-
-     public function insert($tablename , $array){
-          $sql = "insert into ";
-          $sql_key = '(';
-          $sql_val = '(';
-          if(is_array($array) && count($array)>0 && !empty($tablename)){
-              foreach($array as $ckey => $cvalue){
-                    $sql_key .= "$ckey,";
-                    if(gettype($cvalue) == 'string' || (empty($cvalue) && $cvalue!=0)){
-                        $sql_val .= "'$cvalue',";
-                    }else{
-                        $sql_val .= "$cvalue,";
-                    }
-              }
-              $sql_key = substr($sql_key,0,strlen($sql_key) - 1);
-              $sql_val = substr($sql_val,0,strlen($sql_val) - 1);
-              $sql_key .= ') ';
-              $sql_val .= ')';
-              $sql .= $tablename." ".$sql_key.' values '.$sql_val ;
-
-              if(mysql_query($sql)){
-                  return TRUE;
-              }
-              return FALSE;
-          }
-     }
+ final Class Mysql extends  MysqlBase{
 
      /**
-      * @param $tablename
-      * @param $array
-      * @param $condition exp: id=5
+      * @param $sql
+      * 查看一条sql语句的效率状况
       */
-     public function update($tablename,$array,$condition){
-         $sql = "update ";
-         if(is_array($array) && count($array)>0 && !empty($tablename) && !empty($condition)){
-             $sql .= "$tablename set ";
-             foreach($array as $ckey => $cvalue){
-                 $sql .= "$ckey=";
-
-                 if(gettype($cvalue) == 'string' || (empty($cvalue) && $cvalue!=0)){
-                     $sql .= "'$cvalue',";
-                 }else{
-                     $sql .= "$cvalue,";
-                 }
-             }
-             $sql = substr($sql,0,strlen($sql) - 1);
-             $sql .= " where ".$condition;
-
-             if(mysql_query($sql)){
-                 return TRUE;
-             }
-             return FALSE;
-         }
-     }
-	
-	public function trans_begin(){
-		mysql_query('SET AUTOCOMMIT = 0');
-	}
-	
-	public function trans_end(){
-		mysql_query('SET AUTOCOMMIT = 1');
-	}
-	
-	public function trans_status(){
-		return $this -> trans_state;
-	}
-	
-	public function trans_commit(){
-		mysql_query('COMMIT');
-	}
-	
-	public function trans_rollback(){
-		mysql_query('ROLLBACK');
-	}
-	
-	public function getLink(){
-		return $this -> link;
-	}
-
-    public function num_rows(){
-        return mysql_num_rows($this->queryState);
-    }
-	
-	public function close(){
-		mysql_close();
-	}
-
-    public function explain($sql){
-        $result = mysql_query('explain '.$sql);
+     public function explain($sql){
+        $result = mysql_query('EXPLAIN '.$sql);
         if($row = mysql_fetch_assoc($result)){
             echo '<font color="red">';
             foreach($row as $k => $v){
@@ -173,11 +18,15 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
             echo '</font>';
         }
         unset($result);
-        exit;
+        return $this;
     }
 
-    public function show_tables(){
-        $sql = "show tables";
+     /**
+      * @return array
+      * 查询该数据库所有的表名
+      */
+     public function show_tables(){
+        $sql = "SHOW TABLES";
         $result = mysql_query($sql);
         $tables = array();
         while($row = mysql_fetch_row($result)){
@@ -186,6 +35,51 @@ if( ! defined('BASEPATH')) exit('No direct script access allowed');
         return $tables;
     }
 
+
+     /**
+      * @param $tableName
+      * @return resource
+      * 快速清空一张表
+      */
+     public function emptyTable($tableName){
+        $sql = "TRUNCATE $tableName";
+        return mysql_query($sql);
+    }
+
+
+     /**
+      * @param $tableName
+      * @param $id_key   主键的字段名
+      * @param $id_value 主键的值
+      * @return resource
+      * 执行行锁: 只支持innodb 并且需要在事务中使用才能有效果
+      * 如果 id_key 不是主键的话 那会产生表锁 而不是 行锁
+      */
+     public function lock_row($tableName,$id_key,$id_value){
+       return mysql_query("SELECT $id_key FROM $tableName WHERE $id_key=$id_value FOR UPDATE ");
+    }
+
+     public function lock_table_write($tableName){
+         return mysql_query("LOCK TABLES $tableName WRITE");
+     }
+
+     public function lock_table_read($tableName){
+         return mysql_query("LOCK TABLES $tableName READ");
+     }
+
+     public function unlock_tables(){
+        return mysql_query("UNLOCK TABLES");
+     }
+
+     /**
+      * @param $tableName
+      * @return array
+      * 查询该表所有字段的详细信息 返回数组包括key:
+      * Field | Type | Collation | Null | Key | Default | Extra | Privileges                      | Comment |
+      */
+     public function table_fields($tableName){
+        return $this -> query("SHOW FULL FIELDS FROM $tableName")->result_array();
+     }
  }
 
 ?>

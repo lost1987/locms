@@ -14,7 +14,7 @@ abstract class Autoload
 
     public static function _autoload($className){
 
-        $className = strtolower($className);
+        $className = lcfirst($className);
 
         $classpath = BASEPATH.'core/'.$className.self::SUBFIX;
 
