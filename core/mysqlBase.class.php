@@ -14,7 +14,7 @@ class MysqlBase
     protected $debug = FALSE;
     protected $trans_state;
 
-    function Mysql(){
+    function MysqlBase(){
 
         $this -> host = Config::item('DB','HOST');
         $this -> user =  Config::item('DB','USERNAME');
@@ -31,7 +31,7 @@ class MysqlBase
         $this -> init($this -> database,$this -> debug);
     }
 
-    private function init($database,$debug){
+    protected function init($database,$debug){
         $this -> trans_state = TRUE;
         mysql_select_db($database);
         if($debug)$this -> debug = TRUE;

@@ -178,6 +178,7 @@ abstract class AutoController extends Core
      */
     function set_search_fields_value(&$post){
         $newpost = array();
+        if(!$post)return $newpost;
         foreach($this->autoform->fields as &$field){
               if(array_key_exists($field['Field'],$post)){
                   $field['value'] = $post[$field['Field']];

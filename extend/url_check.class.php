@@ -1,5 +1,5 @@
 <?php
-	
+if( ! defined('BASEPATH')) exit('No direct script access allowed');
 	class Url_check{
 		
 		protected $url;

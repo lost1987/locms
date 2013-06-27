@@ -47,6 +47,8 @@ abstract class AutoModel extends Core
 
             $condition = '';
 
+            if(!is_array($array)) return $condition;
+
             foreach($array as $k => $v){
 
                 if(empty($v['value']))continue;

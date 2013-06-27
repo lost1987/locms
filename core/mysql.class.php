@@ -2,7 +2,8 @@
 
 if( ! defined('BASEPATH')) exit('No direct script access allowed');
 
- final Class Mysql extends  MysqlBase{
+Class Mysql extends  MysqlBase{
+
 
      /**
       * @param $sql

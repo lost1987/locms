@@ -16,6 +16,8 @@ require BASEPATH.'core/db_engine.class.php';
 require BASEPATH.'core/autoload.class.php';
 require BASEPATH.'core/pathinfo.class.php';
 require BASEPATH.'core/config.class.php';
+require BASEPATH.'core/security.class.php';
+require BASEPATH.'core/utf8.class.php';
 require BASEPATH.'core/smarty/Smarty.class.php';
 require BASEPATH.'conf/config.smarty.inc.php';
 

@@ -194,57 +194,6 @@ function site_url($action_method)
     }
 }
 
-
-function inputFilter($str)
-{
-    if (empty($str) && intval($str)!=0) {
-        return;
-    }
-
-    if ($str == "") {
-        return $str;
-    }
-    $str = trim($str);
-    $str = str_replace("&", "&amp;", $str);
-    $str = str_replace(">", "&gt;", $str);
-    $str = str_replace("<", "&lt;", $str);
-    $str = str_replace(chr(32), "&nbsp;", $str);
-    $str = str_replace(chr(9), "&nbsp;", $str);
-    $str = str_replace(chr(34), "&", $str);
-    $str = str_replace(chr(39), "&#39;", $str);
-    $str = str_replace(chr(13), "<br />", $str);
-    $str = str_replace("'", "''", $str);
-    $str = str_replace("select", "sel&#101;ct", $str);
-    $str = str_replace("join", "jo&#105;n", $str);
-    $str = str_replace("union", "un&#105;on", $str);
-    $str = str_replace("where", "wh&#101;re", $str);
-    $str = str_replace("insert", "ins&#101;rt", $str);
-    $str = str_replace("delete", "del&#101;te", $str);
-    $str = str_replace("update", "up&#100;ate", $str);
-    $str = str_replace("like", "lik&#101;", $str);
-    $str = str_replace("drop", "dro&#112;", $str);
-    $str = str_replace("create", "cr&#101;ate", $str);
-    $str = str_replace("modify", "mod&#105;fy", $str);
-    $str = str_replace("rename", "ren&#097;me", $str);
-    $str = str_replace("alter", "alt&#101;r", $str);
-    $str = str_replace("cast", "ca&#115;", $str);
-    return $str;
-}
-
-function daddslashes($string, $force = 1)
-{
-    if (is_array($string)) {
-        foreach ($string as $key => $val) {
-            unset($string[$key]);
-            $string[addslashes($key)] = daddslashes($val, $force);
-        }
-    } else {
-        $string = addslashes($string);
-    }
-    return $string;
-}
-
-
 function getip() {
     if (!empty($_SERVER["HTTP_CLIENT_IP"])) {
         $cip = $_SERVER["HTTP_CLIENT_IP"];
@@ -419,6 +368,84 @@ function check_extension_is_on($extension_name){
       if(in_array($extension_name,$extensions))
       return TRUE;
       return FALSE;
+}
+
+/**
+ * @param $str
+ * @param $start
+ * @param $len
+ * @return string
+ * 截取中文的UTF8字符串
+ */
+function substr_utf8($str,$start,$len){
+        if( strtolower(mb_internal_encoding()) != 'utf-8' ){
+            mb_internal_encoding('UTF-8');
+        }
+        return mb_substr($str,$start,$len);
+}
+
+/**
+ * @param $parttern
+ * @param $replacement
+ * @param $str
+ * @return string
+ * 替换中文的UTF8字符串
+ */
+function parttern_replace_utf8($parttern,$replacement,$str){
+        if( strtolower(mb_regex_encoding()) != 'utf-8'){
+            mb_regex_encoding('UTF-8');
+        }
+        return mb_ereg_replace($parttern,$replacement,$str);
+}
+
+
+function daddslashes($string, $force = 1)
+{
+    if (is_array($string)) {
+        foreach ($string as $key => $val) {
+            unset($string[$key]);
+            $string[addslashes($key)] = daddslashes($val, $force);
+        }
+    } else {
+        $string = addslashes($string);
+    }
+    return $string;
+}
+
+function inputFilter($str)
+{
+    if (empty($str) && intval($str)!=0) {
+        return;
+    }
+
+    if ($str == "") {
+        return $str;
+    }
+    $str = trim($str);
+    $str = str_replace("&", "&amp;", $str);
+    $str = str_replace(">", "&gt;", $str);
+    $str = str_replace("<", "&lt;", $str);
+    $str = str_replace(chr(32), "&nbsp;", $str);
+    $str = str_replace(chr(9), "&nbsp;", $str);
+    $str = str_replace(chr(34), "&", $str);
+    $str = str_replace(chr(39), "&#39;", $str);
+    $str = str_replace(chr(13), "<br />", $str);
+    $str = str_replace("'", "''", $str);
+    $str = str_replace("select", "sel&#101;ct", $str);
+    $str = str_replace("join", "jo&#105;n", $str);
+    $str = str_replace("union", "un&#105;on", $str);
+    $str = str_replace("where", "wh&#101;re", $str);
+    $str = str_replace("insert", "ins&#101;rt", $str);
+    $str = str_replace("delete", "del&#101;te", $str);
+    $str = str_replace("update", "up&#100;ate", $str);
+    $str = str_replace("like", "lik&#101;", $str);
+    $str = str_replace("drop", "dro&#112;", $str);
+    $str = str_replace("create", "cr&#101;ate", $str);
+    $str = str_replace("modify", "mod&#105;fy", $str);
+    $str = str_replace("rename", "ren&#097;me", $str);
+    $str = str_replace("alter", "alt&#101;r", $str);
+    $str = str_replace("cast", "ca&#115;", $str);
+    return $str;
 }
 
 ?>
