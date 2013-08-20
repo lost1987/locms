@@ -398,11 +398,14 @@ function check_extension_is_on($extension_name){
  * @return string
  * 截取中文的UTF8字符串
  */
-function substr_utf8($str,$start,$len){
+function utf8_substr($str,$start,$len){
+        $default = mb_internal_encoding();
         if( strtolower(mb_internal_encoding()) != 'utf-8' ){
             mb_internal_encoding('UTF-8');
         }
-        return mb_substr($str,$start,$len);
+        $result = mb_substr($str,$start,$len);
+        mb_internal_encoding($default);
+        return $result;
 }
 
 /**
@@ -412,11 +415,14 @@ function substr_utf8($str,$start,$len){
  * @return string
  * 替换中文的UTF8字符串
  */
-function parttern_replace_utf8($parttern,$replacement,$str){
+function utf8_parttern_replace($parttern,$replacement,$str){
+        $default = mb_regex_encoding();
         if( strtolower(mb_regex_encoding()) != 'utf-8'){
             mb_regex_encoding('UTF-8');
         }
-        return mb_ereg_replace($parttern,$replacement,$str);
+        $result = mb_ereg_replace($parttern,$replacement,$str);
+        mb_regex_encoding($default);
+        return $result;
 }
 
 
