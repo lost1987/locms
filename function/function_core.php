@@ -538,4 +538,37 @@ function getCSVdata($filename)
     }
 }
 
+/**
+ * 将类似 \x30\x31\x32\x33\ 这类字符转换成 10进制的字符串
+ * 过程: 以上为例 30,31,32,33 都是16进制
+ * 将他们先转为10进制然后再用ascii码来换成字符
+ * 再连接起来就是结果
+ * @param $x16
+ * @return null|string
+ */
+function ascii16toStr($x16){
+    if(!is_string($x16))return null;
+    $charlist = explode('\x',$x16);
+    $str = array();
+    foreach($charlist as $char){
+        if(empty($char))continue;
+        $str[] = chr(hexdec($char));
+    }
+    return implode($str);
+}
+
+/**
+ * 将str 的每个字母 转换成ascii 再转成16进制
+ * 只支持英文 结果类似如下
+ * \x30\x31\x32\x33\
+ */
+function strtoAscii16($str){
+    if(!is_string($str)) return null;
+    $asciis = array();
+    for($i = 0 ; $i < strlen($str) ; $i++){
+        $asciis[] = '\x'.dechex(ord($str[$i]));
+    }
+    return implode($asciis);
+}
+
 ?>
