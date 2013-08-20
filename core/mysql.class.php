@@ -28,7 +28,7 @@ Class Mysql extends  MysqlBase{
       */
      public function show_tables(){
         $sql = "SHOW TABLES";
-        $result = mysql_query($sql);
+        $result = mysql_query($sql,$this->link);
         $tables = array();
         while($row = mysql_fetch_row($result)){
             $tables[] = $row[0];
@@ -44,7 +44,7 @@ Class Mysql extends  MysqlBase{
       */
      public function emptyTable($tableName){
         $sql = "TRUNCATE $tableName";
-        return mysql_query($sql);
+        return mysql_query($sql,$this->link);
     }
 
 
@@ -57,19 +57,19 @@ Class Mysql extends  MysqlBase{
       * 如果 id_key 不是主键的话 那会产生表锁 而不是 行锁
       */
      public function lock_row($tableName,$id_key,$id_value){
-       return mysql_query("SELECT $id_key FROM $tableName WHERE $id_key=$id_value FOR UPDATE ");
+       return mysql_query("SELECT $id_key FROM $tableName WHERE $id_key=$id_value FOR UPDATE ",$this->link);
     }
 
      public function lock_table_write($tableName){
-         return mysql_query("LOCK TABLES $tableName WRITE");
+         return mysql_query("LOCK TABLES $tableName WRITE",$this->link);
      }
 
      public function lock_table_read($tableName){
-         return mysql_query("LOCK TABLES $tableName READ");
+         return mysql_query("LOCK TABLES $tableName READ",$this->link);
      }
 
      public function unlock_tables(){
-        return mysql_query("UNLOCK TABLES");
+        return mysql_query("UNLOCK TABLES",$this->link);
      }
 
      /**

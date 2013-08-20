@@ -33,13 +33,13 @@ class MysqlBase
 
     protected function init($database,$debug){
         $this -> trans_state = TRUE;
-        mysql_select_db($database);
+        mysql_select_db($database,$this->link);
         if($debug)$this -> debug = TRUE;
-        mysql_query("SET NAMES UTF8");
+        mysql_query("SET NAMES UTF8",$this->link);
     }
 
     public function query($sql){
-        $this -> queryState = mysql_query($sql);
+        $this -> queryState = mysql_query($sql,$this->link);
         if(!$this -> queryState){
             if($this -> debug){
                 die(mysql_error());
@@ -49,7 +49,7 @@ class MysqlBase
     }
 
     public function insert_id(){
-        return mysql_insert_id();
+        return mysql_insert_id($this->link);
     }
 
     public function result_array(){
@@ -149,13 +149,13 @@ class MysqlBase
     }
 
     public function trans_begin(){
-        mysql_query('SET AUTOCOMMIT = 0');
-        mysql_query('BEGIN');
+        mysql_query('SET AUTOCOMMIT = 0',$this->link);
+        mysql_query('BEGIN',$this->link);
         return $this;
     }
 
     public function trans_end(){
-        mysql_query('SET AUTOCOMMIT = 1');
+        mysql_query('SET AUTOCOMMIT = 1',$this->link);
         return $this;
     }
 
@@ -164,16 +164,16 @@ class MysqlBase
     }
 
     public function trans_commit(){
-        mysql_query('COMMIT');
+        mysql_query('COMMIT',$this->link);
         return $this;
     }
 
     public function trans_rollback(){
-        mysql_query('ROLLBACK');
+        mysql_query('ROLLBACK',$this->link);
         return $this;
     }
 
     public function close(){
-        mysql_close();
+        mysql_close($this->link);
     }
 }

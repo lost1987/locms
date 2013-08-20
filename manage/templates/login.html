@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="<!@{$smarty.const.WEBROOT}@>css/admin/login.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="<!@{$smarty.const.WEBROOT}@>css/admin/login.css" />
     <link media="all" rel="stylesheet" type="text/css" href="<!@{$smarty.const.WEBROOT}@>js/dialog/default.css" />
     <script type="text/javascript" src="<!@{$smarty.const.WEBROOT}@>js/jquery-1.7.2.js"></script>
     <script src="<!@{$smarty.const.WEBROOT}@>js/dialog/artDialog.min.js"></script>
@@ -13,6 +13,7 @@
 <body onkeydown="enterSubmit(event)">
 
 <div id="container">
+    <center>
 <div id="form_el">
 	<form action="<!@{Smarty_site_url action_method='login/dologin'}@>" method="post" id="loginform">
 		<span class="login_span"><input type="text" name="username" id="username" class="login_input" /></span>
@@ -22,6 +23,7 @@
         <p id="tips"><!@{$error_msg}@></p>
 	</form>
 </div>
+</center>
 </div>
 <script type="text/javascript" >
     function login(){
