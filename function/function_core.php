@@ -309,6 +309,27 @@ function fetch_array($start , $limit ,$array){
     return $newarray;
 }
 
+
+/**
+ * 取数组下标从start 到 end条
+ *
+ */
+function array_fetch($start , $limit ,$array){
+    if(!is_int($start) || !is_int($limit)){
+        return;
+    }
+
+    $newarray = array();
+
+    for($i =0 ; $i < count($array) ; $i++){
+        if($i >= $start && $i < $limit){
+            $newarray[] = $array[$i];
+        }
+    }
+
+    return $newarray;
+}
+
 /**
  * @param $element  要插入的元素
  * @param $index    要插入的索引位置
